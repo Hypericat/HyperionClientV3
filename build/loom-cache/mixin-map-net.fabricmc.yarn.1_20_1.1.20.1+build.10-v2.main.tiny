@@ -1,0 +1,4 @@
+v1	named	intermediary
+FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
+METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	sendImmediately	method_10764
+METHOD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	(Z)V	setPressed	method_23481
