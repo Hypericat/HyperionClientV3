@@ -8,6 +8,10 @@ import me.hypericats.hyperionclientv3.events.TickListener;
 import net.minecraft.client.MinecraftClient;
 
 public class Template extends Module implements TickListener {
+    public Template() {
+        super(true);
+    }
+
     @Override
     public void onEvent(EventData data) {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -23,12 +27,6 @@ public class Template extends Module implements TickListener {
     protected void initOptions() {
 
     }
-
-    @Override
-    public boolean shouldSaveState() {
-        return true;
-    }
-
     @Override
     public void onDisable() {
         EventHandler.unregister(TickListener.class, this);

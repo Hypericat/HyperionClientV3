@@ -1,6 +1,8 @@
 package me.hypericats.hyperionclientv3;
 
+import me.hypericats.hyperionclientv3.modules.Criticals;
 import me.hypericats.hyperionclientv3.modules.Flight;
+import me.hypericats.hyperionclientv3.modules.HackGUI;
 import me.hypericats.hyperionclientv3.modules.KillAura;
 import net.minecraft.client.util.InputUtil;
 
@@ -16,6 +18,8 @@ public class ModuleHandler {
 
         modules.add(new Flight());
         modules.add(new KillAura());
+        modules.add(new Criticals());
+        modules.add(new HackGUI());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

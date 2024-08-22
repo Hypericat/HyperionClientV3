@@ -29,6 +29,10 @@ public class ChatUtils {
         client.player.sendMessage(Text.of("§6[Hyperion Client V3] §f" + msg));
         removeMessageIfContains("[Hyperion Client V3]");
     }
+    public static void debugMousePos() {
+        if (client.player == null) return;
+        client.player.sendMessage(Text.of(String.valueOf(client.mouse.getX())));
+    }
 
     public static void sendError(Object msg1) {
         String msg = format(msg1);

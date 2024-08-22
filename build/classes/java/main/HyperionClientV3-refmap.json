@@ -3,6 +3,9 @@
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
     },
+    "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
+      "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
+    },
     "me/hypericats/hyperionclientv3/mixin/KeyBindingMixin": {
       "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
     },
@@ -16,6 +19,9 @@
     "named:intermediary": {
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
         "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
+        "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
       },
       "me/hypericats/hyperionclientv3/mixin/KeyBindingMixin": {
         "onKeyPressed": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"

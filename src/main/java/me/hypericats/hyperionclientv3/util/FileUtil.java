@@ -25,6 +25,15 @@ public class FileUtil {
         }
         return file;
     }
+    public static File createFile(File file) {
+        if (file.exists()) return null;
+        try {
+            file.createNewFile();
+        } catch (IOException exception) {
+            return null;
+        }
+        return file;
+    }
     public static File createDir(String directoryName, File directory) {
         File file = new File(directory.getAbsolutePath() + "\\" + directoryName);
         if (file.exists()) return null;

@@ -2,49 +2,96 @@ package me.hypericats.hyperionclientv3.modules;
 
 import me.hypericats.hyperionclientv3.HackType;
 import me.hypericats.hyperionclientv3.Module;
+import me.hypericats.hyperionclientv3.enums.CriticalsType;
+import me.hypericats.hyperionclientv3.enums.PlayerInteractType;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
+import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
+import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
+import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
+import me.hypericats.hyperionclientv3.util.PacketUtil;
+import me.hypericats.hyperionclientv3.util.PlayerInteractEntityC2SPacketHandler;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
+import net.minecraft.text.Text;
 
-public class Criticals extends Module implements TickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Criticals extends Module implements SendPacketListener {
+
+    EnumStringOption<CriticalsType> criticalsType;
+    List<PlayerInteractType> typeRegister = new ArrayList<>();
+    PlayerInteractEntityC2SPacketHandler handler = new PlayerInteractEntityC2SPacketHandler(typeRegister);
+
+    public Criticals() {
+        super(true);
+    }
+
     @Override
     public void onEvent(EventData data) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
+        SendPacketData packetData = (SendPacketData) data;
+        Packet<?> packet = packetData.getPacket();
+        if (!(packet instanceof PlayerInteractEntityC2SPacket)) return;
+        typeRegister.clear();
+        ((PlayerInteractEntityC2SPacket) packet).handle(handler);
+        if (typeRegister.isEmpty() || typeRegister.get(0) != PlayerInteractType.ATTACK) return;
+        crit();
+    }
+    public void crit() {
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null) return;
+        if(client.player.isTouchingWater() || client.player.isInLava()) return;
+        switch (criticalsType.getValue()) {
+            case PACKET -> doPacketJump(client);
+            case VELOCITY -> doVelocityJump(client);
+        }
+    }
+    public void doPacketJump(MinecraftClient client) {
+        double posX = client.player.getX();
+        double posY = client.player.getY();
+        double posZ = client.player.getZ();
 
+        PacketUtil.sendPos(posX, posY + 0.0625D, posZ, true);
+        PacketUtil.sendPos(posX, posY, posZ, false);
+        PacketUtil.sendPos(posX, posY + 1.1E-5D, posZ, false);
+        PacketUtil.sendPos(posX, posY, posZ, false);
+    }
+    public void doVelocityJump(MinecraftClient client) {
+        client.player.sendMessage(Text.of("This doesn't work yet criticals velocity jump."));
     }
     @Override
     public void onEnable() {
-        EventHandler.register(TickListener.class, this);
+        EventHandler.register(SendPacketListener.class, this);
     }
 
     @Override
     protected void initOptions() {
+        criticalsType = new EnumStringOption<>(true, "Criticals Type", CriticalsType.PACKET);
 
-    }
-
-    @Override
-    public boolean shouldSaveState() {
-        return true;
+        options.addOption(criticalsType);
     }
 
     @Override
     public void onDisable() {
-        EventHandler.unregister(TickListener.class, this);
+        EventHandler.unregister(SendPacketListener.class, this);
     }
 
     @Override
     public String getName() {
-        return "TemplateName";
+        return "Criticals";
     }
 
     @Override
     public HackType getHackType() {
-        return HackType.OTHER;
+        return HackType.COMBAT;
     }
 
     public String[] getAlias() {
-        return new String[] {"OtherName1", "OtherName2"};
+        return new String[] {"Crit"};
     }
 }
