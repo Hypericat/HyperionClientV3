@@ -28,8 +28,9 @@ public abstract class Module {
     private BooleanOption shouldSaveState;
     public abstract void onDisable();
     public Module(boolean shouldSaveState) {
-        this.initOptions();
         this.shouldSaveState = new BooleanOption(true, "Save Module State", shouldSaveState);
+        this.options.addOption(this.shouldSaveState);
+        this.initOptions();
     }
 
     public ModuleOptions getOptions() {
@@ -69,8 +70,12 @@ public abstract class Module {
     public InputUtil.Key getKey() {
         return keyBind;
     }
-    public void setKey(InputUtil.Key key) {
+    public void setKey(InputUtil.Key key, boolean saveKeys) {
         this.keyBind = key;
+        if (saveKeys) HyperionClientV3Client.keybindLoader.saveKeys();
+    }
+    public void setKey(InputUtil.Key key) {
+        setKey(key, true);
     }
     public abstract HackType getHackType();
     public String[] getAlias() {

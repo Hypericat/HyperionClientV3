@@ -32,7 +32,7 @@ public class KeybindLoader implements ScheduleStopListener {
             key = mod.getKey();
             if (key == null) continue;
             File keyb = FileUtil.createFile(mod.getName() + ".keyb", keybindDir);
-            FileUtil.writeToFile(mod.getKey().getTranslationKey(), keyb);
+            FileUtil.overwriteToFile(mod.getKey().getTranslationKey(), keyb);
         }
     }
     public void loadKeys() {
@@ -47,7 +47,7 @@ public class KeybindLoader implements ScheduleStopListener {
             if (fileContents == null || fileContents.isEmpty() || fileContents.get(0).equals("0")) return;
             InputUtil.Key key = InputUtil.fromTranslationKey(fileContents.get(0));
             if (key == null) return;
-            mod.setKey(key);
+            mod.setKey(key, false);
         }
     }
 

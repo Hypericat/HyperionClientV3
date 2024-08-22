@@ -26,6 +26,8 @@ public class ModuleEditScreen extends Screen {
     private HyperionClientV3Screen parent;
     private Module module;
     protected NumberWidget focusedNumberWidget;
+    private KeybindWidget keybindWidget;
+    private boolean mouseDraggingToggle = false;
     private List<ModuleOptionsWidget> widgets = new ArrayList<>();
     public static int orangeColor = ColorHelper.Argb.getArgb(255, 252, 111, 3);
     public static int backgroundColor = ColorHelper.Argb.getArgb(95, 170, 255, 255);
@@ -33,7 +35,8 @@ public class ModuleEditScreen extends Screen {
         super(Text.of(module.getName() + " Edit Screen"));
         this.parent = parent;
         this.module = module;
-        widgets.add(new ToggleOptionsWidget(module.shouldSaveStateOption()));
+        keybindWidget = new KeybindWidget(this.module);
+        widgets.add(keybindWidget);
         for (ModuleOption<?> option : module.getOptions().getAllOptions()) {
             if (option instanceof BooleanOption) {
                 widgets.add(new ToggleOptionsWidget((BooleanOption) option));
@@ -58,6 +61,7 @@ public class ModuleEditScreen extends Screen {
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null) return false;
+        if (keybindWidget.onKeyInput(keyCode, scanCode, modifiers)) return true;
         if (keyCode == InputUtil.GLFW_KEY_ESCAPE) {
             parent.setScreen();
             return true;
@@ -144,6 +148,7 @@ public class ModuleEditScreen extends Screen {
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         super.mouseClicked(mouseX, mouseY, button);
+        mouseDraggingToggle = true;
         this.focusedNumberWidget = null;
         for (ModuleOptionsWidget widget : widgets) {
             if (RenderUtil.isBetween((int) mouseX, (int) mouseY, (int) (widget.getX() - widget.getWidth() / 2d), widget.getY(), (int) (widget.getX() + widget.getWidth() / 2d), widget.getY() + widget.getHeight())) {
@@ -154,6 +159,28 @@ public class ModuleEditScreen extends Screen {
             //}
         }
         return true;
+    }
+
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        for (ModuleOptionsWidget widget : widgets) {
+            if (!(widget instanceof SliderOptionsWidget)) continue;
+            ((SliderOptionsWidget) widget).onRelease();
+        }
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
+
+    @Override
+    public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        if (!mouseDraggingToggle) return false;
+        for (ModuleOptionsWidget widget : widgets) {
+            if (!(widget instanceof SliderOptionsWidget)) continue;
+            if (RenderUtil.isBetween((int) mouseX, (int) mouseY, (int) (widget.getX() - widget.getWidth() / 2d), widget.getY(), (int) (widget.getX() + widget.getWidth() / 2d), widget.getY() + widget.getHeight())) {
+                widget.click(mouseX, mouseY, button);
+                return true;
+            }
+        }
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
     }
 
 }

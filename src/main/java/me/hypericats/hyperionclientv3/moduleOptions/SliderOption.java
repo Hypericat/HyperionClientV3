@@ -10,6 +10,7 @@ public class SliderOption<T extends Number> extends ModuleOption<T> {
         this.minValue = minValue;
         this.sliderSnap = sliderSnap;
     }
+
     public T getMaxValue() {
         return maxValue;
     }
@@ -32,5 +33,10 @@ public class SliderOption<T extends Number> extends ModuleOption<T> {
 
     public void setSliderSnap(T sliderSnap) {
         this.sliderSnap = sliderSnap;
+    }
+
+    @Override
+    public void setValue(Object value) {
+        super.setValue(value, false);
     }
 }

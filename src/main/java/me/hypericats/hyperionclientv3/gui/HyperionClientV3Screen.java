@@ -195,6 +195,8 @@ public class HyperionClientV3Screen extends Screen implements KeyInputListener {
         //super.keyPressed(keyCode, scanCode, modifiers);
         if (keyCode == InputUtil.GLFW_KEY_ESCAPE) {
             MinecraftClient.getInstance().setScreen(null);
+            SoundHandler.playSound(SoundEvents.BLOCK_SHULKER_BOX_CLOSE);
+            return true;
         }
         //ctr held?
         if (keyCode == InputUtil.GLFW_KEY_BACKSPACE && modifiers == 2) {

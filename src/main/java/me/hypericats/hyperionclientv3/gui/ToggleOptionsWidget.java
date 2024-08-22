@@ -1,11 +1,13 @@
 package me.hypericats.hyperionclientv3.gui;
 
+import me.hypericats.hyperionclientv3.SoundHandler;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.Vector2f;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.ColorHelper;
 
@@ -34,7 +36,9 @@ public class ToggleOptionsWidget extends ModuleOptionsWidget {
 
     @Override
     public void click(double x, double y, int button) {
-        ((BooleanOption) option).toggle();
+        BooleanOption option = (BooleanOption) this.option;
+        option.toggle();
+        SoundHandler.playSound(SoundEvents.BLOCK_LEVER_CLICK, option.getValue() ? 1.5f : 0.5f);
     }
 
     @Override

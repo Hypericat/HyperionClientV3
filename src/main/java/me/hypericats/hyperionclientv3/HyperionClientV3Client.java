@@ -11,6 +11,7 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public static final String MODID = "hyperionclientv3";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 	public static KeybindLoader keybindLoader;
+	public static ModuleSettingsSaver settingsSaver;
 
 	@Override
 	public void onInitializeClient() {
@@ -26,13 +27,14 @@ public class HyperionClientV3Client implements ClientModInitializer {
 		keybindLoader.loadKeys();
 		ModuleSaver moduleSaver = new ModuleSaver();
 		moduleSaver.loadModules();
+		settingsSaver = new ModuleSettingsSaver();
+		settingsSaver.loadSettings();
 		HyperionClientV3Screen hyperionClientV3Screen = new HyperionClientV3Screen();
 
 	}
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
-	//Add border to ToggleOptionsWidgets
-	//get the widest option in the column of options instead of adding 200
+	//settings saving does not save enums options strings
 
 }

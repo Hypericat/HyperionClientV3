@@ -1,5 +1,6 @@
 package me.hypericats.hyperionclientv3.gui;
 
+import me.hypericats.hyperionclientv3.SoundHandler;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
@@ -9,6 +10,7 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.Vector2f;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.ColorHelper;
@@ -60,7 +62,9 @@ public class NumberWidget extends ModuleOptionsWidget {
 
     @Override
     public void click(double x, double y, int button) {
+        if (parent.focusedNumberWidget == this) return;
         parent.focusedNumberWidget = this;
+        SoundHandler.playSound(SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_OFF, 2f, 1f);
     }
 
     @Override
@@ -88,6 +92,7 @@ public class NumberWidget extends ModuleOptionsWidget {
         lastSyncStatus = updateStatus();
     }
     public boolean updateStatus() {
+        NumberOption<?> option = (NumberOption<?>) this.option;
         if (option.getValue() instanceof Double || option.getValue() instanceof Float) {
             try {
                 Double d = Double.parseDouble(fieldString);

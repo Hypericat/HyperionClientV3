@@ -7,6 +7,7 @@ import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
+import me.hypericats.hyperionclientv3.moduleOptions.SliderOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
@@ -14,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class Flight extends Module implements TickListener {
-    private NumberOption<Double> speedModifier;
+    private SliderOption<Double> speedModifier;
     private NumberOption<Double> sprintModifier;
     private NumberOption<Integer> tickInterval;
     private BooleanOption doFlyBypass;
@@ -38,7 +39,6 @@ public class Flight extends Module implements TickListener {
         client.player.setVelocity(velocity);
 
         if (!doFlyBypass.getValue()) return;
-
         if (ticks == tickInterval.getValue()) {
             PacketUtil.sendPos(client.player.getX(), client.player.getY() - 0.09, client.player.getZ(), client.player.isOnGround());
             ticks = 0;
@@ -81,7 +81,7 @@ public class Flight extends Module implements TickListener {
 
     @Override
     protected void initOptions() {
-        speedModifier = new NumberOption<>(true, "Base Fly Speed", 1d);
+        speedModifier = new SliderOption<>(true, "Base Fly Speed", 1d, 10d, 0.25d, 0.25d);
         sprintModifier = new NumberOption<>(true, "Sprint Fly Multiplier", 4d);
         tickInterval = new NumberOption<>(true, "Fly Bypass Interval", 39);
         doFlyBypass = new BooleanOption(true, "Do Fly Bypass", true);

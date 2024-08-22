@@ -1,11 +1,13 @@
 package me.hypericats.hyperionclientv3.gui;
 
+import me.hypericats.hyperionclientv3.SoundHandler;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.Vector2f;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.ColorHelper;
@@ -44,7 +46,10 @@ public class MenuOptionWidget extends ModuleOptionsWidget {
             context.fill(x - this.getWidth() / 2, yOffset, x + this.getWidth() / 2, yOffset + heightPerOption, e == option.getValue() ? backgroundColorEnabled : backgroundColorDisabled);
             if (clickPos != null) {
                 if (RenderUtil.isBetween((int) clickPos.x, (int) clickPos.y, x - this.getWidth() / 2, yOffset, x + this.getWidth() / 2, yOffset + heightPerOption)) {
-                    option.setValue(e);
+                    if (option.getValue() != e) {
+                        option.setValue(e);
+                        SoundHandler.playSound(SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON, 1.5f, 2f);
+                    }
                     clickPos = null;
                 }
             }

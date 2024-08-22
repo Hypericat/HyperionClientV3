@@ -65,7 +65,7 @@ public class KillAura extends Module implements TickListener {
 
     @Override
     protected void initOptions() {
-        range = new NumberOption<>(true, "Target Range", 5.0);
+        range = new NumberOption<>(true, "Target Range", 5.0d);
         useReachDistance = new BooleanOption(true, "Use Default Reach Distance", true);
         targetPlayers = new BooleanOption(true, "Target Players", true);
         targetHostileMobs = new BooleanOption(true, "Target Hostile Mobs", true);

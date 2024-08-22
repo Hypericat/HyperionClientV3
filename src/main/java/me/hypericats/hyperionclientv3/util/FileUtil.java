@@ -2,10 +2,7 @@ package me.hypericats.hyperionclientv3.util;
 
 import net.minecraft.client.MinecraftClient;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -45,12 +42,30 @@ public class FileUtil {
         directory.mkdir();
         return directory;
     }
+    public static void appendLineToFile(String line, File f1) {
+        try {
+            FileWriter fw = new FileWriter(f1.getAbsolutePath(), true);
+            fw.write(line);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public static void writeToFile(String str, File f1) {
+    public static void overwriteToFile(String str, File f1) {
         try {
             FileWriter fw = new FileWriter(f1.getAbsolutePath());
             fw.write(str);
             fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void clearFile(File file) {
+        try {
+            PrintWriter writer = new PrintWriter(file);
+            writer.print("");
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

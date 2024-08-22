@@ -1,5 +1,12 @@
 package me.hypericats.hyperionclientv3.moduleOptions;
 
+
+import me.hypericats.hyperionclientv3.event.EventHandler;
+import me.hypericats.hyperionclientv3.events.SettingsChangeListener;
+import me.hypericats.hyperionclientv3.events.eventData.SettingsChangeData;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
+
 public abstract class ModuleOption<T> {
     protected T value;
     protected boolean shouldSave;
@@ -21,8 +28,14 @@ public abstract class ModuleOption<T> {
     public void setName(String name) {
         this.name = name;
     }
-    public void setValue(T value) {
-        this.value = value;
+    public void setValue(Object value) {
+        setValue(value, true);
+    }
+    public void setValue(Object value, boolean callEvent) {
+        this.value = (T) value;
+
+        if (!callEvent)  return;
+        EventHandler.onEvent(SettingsChangeListener.class, new SettingsChangeData(this));
     }
     public void setShouldSave(boolean shouldSave) {
         this.shouldSave = shouldSave;
