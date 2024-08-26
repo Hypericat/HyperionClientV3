@@ -29,5 +29,5 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
     //Todo
     //Use hashmap for ModuleHandler.getByKeybind();
-
+    //sometimes inf aura not hitting entities under roofs when standing in certain positions
 }

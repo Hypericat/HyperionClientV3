@@ -1,7 +1,10 @@
 package me.hypericats.hyperionclientv3.util;
 
+import me.hypericats.hyperionclientv3.FakePlayerEntity;
+import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.enums.EntityTargetPriority;
 import me.hypericats.hyperionclientv3.enums.EntityTargetType;
+import me.hypericats.hyperionclientv3.modules.Freecam;
 import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -20,7 +23,7 @@ public class PlayerUtils {
         if (client.world == null) return entities;
 
         for (Entity e : client.world.getEntities()) {
-            if (e.getId() == client.player.getId()) continue;
+            if (e.getId() == client.player.getId() || e instanceof FakePlayerEntity) continue;
 
             if (pos.distanceTo(e.getPos()) <= radius) entities.add(e);
         }
@@ -84,5 +87,26 @@ public class PlayerUtils {
             }
         }
         return bestEntity;
+    }
+    public static void packetTpToPos(Vec3d pos, MinecraftClient client, boolean updateClient, Vec3d playerPos) {
+        int PacketAmount = (int) Math.ceil(pos.distanceTo(playerPos) / 9) + 1;
+        while (PacketAmount > 0) {
+            PacketAmount --;
+            PacketUtil.sendPosImmediately(client.player.getPos());
+            if (updateClient) client.player.setPos(client.player.getX(), client.player.getY(), client.player.getZ());
+        }
+
+        PacketUtil.sendPosImmediately(pos);
+
+        if (updateClient)
+            client.player.setPos(pos.getX(), pos.getY(), pos.getZ());
+    }
+    public static void packetTpToPos(Vec3d pos, MinecraftClient client, Vec3d playerPos) {
+        packetTpToPos(pos, client, true, playerPos);
+    }
+    public static Vec3d getAttackPlayerPosition() {
+        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
+        if (freecam == null || freecam.isDisabled()) return MinecraftClient.getInstance().player.getPos();
+        return freecam.getFakePlayerPosition();
     }
 }

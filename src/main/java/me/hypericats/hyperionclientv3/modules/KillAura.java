@@ -44,18 +44,18 @@ public class KillAura extends Module implements TickListener {
         
         double range = useReachDistance.getValue() ? client.interactionManager.getReachDistance() : this.range.getValue();
 
-        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(client.player.getPos(), range, client);
+        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getAttackPlayerPosition(), range, client);
         if (entityList.isEmpty()) return;
 
         PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue());
         if (entityList.isEmpty()) return;
 
-        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, entityTargetType.getValue(), entityTargetPriority.getValue(), client.player.getPos());
+        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, entityTargetType.getValue(), entityTargetPriority.getValue(), PlayerUtils.getAttackPlayerPosition());
 
         for (Entity e : toAttack) {
             PacketUtil.attackEntity(e);
         }
-        client.player.swingHand(Hand.MAIN_HAND);
+        PacketUtil.doFakeHandSwing(Hand.MAIN_HAND);
 
     }
     @Override

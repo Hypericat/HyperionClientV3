@@ -3,6 +3,9 @@
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
     },
+    "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
+      "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
+    },
     "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
       "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
     },
@@ -13,12 +16,21 @@
       "run": "Lnet/minecraft/class_310;method_1514()V",
       "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
       "tick": "Lnet/minecraft/class_310;method_1574()V"
+    },
+    "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
+      "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
+    },
+    "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
+      "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
     }
   },
   "data": {
     "named:intermediary": {
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
         "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
+        "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
       },
       "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
         "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
@@ -30,6 +42,12 @@
         "run": "Lnet/minecraft/class_310;method_1514()V",
         "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
         "tick": "Lnet/minecraft/class_310;method_1574()V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
+        "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
+        "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
       }
     }
   }

@@ -1,4 +1,9 @@
 v1	named	intermediary
+FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	I	blockBreakingCooldown	field_3716
+FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	F	currentBreakingProgress	field_3715
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
+FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	sendImmediately	method_10764
+METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	send	method_10752
 METHOD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	(Z)V	setPressed	method_23481
+METHOD	me/hypericats/hyperionclientv3/mixin/LivingEntityMixin	()I	getHandSwingDuration	method_6028

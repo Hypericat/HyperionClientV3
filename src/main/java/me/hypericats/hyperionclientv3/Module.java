@@ -36,28 +36,47 @@ public abstract class Module {
     public ModuleOptions getOptions() {
         return this.options;
     }
-
-    public void toggle() {
-        if (isEnabled())  {
-            disable();
+    public void setEnabled(boolean enabled) {
+        setEnabled(enabled, true);
+    }
+    public void setEnabled(boolean enabled, boolean showChatMessage) {
+        if (enabled == this.state) return;
+        if (enabled) {
+            this.enable(showChatMessage);
             return;
         }
-        enable();
+        this.disable(showChatMessage);
+    }
+    public void toggle() {
+        toggle(true);
+    }
+    public void toggle(boolean showChatMessage) {
+        if (isEnabled())  {
+            disable(showChatMessage);
+            return;
+        }
+        enable(showChatMessage);
     }
     public void enable() {
+        enable(true);
+    }
+    public void enable(boolean showChatMessage) {
         if (isEnabled()) return;
         state = true;
-        ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&aenabled");
+        if (this.shouldDisplayChatMessage() && showChatMessage) ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&aenabled");
         onEnable();
-        SoundHandler.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP);
+        if (this.shouldDisplayChatMessage() && showChatMessage) SoundHandler.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP);
         EventHandler.onEvent(ModuleToggleListener.class, new ModuleToggleData(this));
     }
     public void disable() {
+        disable(true);
+    }
+    public void disable(boolean showChatMessage) {
         if (isDisabled()) return;
         state = false;
-        ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&cdisabled");
+        if (this.shouldDisplayChatMessage() && showChatMessage) ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&cdisabled");
         onDisable();
-        SoundHandler.playSound(SoundEvents.BLOCK_GLASS_BREAK);
+        if (this.shouldDisplayChatMessage() && showChatMessage) SoundHandler.playSound(SoundEvents.BLOCK_GLASS_BREAK);
         EventHandler.onEvent(ModuleToggleListener.class, new ModuleToggleData(this));
     }
     public boolean isEnabled() {
@@ -65,6 +84,9 @@ public abstract class Module {
     }
     public boolean isDisabled() {
         return !state;
+    }
+    public boolean shouldDisplayChatMessage() {
+        return true;
     }
     public abstract String getName();
     public InputUtil.Key getKey() {

@@ -12,10 +12,12 @@ import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerInteractEntityC2SPacketHandler;
+import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,23 +42,27 @@ public class Criticals extends Module implements SendPacketListener {
         typeRegister.clear();
         ((PlayerInteractEntityC2SPacket) packet).handle(handler);
         if (typeRegister.isEmpty() || typeRegister.get(0) != PlayerInteractType.ATTACK) return;
-        crit();
+        crit(PlayerUtils.getAttackPlayerPosition());
     }
     public void crit() {
+        if (MinecraftClient.getInstance().player == null) return;
+        crit(MinecraftClient.getInstance().player.getPos());
+    }
+    public void crit(Vec3d playerPos) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         if(client.player.isTouchingWater() || client.player.isInLava()) return;
         switch (criticalsType.getValue()) {
-            case PACKET -> doPacketJump(client);
+            case PACKET -> doPacketJump(client, playerPos);
             case VELOCITY -> doVelocityJump(client);
         }
     }
-    public void doPacketJump(MinecraftClient client) {
-        double posX = client.player.getX();
-        double posY = client.player.getY();
-        double posZ = client.player.getZ();
+    public void doPacketJump(MinecraftClient client, Vec3d playerPos) {
+        double posX = playerPos.getX();
+        double posY = playerPos.getY();
+        double posZ = playerPos.getZ();
 
-        PacketUtil.sendPos(posX, posY + 0.0625D, posZ, true);
+        PacketUtil.sendPos(posX, posY + 0.0625D, posZ, false);
         PacketUtil.sendPos(posX, posY, posZ, false);
         PacketUtil.sendPos(posX, posY + 1.1E-5D, posZ, false);
         PacketUtil.sendPos(posX, posY, posZ, false);

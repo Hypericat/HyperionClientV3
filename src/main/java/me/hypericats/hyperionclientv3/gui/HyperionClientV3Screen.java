@@ -7,6 +7,7 @@ import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.KeyInputListener;
 import me.hypericats.hyperionclientv3.events.eventData.KeyInputData;
+import me.hypericats.hyperionclientv3.modules.InvWalk;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.SharedConstants;
@@ -214,6 +215,9 @@ public class HyperionClientV3Screen extends Screen implements KeyInputListener {
     }
     @Override
     public boolean charTyped(char chr, int modifiers) {
+        InvWalk invWalk = (InvWalk) ModuleHandler.getModuleByClass(InvWalk.class);
+        if (invWalk != null && invWalk.shouldBlockHyperionHacksScreenTyping()) return true;
+
         if (!SharedConstants.isValidChar(chr)) return false;
         searchString += Character.toString(chr);
         updateModules();

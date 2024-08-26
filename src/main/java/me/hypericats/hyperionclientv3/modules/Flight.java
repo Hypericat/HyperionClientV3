@@ -2,6 +2,7 @@ package me.hypericats.hyperionclientv3.modules;
 
 import me.hypericats.hyperionclientv3.HackType;
 import me.hypericats.hyperionclientv3.Module;
+import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
@@ -15,6 +16,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class Flight extends Module implements TickListener {
+    private SliderOption<Double> dropDistance;
     private SliderOption<Double> speedModifier;
     private NumberOption<Double> sprintModifier;
     private NumberOption<Integer> tickInterval;
@@ -27,6 +29,11 @@ public class Flight extends Module implements TickListener {
 
     @Override
     public void onEvent(EventData data) {
+        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
+        if (freecam != null && freecam.isEnabled()) return;
+        fly();
+    }
+    public void fly() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         if (client.player.hasVehicle()) return;
@@ -39,12 +46,12 @@ public class Flight extends Module implements TickListener {
         client.player.setVelocity(velocity);
 
         if (!doFlyBypass.getValue()) return;
-        if (ticks == tickInterval.getValue()) {
-            PacketUtil.sendPos(client.player.getX(), client.player.getY() - 0.09, client.player.getZ(), client.player.isOnGround());
+        if (ticks >= tickInterval.getValue()) {
+            PacketUtil.sendPos(client.player.getX(), client.player.getY() - dropDistance.getValue(), client.player.getZ(), client.player.isOnGround());
             ticks = 0;
         }
         if (ticks == 1) {
-            PacketUtil.sendPos(client.player.getX(), client.player.getY() + 0.09, client.player.getZ(), client.player.isOnGround());
+            PacketUtil.sendPos(client.player.getX(), client.player.getY() + dropDistance.getValue(), client.player.getZ(), client.player.isOnGround());
         }
     }
 
@@ -81,11 +88,13 @@ public class Flight extends Module implements TickListener {
 
     @Override
     protected void initOptions() {
+        dropDistance = new SliderOption<>(true, "Bypass Drop Distance", 0.09d, 0.5d, 0.01d, 0.01d);
         speedModifier = new SliderOption<>(true, "Base Fly Speed", 1d, 10d, 0.25d, 0.25d);
         sprintModifier = new NumberOption<>(true, "Sprint Fly Multiplier", 4d);
         tickInterval = new NumberOption<>(true, "Fly Bypass Interval", 39);
         doFlyBypass = new BooleanOption(true, "Do Fly Bypass", true);
 
+        options.addOption(dropDistance);
         options.addOption(speedModifier);
         options.addOption(sprintModifier);
         options.addOption(tickInterval);

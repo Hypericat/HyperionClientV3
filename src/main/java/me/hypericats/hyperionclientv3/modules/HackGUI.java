@@ -9,6 +9,7 @@ import me.hypericats.hyperionclientv3.events.InGameHudRenderListener;
 import me.hypericats.hyperionclientv3.events.ModuleToggleListener;
 import me.hypericats.hyperionclientv3.events.eventData.InGameHudRenderData;
 import me.hypericats.hyperionclientv3.events.eventData.ModuleToggleData;
+import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -30,6 +31,10 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
     public HackGUI() {
         super(true);
     }
+    private BooleanOption showCords;
+    private BooleanOption showFps;
+    private BooleanOption showHacksList;
+    private BooleanOption showFreecamStatus;
 
     @Override
     public void onEvent(EventData data) {
@@ -53,22 +58,27 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         Vec3d pos = MinecraftClient.getInstance().player.getPos();
 
         DrawContext context = ((InGameHudRenderData) data).getDrawContext();
-        //if (KeyInputHandler.FreeCam && !KeyInputHandler.Blink) {
-        //    MinecraftClient.getInstance().textRenderer.draw(matrixStack, "Freecam", (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2f) - MinecraftClient.getInstance().textRenderer.getWidth("Freecam") / 2f, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 10f, textColor);
-        //}
-        //if (KeyInputHandler.Blink && !KeyInputHandler.FreeCam) {
-        //    MinecraftClient.getInstance().textRenderer.draw(matrixStack, "Blink", (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2f) - MinecraftClient.getInstance().textRenderer.getWidth("Blink") / 2f, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 10f, textColor);
-        //}
-        //if (KeyInputHandler.Blink && KeyInputHandler.FreeCam) {
-        //    MinecraftClient.getInstance().textRenderer.draw(matrixStack, "Blink and Freecam", (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2f) - MinecraftClient.getInstance().textRenderer.getWidth("Blink and Freecam") / 2f, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 10f, textColor);
-        //}
-        if (!client.options.debugEnabled) {
-            client.textRenderer.draw("FPS " + client.getCurrentFps(), 2f, 2f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
-            client.textRenderer.draw( "Location X: " + (int) pos.x + " Y: " + (int) pos.y + " Z: " + (int) pos.z, 2f, 12f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
+        if (showFreecamStatus.getValue() && freecam != null && freecam.isEnabled()) {
+            client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 10f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
         }
-        for (String str : moduleListOrdered) {
-            client.textRenderer.draw(str, x - client.textRenderer.getWidth(str), y, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
-            y -= 10;
+
+        float yPos = 2f;
+        if (!client.options.debugEnabled) {
+            if (showFps.getValue()) {
+                client.textRenderer.draw("FPS " + client.getCurrentFps(), 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                yPos += 10f;
+            }
+            if (showCords.getValue()) {
+                client.textRenderer.draw( "Location X: " + (int) pos.x + " Y: " + (int) pos.y + " Z: " + (int) pos.z, 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                yPos += 10f;
+            }
+        }
+        if (showHacksList.getValue()) {
+            for (String str : moduleListOrdered) {
+                client.textRenderer.draw(str, x - client.textRenderer.getWidth(str), y, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                y -= 10;
+            }
         }
     }
     public void updateModuleListOrder(ModuleToggleData data) {
@@ -116,7 +126,15 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
 
     @Override
     protected void initOptions() {
+        showCords = new BooleanOption(true, "Show Coordinates", true);
+        showFps = new BooleanOption(true, "Show FPS", true);
+        showHacksList = new BooleanOption(true, "Show Enabled Hacks", true);
+        showFreecamStatus = new BooleanOption(true, "Show Freecam Status", true);
 
+        options.addOption(showCords);
+        options.addOption(showFps);
+        options.addOption(showHacksList);
+        options.addOption(showFreecamStatus);
     }
 
     @Override

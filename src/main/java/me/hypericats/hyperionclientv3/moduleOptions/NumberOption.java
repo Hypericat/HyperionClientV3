@@ -6,7 +6,15 @@ public class NumberOption<T extends Number> extends ModuleOption<T> {
         super(shouldSave, name, value);
         this.numberClass = value.getClass();
     }
+    public NumberOption(SliderOption<T> copier) {
+        super(false, copier.getName(), copier);
+        this.numberClass = copier.getValue().getClass();
+    }
     public void setValue(Number value) {
+        if (isCopy()) {
+            copier.setValue(value);
+            return;
+        }
         if (numberClass == Integer.class) {
             this.value = (T) (Object) value.intValue();
             return;
@@ -33,6 +41,9 @@ public class NumberOption<T extends Number> extends ModuleOption<T> {
         }
     }
     public T getValue() {
+        if (isCopy()) {
+            return (T) copier.getValue();
+        }
         if (numberClass == Integer.class) {
             return (T) (Object) value.intValue();
         }

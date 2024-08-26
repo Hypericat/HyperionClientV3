@@ -19,11 +19,17 @@ public abstract class ClientConnectionMixin implements IClientConnection {
 
 	@Shadow protected abstract void sendImmediately(Packet<?> packet, @Nullable PacketCallbacks callbacks);
 
+	@Shadow public abstract void send(Packet<?> packet, @Nullable PacketCallbacks callbacks);
+
 	@Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
 	private void onSendPacket(Packet<?> packet, PacketCallbacks callbacks, CallbackInfo ci) {
 		SendPacketData data = new SendPacketData(packet, callbacks);
 		EventHandler.onEvent(SendPacketListener.class, data);
-		if (data.isCancelled()) ci.cancel();
+		if (!data.isCancelled()) return;
+		ci.cancel();
+		if (data.getNewPacket() != null) {
+			this.send(data.getNewPacket(), callbacks);
+		}
 	}
 
 	public void sendPacketImmediately(Packet<?> packet) {

@@ -35,6 +35,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
-	//settings saving does not save enums options strings
+
+	//vclip with freecam/blink
+	//inf aura with freecam/blink
 
 }

@@ -10,6 +10,12 @@ public class SliderOption<T extends Number> extends ModuleOption<T> {
         this.minValue = minValue;
         this.sliderSnap = sliderSnap;
     }
+    public SliderOption(NumberOption<T> copier, T maxValue, T minValue, T sliderSnap) {
+        super(false, copier.getName(), copier);
+        this.maxValue = maxValue;
+        this.minValue = minValue;
+        this.sliderSnap = sliderSnap;
+    }
 
     public T getMaxValue() {
         return maxValue;
@@ -37,6 +43,10 @@ public class SliderOption<T extends Number> extends ModuleOption<T> {
 
     @Override
     public void setValue(Object value) {
-        super.setValue(value, false);
+        if (!isCopy()) {
+            super.setValue(value, false);
+            return;
+        }
+        copier.setValue(value, false);
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.text.Text;
 
 public abstract class ModuleOption<T> {
     protected T value;
+    protected ModuleOption<?> copier;
     protected boolean shouldSave;
     protected String name;
     protected ModuleOption(boolean shouldSave, String name, T value) {
@@ -16,14 +17,24 @@ public abstract class ModuleOption<T> {
         this.name = name;
         this.value = value;
     }
+    protected ModuleOption(boolean shouldSave, String name, ModuleOption<?> copier) {
+        this.shouldSave = shouldSave;
+        this.name = name;
+        this.copier = copier;
+    }
     public String getName() {
         return this.name;
     }
     public boolean isShouldSave() {
         return shouldSave;
     }
+    public boolean isCopy() {
+        return copier != null;
+    }
     public T getValue() {
-        return value;
+        if (!isCopy())
+            return value;
+        return (T) copier.getValue();
     }
     public void setName(String name) {
         this.name = name;
