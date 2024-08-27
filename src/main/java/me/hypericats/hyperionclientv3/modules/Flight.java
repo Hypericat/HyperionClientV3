@@ -29,32 +29,36 @@ public class Flight extends Module implements TickListener {
 
     @Override
     public void onEvent(EventData data) {
-        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
-        if (freecam != null && freecam.isEnabled()) return;
-        fly();
-    }
-    public void fly() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
+        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
+        if (freecam != null && freecam.isEnabled()) return;
+        fly(client);
+        if (!doFlyBypass.getValue() || client.player.isOnGround()) return;
+        doBypass(client);
+    }
+    public void fly(MinecraftClient client) {
         if (client.player.hasVehicle()) return;
-        ticks++;
 
         double speed = speedModifier.getValue();
         if (client.options.sprintKey.isPressed()) speed *= sprintModifier.getValue();
 
         Vec3d velocity = getFlyVelocity(client, speed);
         client.player.setVelocity(velocity);
-
-        if (!doFlyBypass.getValue()) return;
+    }
+    public void doBypass(MinecraftClient client) {
+        doBypass(client.player.getPos(), client);
+    }
+    public void doBypass(Vec3d pos, MinecraftClient client) {
+        ticks++;
         if (ticks >= tickInterval.getValue()) {
-            PacketUtil.sendPos(client.player.getX(), client.player.getY() - dropDistance.getValue(), client.player.getZ(), client.player.isOnGround());
+            PacketUtil.sendPos(pos.getX(), pos.getY() - dropDistance.getValue(),pos.getZ(), client.player.isOnGround());
             ticks = 0;
         }
         if (ticks == 1) {
-            PacketUtil.sendPos(client.player.getX(), client.player.getY() + dropDistance.getValue(), client.player.getZ(), client.player.isOnGround());
+            PacketUtil.sendPos(pos.getX(), pos.getY() + dropDistance.getValue(), pos.getZ(), client.player.isOnGround());
         }
     }
-
     private Vec3d getFlyVelocity(MinecraftClient client, double speed) {
         Vec3d velocity = Vec3d.ZERO;
         if (client.options.jumpKey.isPressed()) velocity = velocity.add(0.0, speed / 2.0, 0.0);

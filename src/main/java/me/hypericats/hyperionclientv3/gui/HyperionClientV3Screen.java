@@ -27,7 +27,7 @@ import org.joml.Vector2d;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HyperionClientV3Screen extends Screen implements KeyInputListener {
+public class HyperionClientV3Screen extends Screen {
     private String openKeyTranslationKey = "key.keyboard.right.shift";
     private String searchString = "";
     private List<Module> toRenderModules = new ArrayList<>();
@@ -42,15 +42,9 @@ public class HyperionClientV3Screen extends Screen implements KeyInputListener {
         registerListeners();
     }
     private void registerListeners() {
-        EventHandler.register(KeyInputListener.class, this);
+
     }
-    @Override
-    public void onEvent(EventData data) {
-        KeyInputData inputData = (KeyInputData) data;
-        InputUtil.Key key = inputData.getKey();
-        if (!key.getTranslationKey().equals(openKeyTranslationKey)) return;
-        setScreen();
-    }
+
     public void setScreen() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.currentScreen == this) return;

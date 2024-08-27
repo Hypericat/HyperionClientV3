@@ -25,6 +25,10 @@ public class ModuleHandler {
         modules.add(new NoFall());
         modules.add(new VanillaSpoofer());
         modules.add(new FastBreak());
+        modules.add(new AntiEffect());
+        modules.add(new NoOverlay());
+        modules.add(new LedgeProtection());
+        modules.add(new Velocity());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

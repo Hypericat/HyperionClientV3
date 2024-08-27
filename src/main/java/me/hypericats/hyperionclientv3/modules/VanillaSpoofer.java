@@ -29,10 +29,10 @@ public class VanillaSpoofer extends Module implements SendPacketListener {
             packetData.cancel();
             return;
         }
-        if(packet.getChannel().getNamespace().equals("minecraft") && packet.getChannel().getPath().equals("brand") && !packet.getData().readString().contains("vanilla")) {
-            packetData.setPacket(new CustomPayloadC2SPacket(CustomPayloadC2SPacket.BRAND, new PacketByteBuf(Unpooled.buffer()).writeString("vanilla")));
-            return;
-        }
+        //if(packet.getChannel().getNamespace().equals("minecraft") && packet.getChannel().getPath().equals("brand") && !packet.getData().readString().contains("vanilla")) {
+        //    packetData.setPacket(new CustomPayloadC2SPacket(CustomPayloadC2SPacket.BRAND, new PacketByteBuf(Unpooled.buffer()).writeString("vanilla")));
+        //    return;
+        //}
         if(packet.getChannel().getNamespace().equals("fabric"))
             packetData.cancel();
     }

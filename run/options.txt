@@ -25,10 +25,10 @@ mouseSensitivity:0.5
 fov:0.5
 screenEffectScale:0.0
 fovEffectScale:0.0
-darknessEffectScale:1.0
+darknessEffectScale:0.0
 glintSpeed:0.0
 glintStrength:0.75
-damageTiltStrength:1.0
+damageTiltStrength:0.0
 highContrast:false
 renderDistance:12
 simulationDistance:19
@@ -43,13 +43,13 @@ biomeBlendRadius:2
 renderClouds:"true"
 resourcePacks:["vanilla","fabric"]
 incompatibleResourcePacks:[]
-lastServer:
+lastServer:play.minemalia.com
 lang:en_us
 soundDevice:""
 chatVisibility:0
 chatOpacity:1.0
 chatLineSpacing:0.0
-textBackgroundOpacity:0.5
+textBackgroundOpacity:0.0
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:true
@@ -117,6 +117,7 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
+key_key.hyperionclientv3.hyperionClientMenu:key.keyboard.right.shift
 soundCategory_master:0.24834437086092714
 soundCategory_music:0.0
 soundCategory_record:1.0
