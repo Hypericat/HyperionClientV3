@@ -14,6 +14,13 @@ public class ChatUtils {
        // } catch (IndexOutOfBoundsException ignore) {
        // }
     }
+    public static void sendMessageStackTrace(Exception e) {
+        if (MinecraftClient.getInstance().player == null) return;
+        StackTraceElement[] elements = e.getStackTrace();
+        for (StackTraceElement element : elements) {
+            MinecraftClient.getInstance().player.sendMessage(Text.of(element.toString()));
+        }
+    }
     public static String giveMeTheFuckingTextFromOrderedText(OrderedText text) {
         StringBuilder msg = new StringBuilder();
         CharacterVisitor visitor = (index1, style, codePoint) -> {

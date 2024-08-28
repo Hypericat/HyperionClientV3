@@ -18,6 +18,7 @@ import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class InvWalk extends Module implements TickListener {
         if (blockCreativeScreen.getValue() && client.currentScreen instanceof CreativeInventoryScreen && isTextFieldWidgetFocused(client.currentScreen)) return;
         if (blockOnScreenWithTextBox.getValue() && isTextFieldWidgetFocused(client.currentScreen)) return;
         if (screen instanceof HyperionClientV3Screen && hacksScreenBehaviour.getValue() == HacksScreenInputBlockBehaviour.BLOCKMOVEMENT) return;
-        for(KeyBinding key : keys) {
+        for (KeyBinding key : keys) {
             if (key.getTranslationKey().equals(client.options.sneakKey.getTranslationKey()) && blockShift.getValue()) continue;
 
             ((IKeyBinding) key).resetPressedState();

@@ -31,19 +31,32 @@ public class Velocity extends Module implements RecievePacketListener {
         if (client.player == null) return;
         RecievePacketData packetData = (RecievePacketData) data;
         Packet<?> packet = packetData.getPacket();
-        if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket) {
-            Vec3d velocity = new Vec3d(velocityPacket.getVelocityX(), velocityPacket.getVelocityY(), velocityPacket.getVelocityZ());
+        if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket && velocityPacket.getId() == client.player.getId()) {
 
-            if (velocitySettingType.getValue() == VelocitySettingType.INDIVIDUAL) {
-                velocity = velocity.multiply(xMult.getValue(), yMult.getValue(), zMult.getValue());
-            } else {
-                velocity = velocity.multiply(mult.getValue(), mult.getValue(), mult.getValue());
+            Vec3d velocity = getNewVel(velocityPacket);
+
+            if (velocity.getX() == 0 && velocity.getY() == 0 && velocity.getZ() == 0) {
+                packetData.cancel();
+                return;
             }
 
             packetData.setNewPacket(new EntityVelocityUpdateS2CPacket(velocityPacket.getId(), velocity));
         }
 
     }
+
+    private Vec3d getNewVel(EntityVelocityUpdateS2CPacket velocityPacket) {
+        //the packet multiplies it by 8000 for some reason so we need to divide
+        double divider = 8000d;
+        Vec3d velocity = new Vec3d(velocityPacket.getVelocityX() / divider, velocityPacket.getVelocityY() / divider, velocityPacket.getVelocityZ() / divider);
+        if (velocitySettingType.getValue() == VelocitySettingType.INDIVIDUAL) {
+            velocity = velocity.multiply(xMult.getValue(), yMult.getValue(), zMult.getValue());
+        } else {
+            velocity = velocity.multiply(mult.getValue(), mult.getValue(), mult.getValue());
+        }
+        return velocity;
+    }
+
     @Override
     public void onEnable() {
         EventHandler.register(RecievePacketListener.class, this);

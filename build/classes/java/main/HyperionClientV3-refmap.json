@@ -19,6 +19,11 @@
     "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
       "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
     },
+    "me/hypericats/hyperionclientv3/mixin/GameRenderMixin": {
+      "Lnet/minecraft/client/render/GameRenderer;renderHand:Z": "Lnet/minecraft/class_757;field_3992:Z",
+      "renderHand": "Lnet/minecraft/class_757;method_3172(Lnet/minecraft/class_4587;Lnet/minecraft/class_4184;F)V",
+      "renderWorld": "Lnet/minecraft/class_757;method_3188(FJLnet/minecraft/class_4587;)V"
+    },
     "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
       "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
     },
@@ -63,6 +68,11 @@
       },
       "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
         "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
+      },
+      "me/hypericats/hyperionclientv3/mixin/GameRenderMixin": {
+        "Lnet/minecraft/client/render/GameRenderer;renderHand:Z": "Lnet/minecraft/class_757;field_3992:Z",
+        "renderHand": "Lnet/minecraft/class_757;method_3172(Lnet/minecraft/class_4587;Lnet/minecraft/class_4184;F)V",
+        "renderWorld": "Lnet/minecraft/class_757;method_3188(FJLnet/minecraft/class_4587;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
         "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"

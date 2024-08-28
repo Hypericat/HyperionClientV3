@@ -63,6 +63,7 @@ public class ModuleSettingsSaver implements SettingsChangeListener, ScheduleStop
                 if (jsonArray.length != 2) return;
                 Object value = gson.fromJson(jsonArray[1], Object.class);
                 ModuleOption<?> option = mod.getOptions().getOptionByName(jsonArray[0]);
+                if (option == null) continue;
                 if (option instanceof EnumStringOption<?> eOption) {
                     for (Enum<?> e : eOption.getValue().getClass().getEnumConstants()) {
                         if (e.toString().equalsIgnoreCase(value.toString())) {

@@ -58,7 +58,7 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
         if (MinecraftClient.getInstance().player.getId() == entity.getId() && this.isEnabled()) return VoxelShapes.empty();
         return state.getCollisionShape(world , pos);
     }
-    public void handlePacketData(SendPacketData packetData) {
+    private void handlePacketData(SendPacketData packetData) {
         Packet<?> packet = packetData.getPacket();
         Vec3d realPos = PlayerUtils.getAttackPlayerPosition();
         if (packet instanceof PlayerMoveC2SPacket.LookAndOnGround && blockLooks.getValue()) {
@@ -130,6 +130,9 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
         if (noOverlay != null) {
             noOverlay.setEnabled(noOverlayState, false);
         }
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null) return;
+        client.player.setVelocity(Vec3d.ZERO);
     }
 
     @Override

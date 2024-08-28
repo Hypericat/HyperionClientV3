@@ -29,6 +29,13 @@ public class ModuleHandler {
         modules.add(new NoOverlay());
         modules.add(new LedgeProtection());
         modules.add(new Velocity());
+        modules.add(new Blink());
+        modules.add(new Friends());
+        modules.add(new PlayerEsp());
+        modules.add(new HostileEntityEsp());
+        modules.add(new PassiveEntityEsp());
+        modules.add(new ItemEntityEsp());
+        modules.add(new BlockServerLookReset());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

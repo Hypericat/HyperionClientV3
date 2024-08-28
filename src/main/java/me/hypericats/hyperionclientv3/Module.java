@@ -32,6 +32,12 @@ public abstract class Module {
         this.options.addOption(this.shouldSaveState);
         this.initOptions();
     }
+    public Module(boolean shouldSaveState, boolean initOptions) {
+        this.shouldSaveState = new BooleanOption(true, "Save Module State", shouldSaveState);
+        this.options.addOption(this.shouldSaveState);
+        if (initOptions)
+            this.initOptions();
+    }
 
     public ModuleOptions getOptions() {
         return this.options;

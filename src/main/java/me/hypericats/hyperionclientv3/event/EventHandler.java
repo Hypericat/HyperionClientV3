@@ -1,5 +1,9 @@
 package me.hypericats.hyperionclientv3.event;
 
+import me.hypericats.hyperionclientv3.util.ChatUtils;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +19,7 @@ public class EventHandler {
         }
     }
     private static void initKey(Object key) {
-        if (listeners.containsKey(key)) return;
+        if (listeners.containsKey(key) && listeners.get(key) != null && listeners.get(key) instanceof ArrayList<?>) return;
         listeners.put(key, new ArrayList<>());
     }
     public static<L extends Listener> void register(Class<L> listenerType, Listener listener) {

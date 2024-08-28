@@ -47,7 +47,7 @@ public class KillAura extends Module implements TickListener {
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getAttackPlayerPosition(), range, client);
         if (entityList.isEmpty()) return;
 
-        PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue());
+        PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
         if (entityList.isEmpty()) return;
 
         List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, entityTargetType.getValue(), entityTargetPriority.getValue(), PlayerUtils.getAttackPlayerPosition());

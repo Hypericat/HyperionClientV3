@@ -35,6 +35,7 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
     private BooleanOption showFps;
     private BooleanOption showHacksList;
     private BooleanOption showFreecamStatus;
+    private BooleanOption showBlinkStatus;
 
     @Override
     public void onEvent(EventData data) {
@@ -60,7 +61,12 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         DrawContext context = ((InGameHudRenderData) data).getDrawContext();
         Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
         if (showFreecamStatus.getValue() && freecam != null && freecam.isEnabled()) {
-            client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 10f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+            client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 14f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+        }
+
+        Blink blink = (Blink) ModuleHandler.getModuleByClass(Blink.class);
+        if (showBlinkStatus.getValue() && blink != null && blink.isEnabled()) {
+            client.textRenderer.draw("Blink ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Blink") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f + 8f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
         }
 
         float yPos = 2f;
@@ -130,11 +136,13 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         showFps = new BooleanOption(true, "Show FPS", true);
         showHacksList = new BooleanOption(true, "Show Enabled Hacks", true);
         showFreecamStatus = new BooleanOption(true, "Show Freecam Status", true);
+        showBlinkStatus = new BooleanOption(true, "Show Blink Status", true);
 
         options.addOption(showCords);
         options.addOption(showFps);
         options.addOption(showHacksList);
         options.addOption(showFreecamStatus);
+        options.addOption(showBlinkStatus);
     }
 
     @Override

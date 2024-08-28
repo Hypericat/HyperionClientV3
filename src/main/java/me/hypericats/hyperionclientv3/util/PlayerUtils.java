@@ -5,6 +5,7 @@ import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.enums.EntityTargetPriority;
 import me.hypericats.hyperionclientv3.enums.EntityTargetType;
 import me.hypericats.hyperionclientv3.modules.Freecam;
+import me.hypericats.hyperionclientv3.modules.Friends;
 import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -12,6 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
@@ -30,14 +32,23 @@ public class PlayerUtils {
         return entities;
     }
 
-    public static void parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive) {
+    public static void parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive, boolean checkFriends, boolean checkHit) {
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
-            if (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit() || (e instanceof PlayerEntity && !targetPlayers) || (e instanceof HostileEntity && !targetHostile) || (e instanceof PassiveEntity && !targetPassive)) {
+            PlayerEntity p = null;
+            if (e instanceof PlayerEntity) p = (PlayerEntity) e;
+            if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit())) || (e instanceof PlayerEntity && !targetPlayers) || (e instanceof HostileEntity && !targetHostile) || (e instanceof PassiveEntity && !targetPassive) || (checkFriends && Friends.isFriend(p))) {
                 entities.remove(i);
                 i --;
             }
         }
+    }
+    public static int getColorOutline(Entity ent, double range) {
+        double distance = MinecraftClient.getInstance().player == null ? 0 : ent.distanceTo(MinecraftClient.getInstance().player);
+        double distancePercent = distance / range;
+        int green = (int) (255 * distancePercent);
+        int red = 255 - green;
+        return ColorHelper.Argb.getArgb(255, red, green, 0);
     }
     public static List<Entity> getAttackListFromEntityTargets(List<Entity> entities, EntityTargetType targetType, EntityTargetPriority priority, Vec3d pos) {
         List<Entity> targets = new ArrayList<>();

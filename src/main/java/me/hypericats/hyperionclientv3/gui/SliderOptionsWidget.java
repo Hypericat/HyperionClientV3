@@ -4,6 +4,7 @@ import me.hypericats.hyperionclientv3.HyperionClientV3Client;
 import me.hypericats.hyperionclientv3.SoundHandler;
 import me.hypericats.hyperionclientv3.moduleOptions.SliderOption;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.Vector2f;
 import net.minecraft.sound.SoundEvents;
@@ -28,7 +29,7 @@ public class SliderOptionsWidget extends ModuleOptionsWidget {
         this.x = x;
         this.y = y;
         int thickness = 2;
-        int yPos = y + this.getHeight() / 2;
+        int yPos = y + this.height / 2;
         //line
         context.fill(x - this.getWidth() / 2, yPos - thickness, x + this.getWidth() / 2, yPos + thickness, ColorHelper.Argb.getArgb(255, 100, 255, 255));
 
@@ -105,6 +106,7 @@ public class SliderOptionsWidget extends ModuleOptionsWidget {
 
     @Override
     public int getHeight() {
-        return height;
+        TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
+        return (int) (height + (renderer == null ? 15 : renderer.fontHeight * 1.5f));
     }
 }

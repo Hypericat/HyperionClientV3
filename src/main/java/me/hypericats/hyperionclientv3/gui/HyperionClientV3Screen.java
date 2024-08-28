@@ -101,7 +101,7 @@ public class HyperionClientV3Screen extends Screen {
     }
     private int renderCursorSystem(DrawContext context, MinecraftClient client) {
         //bar under cursor
-        int y = (int) (this.height * 0.18f);
+        int y = (int) (this.height * 0.155f);
         int xCenter = this.width / 2;
         int baseSize = 55;
         int overpass = 10;
@@ -124,19 +124,29 @@ public class HyperionClientV3Screen extends Screen {
         return y;
     }
     private void renderModules(DrawContext context, Vector2f origin, Vector2f border, MinecraftClient client, int cursorYHeight) {
-        int maxYHeight = cursorYHeight + 30;
+        cursorYHeight += 40;
+        int x = this.width / 2;
+        int spacing = 18;
         int width = 70;
         int height = 15;
-        int distanceBetween = 18;
         int activeColor = ColorHelper.Argb.getArgb(150, 85, 255, 115);
         int inactiveColor = ColorHelper.Argb.getArgb(150, 250, 85, 85);
-        int modulesPerRow = (int) (border.getY() - maxYHeight) / height + distanceBetween;
+        int y = cursorYHeight;
+        int xOffset = 0;
+        int xModifier = -1;
         for (int i = 0; i < toRenderModules.size(); i++) {
             Module m = toRenderModules.get(i);
-            int xCount = MathHelper.floor((float) i / (float) modulesPerRow);
-            int multiplier = -1;
-            if (xCount % 2 == 0) multiplier = 1;
-            renderModule(m, this.width / 2 + ((xCount * multiplier) * (width + distanceBetween)), maxYHeight + (height + distanceBetween) * (i % modulesPerRow), width, height, context, activeColor, inactiveColor, client);
+            if (y + height > border.getY()) {
+                if (xModifier > 0) {
+                    xModifier = -1;
+                } else {
+                    xModifier = 1;
+                    xOffset += width + spacing;
+                }
+                y = cursorYHeight;
+            }
+            renderModule(m, x + xOffset * xModifier, y, width, height, context, activeColor, inactiveColor, client);
+            y += height + spacing;
         }
     }
     private void renderModule(Module m, int x, int y, int width, int height, DrawContext context, int activeColor, int inactiveColor, MinecraftClient client) {

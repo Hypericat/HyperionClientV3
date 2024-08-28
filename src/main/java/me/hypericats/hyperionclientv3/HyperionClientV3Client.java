@@ -56,20 +56,16 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//speed
 	//esp
 	//zoom
-	//velocity
 	//infina jump
 	//health tags
 	//ghost block
 	//fast place
 	//copy msg
-	//blink
 	//b hop
 	//auto totem
 	//auto tool
 	//auto hit
 	//tracers
-	//friends
-
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();

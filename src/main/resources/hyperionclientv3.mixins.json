@@ -12,6 +12,7 @@
   "client": [
     "AbstractBlockStateMixin",
     "ClientPlayerInteractionManagerMixin",
+    "GameRenderMixin",
     "InGameHudMixin",
     "InGameOverlayRendererMixin",
     "KeyBindingMixin",
