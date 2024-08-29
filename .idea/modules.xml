@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HyperionClientV3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/HyperionClientV3.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HyperionClientV3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/HyperionClientV3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/me.Hypericats.HyperionClientV3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/me.Hypericats.HyperionClientV3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/me.Hypericats.HyperionClientV3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/me.Hypericats.HyperionClientV3.test.iml" />
     </modules>
   </component>
 </project>
