@@ -7,7 +7,6 @@ import me.hypericats.hyperionclientv3.enums.PlayerInteractType;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.SendPacketListener;
-import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
@@ -42,7 +41,7 @@ public class Criticals extends Module implements SendPacketListener {
         typeRegister.clear();
         ((PlayerInteractEntityC2SPacket) packet).handle(handler);
         if (typeRegister.isEmpty() || typeRegister.get(0) != PlayerInteractType.ATTACK) return;
-        crit(PlayerUtils.getAttackPlayerPosition());
+        crit(PlayerUtils.getServerPosition());
     }
     public void crit() {
         if (MinecraftClient.getInstance().player == null) return;

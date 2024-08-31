@@ -6,16 +6,18 @@ import me.hypericats.hyperionclientv3.enums.EspColorType;
 import me.hypericats.hyperionclientv3.enums.EspType;
 import me.hypericats.hyperionclientv3.events.RenderListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
-import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
-import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
-import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
-import me.hypericats.hyperionclientv3.moduleOptions.SliderOption;
+import me.hypericats.hyperionclientv3.moduleOptions.*;
+import me.hypericats.hyperionclientv3.util.ChatUtils;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
@@ -26,12 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Esp extends Module implements RenderListener, TickListener {
-    public Esp(boolean shouldSaveState, boolean doFriends) {
+    public Esp(boolean shouldSaveState) {
         super(shouldSaveState, false);
-        this.doFriends = doFriends;
         initOptions();
     }
-    private final boolean doFriends;
     private SliderOption<Double> range;
     private EnumStringOption<EspType> espType;
     private EnumStringOption<EspColorType> espColorType;
@@ -41,6 +41,8 @@ public abstract class Esp extends Module implements RenderListener, TickListener
     private SliderOption<Double> tracerAlpha;
     private BooleanOption renderOuterBox;
     private BooleanOption renderInnerBox;
+    private BooleanOption renderLabel;
+    private BooleanOption renderPlayerName;
     private NumberOption<Integer> defaultColor;
     private NumberOption<Integer> friendColor;
     private final List<Entity> toRender = new ArrayList<>();
@@ -58,7 +60,6 @@ public abstract class Esp extends Module implements RenderListener, TickListener
         return range.getValue();
     }
     protected void render(List<Entity> targets, MatrixStack matrices, float tickDelta, MinecraftClient client) {
-
         Camera camera = client.getEntityRenderDispatcher().camera;
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -77,6 +78,60 @@ public abstract class Esp extends Module implements RenderListener, TickListener
         RenderSystem.setShaderColor(1, 1, 1, 1);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDisable(GL11.GL_BLEND);
+    }
+    protected void renderNameLabel(Entity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, MinecraftClient client) {
+        if (!this.renderLabel.getValue()) return;
+        renderLabel(entity, formatLabel(entity), matrices, vertexConsumers, client.getEntityRenderDispatcher().camera, client);
+    }
+    private String formatLabel(Entity entity) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("&&c");
+        stringBuilder.append(entity.hasCustomName() ? entity.getCustomName().getString() : entity instanceof ItemEntity item ? item.getStack().getName().getString() + " (x" + item.getStack().getCount() + ")" :  entity.getType().getName().getString());
+        if (!(entity instanceof LivingEntity l)) return ChatUtils.format(stringBuilder.toString());
+        float health = l.getHealth();
+        float maxHealth = l.getMaxHealth();
+        stringBuilder.append(" ");
+        stringBuilder.append(getColor(health, maxHealth));
+        stringBuilder.append(roundFloatString(health, 1));
+        stringBuilder.append("&&f/&&a");
+        stringBuilder.append(roundFloatString(maxHealth, 1));
+        stringBuilder.append("&&c");
+        stringBuilder.append("❤");
+        return ChatUtils.format(stringBuilder.toString());
+    }
+    private String getColor(float health, float maxHealth) {
+        if (maxHealth * 0.666f < health) return "&&a";
+        if (maxHealth * 0.333f < health) return "&&e";
+        return "&&c";
+    }
+    //EntityRendererMixin for alwaysrenderPlayerNames
+    public boolean getAlwaysRenderPlayerName() {
+        return renderPlayerName.getValue() && this.options.getOptionByName(renderPlayerName.getName()) != null;
+    }
+    private String roundFloatString(float f, int digits) {
+        String string = String.valueOf(f);
+        if (string.contains(".")) {
+            if (string.indexOf(".") < string.length() - digits + 2) {
+                string = string.substring(0, string.indexOf(".") + digits + 1);
+            }
+        }
+        return string;
+    }
+    private void renderLabel(Entity entity, String text, MatrixStack matrices, VertexConsumerProvider vertexConsumers, Camera camera, MinecraftClient client) {
+        float f = (entity instanceof PlayerEntity || entity.shouldRenderName()) ? entity.getNameLabelHeight() + 0.3f : entity.getNameLabelHeight();
+        matrices.push();
+        matrices.translate(0.0f, f, 0.0f);
+        matrices.multiply(camera.getRotation());
+        matrices.scale(-0.025f, -0.025f, 0.025f);
+        Matrix4f matrix4f = matrices.peek().getPositionMatrix();
+        float g = MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25f);
+        int j = (int)(g * 255.0f) << 24;
+        TextRenderer textRenderer = client.textRenderer;
+        float h = -textRenderer.getWidth(text) / 2f;
+
+        int light = 0xF000F0;
+        textRenderer.draw(text, h, 0f, -1, false, matrix4f, vertexConsumers, TextRenderer.TextLayerType.SEE_THROUGH, 0, light);
+        matrices.pop();
     }
 
     private void drawTracer(MatrixStack matrices, float tickDelta, Vec3d roundCamPos, MinecraftClient client, Camera camera, List<Entity> targets) {
@@ -139,32 +194,39 @@ public abstract class Esp extends Module implements RenderListener, TickListener
             matrices.pop();
         }
     }
-
+    protected ModuleOption<?> getFriendOption() {
+        return friendColor;
+    }
+    protected ModuleOption<?> getRenderNameThroughWallOptions() {
+        return renderPlayerName;
+    }
     @Override
     protected void initOptions() {
         range = new SliderOption<>(true, "Range", 100d, 300d, 10d, 2.5d);
         espType = new EnumStringOption<>(true, "ESP Type", EspType.BOXANDTRACER);
         espColorType = new EnumStringOption<>(true, "ESP Color Type", EspColorType.NEAR);
         defaultColor = new NumberOption<>(true, "Default Color", ColorHelper.Argb.getArgb(255, 255, 0, 0));
-        friendColor = new NumberOption<>(true, "Friend Color", ColorHelper.Argb.getArgb(255, 0, 0, 255));
         innerBoxAlpha = new SliderOption<>(true, "Inner Box Alpha", 100d, 255d, 0d, 5d);
         outerBoxAlpha = new SliderOption<>(true, "Outer Box Alpha", 255d, 255d, 0d, 5d);
         tracerAlpha = new SliderOption<>(true, "Tracer Alpha", 255d, 255d, 0d, 5d);
         renderInnerBox = new BooleanOption(true, "Render Inner Box", true);
         renderOuterBox = new BooleanOption(true, "Render Outer Box", true);
         extraBoxSize = new SliderOption<>(true, "Extra Box Size", 0.1d, 3d, 0d, 0.1d);
+        renderLabel = new BooleanOption(true, "Render Label", true);
+
+        friendColor = new NumberOption<>(true, "Friend Color", ColorHelper.Argb.getArgb(255, 0, 0, 255));
+        renderPlayerName = new BooleanOption(true, "Always Render Names", true);
 
         options.addOption(range);
         options.addOption(espType);
         options.addOption(espColorType);
         options.addOption(defaultColor);
-        if (doFriends)
-            options.addOption(friendColor);
         options.addOption(innerBoxAlpha);
         options.addOption(outerBoxAlpha);
         options.addOption(tracerAlpha);
         options.addOption(renderInnerBox);
         options.addOption(renderOuterBox);
         options.addOption(extraBoxSize);
+        options.addOption(renderLabel);
     }
 }

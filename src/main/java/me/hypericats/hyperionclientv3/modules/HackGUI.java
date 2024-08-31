@@ -59,13 +59,11 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         Vec3d pos = MinecraftClient.getInstance().player.getPos();
 
         DrawContext context = ((InGameHudRenderData) data).getDrawContext();
-        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
-        if (showFreecamStatus.getValue() && freecam != null && freecam.isEnabled()) {
+        if (showFreecamStatus.getValue() && ModuleHandler.isModuleEnable(Freecam.class)) {
             client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 14f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
         }
 
-        Blink blink = (Blink) ModuleHandler.getModuleByClass(Blink.class);
-        if (showBlinkStatus.getValue() && blink != null && blink.isEnabled()) {
+        if (showBlinkStatus.getValue() && ModuleHandler.isModuleEnable(Blink.class)) {
             client.textRenderer.draw("Blink ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Blink") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f + 8f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
         }
 

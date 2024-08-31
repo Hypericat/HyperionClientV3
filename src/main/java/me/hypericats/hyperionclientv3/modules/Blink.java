@@ -8,17 +8,13 @@ import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
-import me.hypericats.hyperionclientv3.events.eventData.IsFullCubeData;
 import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket;
-import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +40,7 @@ public class Blink extends Module implements TickListener, SendPacketListener {
 
         Flight flight = (Flight) ModuleHandler.getModuleByClass(Flight.class);
         if (flight == null) return;
-        if (!isOnGround && doOffGroundBypass.getValue()) flight.doBypass(PlayerUtils.getAttackPlayerPosition(), client);
+        if (!isOnGround && doOffGroundBypass.getValue()) flight.doBypass(PlayerUtils.getServerPosition(), client);
     }
     private void handlePacketData(SendPacketData packetData) {
         Packet<?> packet = packetData.getPacket();

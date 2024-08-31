@@ -2,18 +2,22 @@ package me.hypericats.hyperionclientv3.modules;
 
 import me.hypericats.hyperionclientv3.FakePlayerEntity;
 import me.hypericats.hyperionclientv3.HackType;
+import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
+import me.hypericats.hyperionclientv3.events.RenderEntityListener;
 import me.hypericats.hyperionclientv3.events.RenderListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
+import me.hypericats.hyperionclientv3.events.eventData.EntityRenderData;
 import me.hypericats.hyperionclientv3.events.eventData.RenderData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class PlayerEsp extends Esp implements RenderListener, TickListener {
+public class PlayerEsp extends Esp implements RenderListener, TickListener, RenderEntityListener {
     public PlayerEsp() {
-        super(true, true);
+        super(true);
     }
     @Override
     public void onEvent(EventData data) {
@@ -21,31 +25,54 @@ public class PlayerEsp extends Esp implements RenderListener, TickListener {
         if (client.player == null) return;
         if (client.world == null) return;
 
+        if (data instanceof EntityRenderData renderData) {
+            Entity entity = renderData.getEntity();
+            if (!isValidEntity(entity, client)) return;
+            renderNameLabel(entity, renderData.getMatrices(), renderData.getVertexConsumer(), client);
+            return;
+        }
         if (!(data instanceof RenderData renderData)) {
             initTargets(client);
             return;
         }
         super.render(getTargetStack(), renderData.getMatrices(), renderData.getTickDelta(), client);
     }
+    public static boolean getAlwaysRenderPlayerNameStatus() {
+        PlayerEsp playerEsp = (PlayerEsp) ModuleHandler.getModuleByClass(PlayerEsp.class);
+        if (playerEsp == null) return false;
+        return playerEsp.getAlwaysRenderPlayerName();
+    }
     @Override
     protected void initTargets(MinecraftClient client) {
         clearTargetStack();
         for (Entity entity : client.world.getEntities()) {
-            if (!(entity instanceof PlayerEntity player)) continue;
-            if (player instanceof FakePlayerEntity) continue;
-            if (player.getId() == client.player.getId()) continue;
-            if (player.distanceTo(client.player) <= super.getRange()) addToTargetStack(player);
+            if (isValidEntity(entity, client)) addToTargetStack(entity);
         }
+    }
+    public boolean isValidEntity(Entity entity, MinecraftClient client) {
+        if (!(entity instanceof PlayerEntity player)) return false;
+        if (player instanceof FakePlayerEntity) return false;
+        if (player.getId() == client.player.getId()) return false;
+        if (player.distanceTo(client.player) > super.getRange()) return false;
+        return true;
     }
     @Override
     public void onEnable() {
         EventHandler.register(RenderListener.class, this);
         EventHandler.register(TickListener.class, this);
+        EventHandler.register(RenderEntityListener.class, this);
     }
     @Override
     public void onDisable() {
         EventHandler.unregister(RenderListener.class, this);
         EventHandler.unregister(TickListener.class, this);
+        EventHandler.unregister(RenderEntityListener.class, this);
+    }
+    @Override
+    public void initOptions() {
+        super.initOptions();
+        options.addOption(getFriendOption());
+        options.addOption(getRenderNameThroughWallOptions());
     }
 
     @Override

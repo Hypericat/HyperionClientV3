@@ -5,7 +5,6 @@ import me.hypericats.hyperionclientv3.HackType;
 import me.hypericats.hyperionclientv3.Module;
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.enums.EntityTargetPriority;
-import me.hypericats.hyperionclientv3.enums.EntityTargetType;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
@@ -19,14 +18,8 @@ import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
@@ -58,16 +51,16 @@ public class InfAura extends Module implements TickListener {
         //check for cooldown
         if (waitCooldown.getValue() && client.player.getAttackCooldownProgress(0) != 1.0) return;
 
-        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getAttackPlayerPosition(), this.range.getValue(), client);
+        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), this.range.getValue(), client);
         if (entityList.isEmpty()) return;
 
         PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
         if (entityList.isEmpty()) return;
 
-        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, null, entityTargetPriority.getValue(), PlayerUtils.getAttackPlayerPosition());
+        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, null, entityTargetPriority.getValue(), PlayerUtils.getServerPosition());
         Entity entity = toAttack.get(0);
 
-        Vec3d orginalPos = PlayerUtils.getAttackPlayerPosition();
+        Vec3d orginalPos = PlayerUtils.getServerPosition();
         Vec3d tpPos = entity.getPos();
         if (!isSuitablePos(BlockPos.ofFloored(tpPos), client) || randomizePos.getValue()) tpPos = getPosAround(entity.getPos(), entity, 3, client);
         if (tpPos == null) return;

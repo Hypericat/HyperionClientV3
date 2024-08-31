@@ -52,7 +52,7 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
             return;
         }
         flight.fly(client);
-        if (!isOnGround && doOffGroundBypass.getValue()) flight.doBypass(PlayerUtils.getAttackPlayerPosition(), client);
+        if (!isOnGround && doOffGroundBypass.getValue()) flight.doBypass(PlayerUtils.getServerPosition(), client);
     }
     public VoxelShape getEntityVoxelShape(Entity entity, BlockState state, BlockView world, BlockPos pos) {
         if (MinecraftClient.getInstance().player.getId() == entity.getId() && this.isEnabled()) return VoxelShapes.empty();
@@ -60,7 +60,7 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
     }
     private void handlePacketData(SendPacketData packetData) {
         Packet<?> packet = packetData.getPacket();
-        Vec3d realPos = PlayerUtils.getAttackPlayerPosition();
+        Vec3d realPos = PlayerUtils.getServerPosition();
         if (packet instanceof PlayerMoveC2SPacket.LookAndOnGround && blockLooks.getValue()) {
             packetData.cancel();
             return;

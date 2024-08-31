@@ -14,7 +14,6 @@ import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 
 import java.util.List;
@@ -44,13 +43,13 @@ public class KillAura extends Module implements TickListener {
         
         double range = useReachDistance.getValue() ? client.interactionManager.getReachDistance() : this.range.getValue();
 
-        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getAttackPlayerPosition(), range, client);
+        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), range, client);
         if (entityList.isEmpty()) return;
 
         PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
         if (entityList.isEmpty()) return;
 
-        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, entityTargetType.getValue(), entityTargetPriority.getValue(), PlayerUtils.getAttackPlayerPosition());
+        List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, entityTargetType.getValue(), entityTargetPriority.getValue(), PlayerUtils.getServerPosition());
 
         for (Entity e : toAttack) {
             PacketUtil.attackEntity(e);

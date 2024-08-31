@@ -31,8 +31,7 @@ public class Flight extends Module implements TickListener {
     public void onEvent(EventData data) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
-        Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
-        if (freecam != null && freecam.isEnabled()) return;
+        if (ModuleHandler.isModuleEnable(Freecam.class)) return;
         fly(client);
         if (!doFlyBypass.getValue() || client.player.isOnGround()) return;
         doBypass(client);

@@ -13,11 +13,12 @@ import net.minecraft.sound.SoundEvents;
 
 public abstract class Module {
     private boolean state;
+
     public abstract void onEnable();
     protected ModuleOptions options = new ModuleOptions();
     protected abstract void initOptions();
     private InputUtil.Key keyBind;
-
+    private boolean sendMessage;
     public boolean shouldSaveState() {
         return shouldSaveState.getValue();
     }
@@ -26,15 +27,23 @@ public abstract class Module {
     }
 
     private BooleanOption shouldSaveState;
+    private boolean shouldToggle;
     public abstract void onDisable();
     public Module(boolean shouldSaveState) {
-        this.shouldSaveState = new BooleanOption(true, "Save Module State", shouldSaveState);
-        this.options.addOption(this.shouldSaveState);
-        this.initOptions();
+        this(shouldSaveState, true);
     }
     public Module(boolean shouldSaveState, boolean initOptions) {
+        this(shouldSaveState, initOptions, true);
+    }
+    public Module(boolean shouldSaveState, boolean initOptions, boolean sendMessage) {
+        this(shouldSaveState, initOptions, sendMessage, true);
+    }
+    public Module(boolean shouldSaveState, boolean initOptions, boolean sendMessage, boolean shouldToggle) {
         this.shouldSaveState = new BooleanOption(true, "Save Module State", shouldSaveState);
         this.options.addOption(this.shouldSaveState);
+        this.sendMessage = sendMessage;
+        this.shouldToggle = shouldToggle;
+
         if (initOptions)
             this.initOptions();
     }
@@ -43,7 +52,7 @@ public abstract class Module {
         return this.options;
     }
     public void setEnabled(boolean enabled) {
-        setEnabled(enabled, true);
+        setEnabled(enabled, sendMessage);
     }
     public void setEnabled(boolean enabled, boolean showChatMessage) {
         if (enabled == this.state) return;
@@ -54,9 +63,10 @@ public abstract class Module {
         this.disable(showChatMessage);
     }
     public void toggle() {
-        toggle(true);
+        toggle(sendMessage);
     }
     public void toggle(boolean showChatMessage) {
+        if (!shouldToggle) return;
         if (isEnabled())  {
             disable(showChatMessage);
             return;
@@ -64,9 +74,10 @@ public abstract class Module {
         enable(showChatMessage);
     }
     public void enable() {
-        enable(true);
+        enable(sendMessage);
     }
     public void enable(boolean showChatMessage) {
+        if (!shouldToggle) return;
         if (isEnabled()) return;
         state = true;
         if (this.shouldDisplayChatMessage() && showChatMessage) ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&aenabled");
@@ -75,9 +86,10 @@ public abstract class Module {
         EventHandler.onEvent(ModuleToggleListener.class, new ModuleToggleData(this));
     }
     public void disable() {
-        disable(true);
+        disable(sendMessage);
     }
     public void disable(boolean showChatMessage) {
+        if (!shouldToggle) return;
         if (isDisabled()) return;
         state = false;
         if (this.shouldDisplayChatMessage() && showChatMessage) ChatUtils.sendOfficial("&&4" + getName() + "&&r has been &&cdisabled");
@@ -92,7 +104,7 @@ public abstract class Module {
         return !state;
     }
     public boolean shouldDisplayChatMessage() {
-        return true;
+        return sendMessage;
     }
     public abstract String getName();
     public InputUtil.Key getKey() {

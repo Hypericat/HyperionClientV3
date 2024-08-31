@@ -25,6 +25,9 @@ public class PacketUtil {
                 new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, onGround));
     }
     public static void sendPos(Vec3d pos) {
+        sendPos(pos, client.player.isOnGround());
+    }
+    public static void sendPos(Vec3d pos, boolean onGround) {
         if (client.player == null) return;
         PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(pos.x, pos.y, pos.z, client.player.isOnGround());
         send(packet);

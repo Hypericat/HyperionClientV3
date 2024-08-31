@@ -13,6 +13,7 @@ public class ModuleOptions {
     }
     public ModuleOption<?> getOptionByName(String name) {
         for (ModuleOption<?> option : options) {
+            if (option == null) return null;
             if (option.getName().equals(name)) return option;
         }
         return null;

@@ -7,20 +7,16 @@ import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import net.minecraft.client.MinecraftClient;
 
-public class NoSlow extends Module implements TickListener {
+public class NoSlow extends Module {
+    //ClientPlayerEntityMixin.class for eating
+    //BlockMixin.class for blocks
     public NoSlow() {
         super(true);
     }
 
     @Override
-    public void onEvent(EventData data) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player == null) return;
-
-    }
-    @Override
     public void onEnable() {
-        EventHandler.register(TickListener.class, this);
+
     }
 
     @Override
@@ -29,20 +25,20 @@ public class NoSlow extends Module implements TickListener {
     }
     @Override
     public void onDisable() {
-        EventHandler.unregister(TickListener.class, this);
+
     }
 
     @Override
     public String getName() {
-        return "TemplateName";
+        return "NoSlow";
     }
 
     @Override
     public HackType getHackType() {
-        return HackType.OTHER;
+        return HackType.MOVEMENT;
     }
 
     public String[] getAlias() {
-        return new String[] {"OtherName1", "OtherName2"};
+        return new String[] {"No slowdown", "slime", "honey", "eat"};
     }
 }

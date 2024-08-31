@@ -35,7 +35,9 @@ public class ModuleHandler {
         modules.add(new HostileEntityEsp());
         modules.add(new PassiveEntityEsp());
         modules.add(new ItemEntityEsp());
-        modules.add(new BlockServerLookReset());
+        modules.add(new ServerPlayerPacketBlocker());
+        modules.add(new NoSlow());
+        modules.add(new Zoom());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
@@ -53,7 +55,11 @@ public class ModuleHandler {
     public static List<Module> getModules() {
         return modules;
     }
-
+    public static<T extends Module>  boolean isModuleEnable(Class<T> clss) {
+        Module module = getModuleByClass(clss);
+        if (module == null) return false;
+        return module.isEnabled();
+    }
 
     //Perhaps use hashmap?
     public static List<Module> getModulesByKeybind(InputUtil.Key key) {

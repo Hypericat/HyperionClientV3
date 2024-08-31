@@ -1,10 +1,12 @@
 package me.hypericats.hyperionclientv3;
 
+import me.hypericats.hyperionclientv3.commands.CommandHandlerDispatcher;
 import me.hypericats.hyperionclientv3.gui.HyperionClientV3Screen;
 import me.hypericats.hyperionclientv3.util.FileUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -29,6 +31,7 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public static void actuallyInit() {
 		LOGGER.info("Initializing HyperionClientV3");
 		FileUtil.createDir(FileUtil.HypCv3Dir);
+		CommandHandlerDispatcher.initCommands();
 		keybindLoader = new KeybindLoader();
 		ModuleHandler.initModules();
 		keybindLoader.loadKeys();
@@ -54,7 +57,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	}
 	//jesus
 	//speed
-	//esp
 	//zoom
 	//infina jump
 	//health tags
@@ -65,12 +67,11 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//auto totem
 	//auto tool
 	//auto hit
-	//tracers
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
 
 	//vclip with freecam/blink
-	//inf aura with freecam/blink
+	//inf aura with freecam/blink (prob impossible)
 
 }
