@@ -57,11 +57,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	}
 	//jesus
 	//speed
-	//zoom
 	//infina jump
-	//health tags
 	//ghost block
-	//fast place
 	//copy msg
 	//b hop
 	//auto totem
@@ -70,6 +67,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
+
+	//toggling module freezes the game prob while saving files
 
 	//vclip with freecam/blink
 	//inf aura with freecam/blink (prob impossible)

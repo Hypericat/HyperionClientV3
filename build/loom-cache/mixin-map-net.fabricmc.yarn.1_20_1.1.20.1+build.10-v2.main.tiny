@@ -4,6 +4,7 @@ FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	I
 FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	F	currentBreakingProgress	field_3715
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Lnet/minecraft/client/util/InputUtil$Key;	boundKey	field_1655
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
+FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin	I	itemUseCooldown	field_1752
 FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	sendImmediately	method_10764
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	send	method_10752

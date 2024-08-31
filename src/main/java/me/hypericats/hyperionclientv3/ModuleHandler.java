@@ -38,6 +38,8 @@ public class ModuleHandler {
         modules.add(new ServerPlayerPacketBlocker());
         modules.add(new NoSlow());
         modules.add(new Zoom());
+        modules.add(new FastPlace());
+        modules.add(new AutoHit());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
