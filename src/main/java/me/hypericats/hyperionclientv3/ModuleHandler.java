@@ -43,6 +43,7 @@ public class ModuleHandler {
         modules.add(new AutoTool());
         modules.add(new Speed());
         modules.add(new SmallHandRenderer());
+        modules.add(new BiggerHitboxes());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

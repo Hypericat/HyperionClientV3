@@ -37,6 +37,9 @@
     "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
       "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
     },
+    "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
+      "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
+    },
     "me/hypericats/hyperionclientv3/mixin/EntityRendererMixin": {
       "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/text/Text;FFIZLorg/joml/Matrix4f;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/font/TextRenderer$TextLayerType;II)I": "Lnet/minecraft/class_327;method_30882(Lnet/minecraft/class_2561;FFIZLorg/joml/Matrix4f;Lnet/minecraft/class_4597;Lnet/minecraft/class_327$class_6415;II)I",
       "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;getSquaredDistanceToCamera(Lnet/minecraft/entity/Entity;)D": "Lnet/minecraft/class_898;method_23168(Lnet/minecraft/class_1297;)D",
@@ -72,6 +75,9 @@
     },
     "me/hypericats/hyperionclientv3/mixin/MouseMixin": {
       "onMouseScroll": "Lnet/minecraft/class_312;method_1598(JDD)V"
+    },
+    "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
+      "isActive": "Lnet/minecraft/class_333;method_1791()Z"
     },
     "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
       "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
@@ -119,6 +125,9 @@
       "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
         "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
       },
+      "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
+        "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
+      },
       "me/hypericats/hyperionclientv3/mixin/EntityRendererMixin": {
         "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/text/Text;FFIZLorg/joml/Matrix4f;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/font/TextRenderer$TextLayerType;II)I": "Lnet/minecraft/class_327;method_30882(Lnet/minecraft/class_2561;FFIZLorg/joml/Matrix4f;Lnet/minecraft/class_4597;Lnet/minecraft/class_327$class_6415;II)I",
         "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;getSquaredDistanceToCamera(Lnet/minecraft/entity/Entity;)D": "Lnet/minecraft/class_898;method_23168(Lnet/minecraft/class_1297;)D",
@@ -154,6 +163,9 @@
       },
       "me/hypericats/hyperionclientv3/mixin/MouseMixin": {
         "onMouseScroll": "Lnet/minecraft/class_312;method_1598(JDD)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
+        "isActive": "Lnet/minecraft/class_333;method_1791()Z"
       },
       "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
         "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"

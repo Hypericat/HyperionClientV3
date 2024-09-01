@@ -2,6 +2,7 @@ package me.hypericats.hyperionclientv3.modules;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.hypericats.hyperionclientv3.Module;
+import me.hypericats.hyperionclientv3.enums.EspBoxType;
 import me.hypericats.hyperionclientv3.enums.EspColorType;
 import me.hypericats.hyperionclientv3.enums.EspType;
 import me.hypericats.hyperionclientv3.events.RenderListener;
@@ -36,6 +37,7 @@ public abstract class Esp extends Module implements RenderListener, TickListener
     private SliderOption<Double> range;
     private EnumStringOption<EspType> espType;
     private EnumStringOption<EspColorType> espColorType;
+    private EnumStringOption<EspBoxType> espBoxType;
     private SliderOption<Double> extraBoxSize;
     private SliderOption<Double> innerBoxAlpha;
     private SliderOption<Double> outerBoxAlpha;
@@ -176,18 +178,30 @@ public abstract class Esp extends Module implements RenderListener, TickListener
             float blue = ColorHelper.Argb.getBlue(color) / 255f;
 
             RenderSystem.setShaderColor(red, green, blue, outerBoxAlpha.getValue().floatValue() / 255f);
-            Box box = new Box(-0.5, 0, -0.5, 0.5, 1, 0.5);
+            Box box;
+            EspBoxType boxType = espBoxType.getValue();
+
+            if (boxType == EspBoxType.SHAPE) {
+                box = new Box(-0.5, 0, -0.5, 0.5, 1, 0.5);
+            } else {
+                box = e.getBoundingBox().expand(extraBoxSize.getValue()).offset(e.getPos().negate());
+            }
 
             if (renderOuterBox.getValue()) {
                 matrices.push();
-                matrices.scale((float) (e.getWidth() + extraBoxSize.getValue()), (float) (e.getHeight() + extraBoxSize.getValue()), (float) (e.getWidth() + extraBoxSize.getValue()));
+                if (boxType == EspBoxType.SHAPE) {
+                    matrices.scale((float) (e.getWidth() + extraBoxSize.getValue()), (float) (e.getHeight() + extraBoxSize.getValue()), (float) (e.getWidth() + extraBoxSize.getValue()));
+                }
                 RenderUtil.drawOutlinedBox(box, matrices);
                 matrices.pop();
             }
+
             if (renderInnerBox.getValue()) {
                 RenderSystem.setShaderColor(red, green, blue, (float) (innerBoxAlpha.getValue() / 255f));
                 matrices.push();
-                matrices.scale(e.getWidth(), e.getHeight(), e.getWidth());
+                if (boxType == EspBoxType.SHAPE) {
+                    matrices.scale((float) (e.getWidth() + extraBoxSize.getValue()), (float) (e.getHeight() + extraBoxSize.getValue()), (float) (e.getWidth() + extraBoxSize.getValue()));
+                }
                 RenderUtil.drawSolidBox(box, matrices);
                 matrices.pop();
             }
@@ -206,6 +220,7 @@ public abstract class Esp extends Module implements RenderListener, TickListener
         range = new SliderOption<>(true, "Range", 100d, 300d, 10d, 2.5d);
         espType = new EnumStringOption<>(true, "ESP Type", EspType.BOXANDTRACER);
         espColorType = new EnumStringOption<>(true, "ESP Color Type", EspColorType.NEAR);
+        espBoxType = new EnumStringOption<>(true, "ESP Box Type", EspBoxType.BOUNDINGBOX);
         defaultColor = new NumberOption<>(true, "Default Color", ColorHelper.Argb.getArgb(255, 255, 0, 0));
         innerBoxAlpha = new SliderOption<>(true, "Inner Box Alpha", 100d, 255d, 0d, 5d);
         outerBoxAlpha = new SliderOption<>(true, "Outer Box Alpha", 255d, 255d, 0d, 5d);
@@ -221,6 +236,7 @@ public abstract class Esp extends Module implements RenderListener, TickListener
         options.addOption(range);
         options.addOption(espType);
         options.addOption(espColorType);
+        options.addOption(espBoxType);
         options.addOption(defaultColor);
         options.addOption(innerBoxAlpha);
         options.addOption(outerBoxAlpha);

@@ -8,6 +8,7 @@
     "BlockMixin",
     "ClientConnectionMixin",
     "ClientPlayerEntityMixin",
+    "EntityMixin",
     "LivingEntityMixin"
   ],
   "client": [
@@ -18,12 +19,13 @@
     "ClientPlayNetworkHandlerMixin",
     "EntityRendererMixin",
     "GameRenderMixin",
-    "ItemRendererMixin",
     "InGameHudMixin",
     "InGameOverlayRendererMixin",
+    "ItemRendererMixin",
     "KeyBindingMixin",
     "MinecraftClientMixin",
     "MouseMixin",
+    "NarratorManagerMixin",
     "SimpleOptionMixin",
     "WorldRendererMixin"
   ],

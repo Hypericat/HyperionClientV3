@@ -61,9 +61,10 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//ghost block
 	//auto totem
 
-	//small weapons
 	//slow attack speed rendering
 	//bigger hitboxes
+
+	//fix kill aura to use real bounding box instead of entity pos
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();

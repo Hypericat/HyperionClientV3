@@ -3,9 +3,12 @@ FIELD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	Ljava/util/List;	visible
 FIELD	me/hypericats/hyperionclientv3/mixin/ChatScreenMixin	Lnet/minecraft/client/gui/widget/TextFieldWidget;	chatField	field_2382
 FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	I	blockBreakingCooldown	field_3716
 FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	F	currentBreakingProgress	field_3715
+FIELD	me/hypericats/hyperionclientv3/mixin/EntityMixin	Lnet/minecraft/util/math/Box;	boundingBox	field_6005
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Lnet/minecraft/client/util/InputUtil$Key;	boundKey	field_1655
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
 FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin	I	itemUseCooldown	field_1752
+FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lcom/mojang/text2speech/Narrator;	narrator	field_2055
+FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lnet/minecraft/client/MinecraftClient;	client	field_39755
 FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868
 METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(DD)I	getMessageIndex	method_45588
 METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(D)D	toChatLineX	method_44722
