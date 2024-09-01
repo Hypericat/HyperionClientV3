@@ -11,7 +11,11 @@
     "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
       "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
     },
+    "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
+      "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_2561;Lnet/minecraft/class_7469;ILnet/minecraft/class_7591;Z)V"
+    },
     "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
+      "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
       "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
@@ -85,7 +89,11 @@
       "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
         "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
       },
+      "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
+        "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_2561;Lnet/minecraft/class_7469;ILnet/minecraft/class_7591;Z)V"
+      },
       "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
+        "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
         "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {

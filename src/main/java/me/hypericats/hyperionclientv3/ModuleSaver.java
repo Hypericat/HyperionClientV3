@@ -4,6 +4,7 @@ import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.ModuleToggleListener;
 import me.hypericats.hyperionclientv3.events.ScheduleStopListener;
+import me.hypericats.hyperionclientv3.events.eventData.ModuleToggleData;
 import me.hypericats.hyperionclientv3.util.FileUtil;
 
 import java.io.File;
@@ -24,6 +25,21 @@ public class ModuleSaver implements ModuleToggleListener, ScheduleStopListener {
     }
     public void onEvent(EventData data) {
         initDirectory();
+        if (data instanceof ModuleToggleData moduleData) {
+            Module module = moduleData.getModule();
+            String fileName = module.getName() + ".hax";
+            File file = new File(hacksDir.getAbsolutePath() + "\\" + fileName);
+            if (module.isEnabled() && module.shouldSaveState()) {
+                FileUtil.createFile(file);
+                return;
+            }
+            if (file.exists()) file.delete();
+            return;
+        }
+
+        doFullSave();
+    }
+    public void doFullSave() {
         List<File> files = new ArrayList<>();
         for (Module mod : ModuleHandler.getModules()) {
             if (mod.shouldSaveState() && mod.isEnabled()) files.add(new File(hacksDir.getAbsolutePath() + "\\" + mod.getName() + ".hax"));
@@ -37,7 +53,6 @@ public class ModuleSaver implements ModuleToggleListener, ScheduleStopListener {
         for (File f : files) {
             FileUtil.createFile(f);
         }
-
     }
     public void loadModules() {
         if (hacksDir.listFiles() == null) return;

@@ -14,12 +14,11 @@ import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
-public class ModuleSettingsSaver implements SettingsChangeListener, ScheduleStopListener, ModuleToggleListener {
+public class ModuleSettingsSaver implements SettingsChangeListener, ScheduleStopListener {
     public static File hacksSettingsDir = new File(FileUtil.HypCv3Dir.getAbsolutePath() + "\\HaxSetting");
     public static final String splitter = "aaBB636312daspojdlasThisISASPLITTERDONTPUTTHISANYWHERE";
     public ModuleSettingsSaver() {
         initDirectory();
-        EventHandler.register(ModuleToggleListener.class, this);
         EventHandler.register(ScheduleStopListener.class, this);
         EventHandler.register(SettingsChangeListener.class, this);
     }

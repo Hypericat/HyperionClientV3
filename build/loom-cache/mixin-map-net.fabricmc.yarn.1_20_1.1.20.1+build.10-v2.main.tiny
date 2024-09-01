@@ -1,4 +1,5 @@
 v1	named	intermediary
+FIELD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	Ljava/util/List;	visibleMessages	field_2064
 FIELD	me/hypericats/hyperionclientv3/mixin/ChatScreenMixin	Lnet/minecraft/client/gui/widget/TextFieldWidget;	chatField	field_2382
 FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	I	blockBreakingCooldown	field_3716
 FIELD	me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin	F	currentBreakingProgress	field_3715
@@ -6,6 +7,9 @@ FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Lnet/minecraft/client
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
 FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin	I	itemUseCooldown	field_1752
 FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868
+METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(DD)I	getMessageIndex	method_45588
+METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(D)D	toChatLineX	method_44722
+METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(D)D	toChatLineY	method_44724
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	sendImmediately	method_10764
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin	(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V	send	method_10752
 METHOD	me/hypericats/hyperionclientv3/mixin/ClientPlayerEntityMixin	()Z	isUsingItem	method_6115

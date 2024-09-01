@@ -1,5 +1,6 @@
 package me.hypericats.hyperionclientv3.mixin;
 
+import me.hypericats.hyperionclientv3.CopyMessage;
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.commands.CommandHandlerDispatcher;
 import me.hypericats.hyperionclientv3.event.EventHandler;
@@ -40,5 +41,10 @@ public abstract class ChatScreenMixin extends Screen {
     private void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (!this.chatField.getText().startsWith(CommandHandlerDispatcher.getCommandNominator())) return;
         RenderUtil.fillWithBorder(context, 2, this.height - 14, this.width - 2, this.height -2, 0, ColorHelper.Argb.getArgb(255, 0, 255, 255), 1);
+    }
+
+    @Inject(at = @At(value = "HEAD"), method = "mouseClicked")
+    private void onMouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
+        CopyMessage.onMouseClick(mouseX, mouseY, button);
     }
 }

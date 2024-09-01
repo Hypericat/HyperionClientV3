@@ -12,6 +12,7 @@
   ],
   "client": [
     "AbstractBlockStateMixin",
+    "ChatHudMixin",
     "ChatScreenMixin",
     "ClientPlayerInteractionManagerMixin",
     "ClientPlayNetworkHandlerMixin",

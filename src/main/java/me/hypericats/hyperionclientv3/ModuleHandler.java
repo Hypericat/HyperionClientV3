@@ -40,6 +40,7 @@ public class ModuleHandler {
         modules.add(new Zoom());
         modules.add(new FastPlace());
         modules.add(new AutoHit());
+        modules.add(new AutoTool());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
