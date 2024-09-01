@@ -59,7 +59,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//speed
 	//infina jump
 	//ghost block
-	//b hop
 	//auto totem
 
 	//small weapons

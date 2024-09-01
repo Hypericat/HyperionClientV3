@@ -42,6 +42,7 @@ public class ModuleHandler {
         modules.add(new AutoHit());
         modules.add(new AutoTool());
         modules.add(new Speed());
+        modules.add(new SmallHandRenderer());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
