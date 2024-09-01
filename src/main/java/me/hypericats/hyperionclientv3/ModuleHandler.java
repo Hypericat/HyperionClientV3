@@ -41,6 +41,7 @@ public class ModuleHandler {
         modules.add(new FastPlace());
         modules.add(new AutoHit());
         modules.add(new AutoTool());
+        modules.add(new Speed());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

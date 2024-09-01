@@ -33,7 +33,7 @@ highContrast:false
 renderDistance:10
 simulationDistance:12
 entityDistanceScaling:0.5
-guiScale:2
+guiScale:3
 particles:0
 maxFps:260
 graphicsMode:0

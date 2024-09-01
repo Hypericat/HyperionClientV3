@@ -62,6 +62,10 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//b hop
 	//auto totem
 
+	//small weapons
+	//slow attack speed rendering
+	//bigger hitboxes
+
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
 
