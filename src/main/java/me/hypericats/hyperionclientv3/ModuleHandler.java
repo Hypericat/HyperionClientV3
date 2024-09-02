@@ -45,6 +45,7 @@ public class ModuleHandler {
         modules.add(new SmallHandRenderer());
         modules.add(new BiggerHitboxes());
         modules.add(new Jesus());
+        modules.add(new WaypointHandler());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

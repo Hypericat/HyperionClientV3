@@ -43,7 +43,7 @@ biomeBlendRadius:0
 renderClouds:"false"
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
-lastServer:
+lastServer:top.twerion.net
 lang:en_us
 soundDevice:""
 chatVisibility:0

@@ -4,7 +4,8 @@
   "package": "me.hypericats.hyperionclientv3.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ChunkRegionMixin"
+    "ChunkRegionMixin",
+    "MinecraftServerMixin"
   ],
   "client": [
     "AbstractBlockStateMixin",

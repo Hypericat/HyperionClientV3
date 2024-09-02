@@ -10,6 +10,7 @@ FIELD	me/hypericats/hyperionclientv3/mixin/EntityMixin	Lnet/minecraft/util/math/
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Lnet/minecraft/client/util/InputUtil$Key;	boundKey	field_1655
 FIELD	me/hypericats/hyperionclientv3/mixin/KeyBindingMixin	Z	pressed	field_1653
 FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin	I	itemUseCooldown	field_1752
+FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftServerMixin	Lnet/minecraft/world/level/storage/LevelStorage$Session;	session	field_23784
 FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lcom/mojang/text2speech/Narrator;	narrator	field_2055
 FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lnet/minecraft/client/MinecraftClient;	client	field_39755
 FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868

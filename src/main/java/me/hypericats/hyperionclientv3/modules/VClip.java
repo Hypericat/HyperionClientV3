@@ -7,6 +7,7 @@ import me.hypericats.hyperionclientv3.SoundHandler;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
+import me.hypericats.hyperionclientv3.mixinInterface.IMinecraftServer;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.BlockUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
@@ -31,6 +32,9 @@ public class VClip extends Module {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         if (client.interactionManager == null) return;
+
+        client.player.sendMessage(Text.of(((IMinecraftServer) client.getServer()).getLevelStorageSession().getDirectoryName()));
+
 
         Vec3d pos = client.player.getPos().add(client.player.getRotationVec(client.getTickDelta()).multiply(distance.getValue()));
         PlayerUtils.packetTpToPos(pos, client, client.player.getPos());
