@@ -6,6 +6,7 @@ import me.hypericats.hyperionclientv3.util.FileUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -30,6 +31,7 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	public static void actuallyInit() {
 		LOGGER.info("Initializing HyperionClientV3");
+		SharedConstants.isDevelopment = true;
 		FileUtil.createDir(FileUtil.HypCv3Dir);
 		CommandHandlerDispatcher.initCommands();
 		keybindLoader = new KeybindLoader();
@@ -62,9 +64,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//auto totem
 
 	//slow attack speed rendering
-	//bigger hitboxes
-
-	//fix kill aura to use real bounding box instead of entity pos
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();

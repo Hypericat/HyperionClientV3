@@ -10,6 +10,7 @@ import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
+import me.hypericats.hyperionclientv3.util.ChatUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
@@ -50,6 +51,11 @@ public class Blink extends Module implements TickListener, SendPacketListener {
     }
     @Override
     public void onEnable() {
+        if (MinecraftClient.getInstance().isInSingleplayer()) {
+            ChatUtils.sendError(this.getName() + " does not work in singlePlayer, it will not work while in this world!");
+            this.disable();
+            return;
+        }
         EventHandler.register(TickListener.class, this);
         EventHandler.register(SendPacketListener.class, this);
 

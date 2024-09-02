@@ -43,7 +43,8 @@ public class KillAura extends Module implements TickListener {
         
         double range = useReachDistance.getValue() ? client.interactionManager.getReachDistance() : this.range.getValue();
 
-        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), range, client);
+        //offset playerPosition to getEyeHeight
+        List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition().add(0, client.player.getStandingEyeHeight(), 0), range, client);
         if (entityList.isEmpty()) return;
 
         PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);

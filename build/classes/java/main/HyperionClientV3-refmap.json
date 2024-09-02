@@ -18,6 +18,10 @@
       "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
       "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
     },
+    "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
+      "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;",
+      "getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;": "Lnet/minecraft/class_3233;method_8402(IILnet/minecraft/class_2806;Z)Lnet/minecraft/class_2791;"
+    },
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
       "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
@@ -105,6 +109,10 @@
       "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
         "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
         "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
+        "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;",
+        "getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;": "Lnet/minecraft/class_3233;method_8402(IILnet/minecraft/class_2806;Z)Lnet/minecraft/class_2791;"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
         "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",

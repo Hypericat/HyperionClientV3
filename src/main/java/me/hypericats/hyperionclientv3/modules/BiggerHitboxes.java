@@ -9,6 +9,7 @@ import me.hypericats.hyperionclientv3.events.GetHitboxListener;
 import me.hypericats.hyperionclientv3.events.eventData.GetHitboxData;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
+import me.hypericats.hyperionclientv3.util.ChatUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -25,6 +26,7 @@ public class BiggerHitboxes extends Module implements GetHitboxListener {
     private BooleanOption targetPassiveMobs;
     private BooleanOption targetLiving;
     private BooleanOption targetOther;
+    private boolean singlePlayerWarn = false;
 
     public BiggerHitboxes() {
         super(true);
@@ -34,6 +36,13 @@ public class BiggerHitboxes extends Module implements GetHitboxListener {
     public void onEvent(EventData data) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
+        if (client.isInSingleplayer()) {
+            if (!singlePlayerWarn) {
+                ChatUtils.sendError(this.getName() + " does not work in singlePlayer, it will not work while in this world!");
+                singlePlayerWarn = true;
+            }
+            return;
+        }
 
         GetHitboxData hitboxData = (GetHitboxData) data;
         Entity entity = hitboxData.getEntity();
@@ -52,6 +61,7 @@ public class BiggerHitboxes extends Module implements GetHitboxListener {
     @Override
     public void onEnable() {
         EventHandler.register(GetHitboxListener.class, this);
+        singlePlayerWarn = false;
     }
 
     @Override
@@ -77,7 +87,7 @@ public class BiggerHitboxes extends Module implements GetHitboxListener {
 
     @Override
     public String getName() {
-        return "Bounding Box";
+        return "BoundingBox";
     }
 
     @Override

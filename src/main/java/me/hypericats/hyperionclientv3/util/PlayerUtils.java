@@ -25,7 +25,7 @@ public class PlayerUtils {
         for (Entity e : client.world.getEntities()) {
             if (e.getId() == client.player.getId() || e instanceof FakePlayerEntity) continue;
 
-            if (pos.distanceTo(e.getPos()) <= radius) entities.add(e);
+            if (pos.distanceTo(e.getBoundingBox().getCenter()) <= radius) entities.add(e);
         }
         return entities;
     }
