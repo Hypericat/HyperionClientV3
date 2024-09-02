@@ -65,6 +65,14 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	//slow attack speed rendering
 
+	//resource pack blocker
+	//block esp / chest esp
+	//render barrier / invis blocks
+	//bounding box item falling through
+	//fix custom names on player entities (npcs)
+	//waypoints
+	//open inv in portals
+
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
 
