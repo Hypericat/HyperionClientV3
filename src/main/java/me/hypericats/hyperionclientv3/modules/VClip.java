@@ -13,10 +13,14 @@ import me.hypericats.hyperionclientv3.util.BlockUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.client.network.ServerInfo;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+
+import java.net.InetSocketAddress;
 
 public class VClip extends Module {
     private NumberOption<Double> distance;
@@ -32,9 +36,6 @@ public class VClip extends Module {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         if (client.interactionManager == null) return;
-
-        client.player.sendMessage(Text.of(((IMinecraftServer) client.getServer()).getLevelStorageSession().getDirectoryName()));
-
 
         Vec3d pos = client.player.getPos().add(client.player.getRotationVec(client.getTickDelta()).multiply(distance.getValue()));
         PlayerUtils.packetTpToPos(pos, client, client.player.getPos());

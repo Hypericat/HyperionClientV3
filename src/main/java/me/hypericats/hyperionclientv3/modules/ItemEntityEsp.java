@@ -4,17 +4,15 @@ import me.hypericats.hyperionclientv3.HackType;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.RenderEntityListener;
-import me.hypericats.hyperionclientv3.events.RenderListener;
+import me.hypericats.hyperionclientv3.events.RenderHandListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.EntityRenderData;
-import me.hypericats.hyperionclientv3.events.eventData.RenderData;
+import me.hypericats.hyperionclientv3.events.eventData.RenderHandData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.passive.PassiveEntity;
 
-public class ItemEntityEsp extends Esp implements RenderListener, TickListener, RenderEntityListener {
+public class ItemEntityEsp extends Esp implements RenderHandListener, TickListener, RenderEntityListener {
     public ItemEntityEsp() {
         super(true);
     }
@@ -29,11 +27,11 @@ public class ItemEntityEsp extends Esp implements RenderListener, TickListener, 
             renderNameLabel(entity, renderData.getMatrices(), renderData.getVertexConsumer(), client);
             return;
         }
-        if (!(data instanceof RenderData renderData)) {
+        if (!(data instanceof RenderHandData renderHandData)) {
             initTargets(client);
             return;
         }
-        super.render(getTargetStack(), renderData.getMatrices(), renderData.getTickDelta(), client);
+        super.render(getTargetStack(), renderHandData.getMatrices(), renderHandData.getTickDelta(), client);
     }
     @Override
     protected void initTargets(MinecraftClient client) {
@@ -49,13 +47,13 @@ public class ItemEntityEsp extends Esp implements RenderListener, TickListener, 
     }
     @Override
     public void onEnable() {
-        EventHandler.register(RenderListener.class, this);
+        EventHandler.register(RenderHandListener.class, this);
         EventHandler.register(TickListener.class, this);
         EventHandler.register(RenderEntityListener.class, this);
     }
     @Override
     public void onDisable() {
-        EventHandler.unregister(RenderListener.class, this);
+        EventHandler.unregister(RenderHandListener.class, this);
         EventHandler.unregister(TickListener.class, this);
         EventHandler.unregister(RenderEntityListener.class, this);
     }

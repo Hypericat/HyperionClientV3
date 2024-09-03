@@ -2,6 +2,6 @@ package me.hypericats.hyperionclientv3.events;
 
 import me.hypericats.hyperionclientv3.event.Listener;
 
-public interface RenderListener extends Listener {
+public interface DisconnectListener extends Listener {
 
 }

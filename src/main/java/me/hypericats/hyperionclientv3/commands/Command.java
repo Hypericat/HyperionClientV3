@@ -10,6 +10,9 @@ public abstract class Command {
         ChatUtils.sendError("Error invalid command : " + error);
         printProperUsage();
     }
+    protected void feedBack(String s) {
+        ChatUtils.sendMsg("&&a" + s);
+    }
     protected void printProperUsage() {
         ChatUtils.sendError("&&6Proper Usage : " + this.getProperUsage());
     }

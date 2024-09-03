@@ -11,7 +11,7 @@ public class LoopCommand extends Command {
         return "loop";
     }
     public String getProperUsage() {
-        return "loop {INT COUNT} {COMMAND/MESSAGE}";
+        return "loop {INT Count {STRING Message}";
     }
     public void handle(String[] formatted) {
         if (tryThrowErrorReturn(formatted.length < 3, "Invalid argument count specified!")) return;
@@ -27,11 +27,13 @@ public class LoopCommand extends Command {
         for (int i = 2; i < formatted.length; i++) {
             chatMessage.append(formatted[i]).append(" ");
         }
+        if (!chatMessage.isEmpty()) chatMessage.deleteCharAt(chatMessage.length() - 1);
         String message = chatMessage.toString();
 
         for (int i = 0; i < count; i++) {
             this.sendMessage(message);
         }
+        feedBack("Finished looping &&c" + count + "&&a times!");
     }
 
     public void sendMessage(String chatText) {

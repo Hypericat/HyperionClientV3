@@ -27,6 +27,10 @@
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ClientPlayNetworkHandlerMixin": {
+      "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;)V",
+      "Lnet/minecraft/client/render/debug/DebugRenderer;reset()V": "Lnet/minecraft/class_863;method_20413()V",
+      "onGameJoin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V",
+      "onPlayerRespawn": "Lnet/minecraft/class_634;method_11117(Lnet/minecraft/class_2724;)V",
       "sendChatMessage": "Lnet/minecraft/class_634;method_45729(Ljava/lang/String;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ClientPlayerEntityMixin": {
@@ -73,6 +77,7 @@
       "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
     },
     "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
+      "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_18096(Lnet/minecraft/class_437;)V",
       "run": "Lnet/minecraft/class_310;method_1514()V",
       "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
       "tick": "Lnet/minecraft/class_310;method_1574()V"
@@ -87,6 +92,7 @@
       "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
+      "Lnet/minecraft/client/render/BufferBuilderStorage;getEntityVertexConsumers()Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;": "Lnet/minecraft/class_4599;method_23000()Lnet/minecraft/class_4597$class_4598;",
       "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
     }
   },
@@ -119,6 +125,10 @@
         "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientPlayNetworkHandlerMixin": {
+        "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;)V",
+        "Lnet/minecraft/client/render/debug/DebugRenderer;reset()V": "Lnet/minecraft/class_863;method_20413()V",
+        "onGameJoin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V",
+        "onPlayerRespawn": "Lnet/minecraft/class_634;method_11117(Lnet/minecraft/class_2724;)V",
         "sendChatMessage": "Lnet/minecraft/class_634;method_45729(Ljava/lang/String;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientPlayerEntityMixin": {
@@ -165,6 +175,7 @@
         "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
       },
       "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
+        "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_18096(Lnet/minecraft/class_437;)V",
         "run": "Lnet/minecraft/class_310;method_1514()V",
         "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
         "tick": "Lnet/minecraft/class_310;method_1574()V"
@@ -179,6 +190,7 @@
         "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
+        "Lnet/minecraft/client/render/BufferBuilderStorage;getEntityVertexConsumers()Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;": "Lnet/minecraft/class_4599;method_23000()Lnet/minecraft/class_4597$class_4598;",
         "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
       }
     }

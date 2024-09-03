@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.CharacterVisitor;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Vec3d;
 
 public class ChatUtils {
     public static MinecraftClient client = MinecraftClient.getInstance();
@@ -20,6 +21,9 @@ public class ChatUtils {
         for (StackTraceElement element : elements) {
             MinecraftClient.getInstance().player.sendMessage(Text.of(element.toString()));
         }
+    }
+    public static String Vec3dToIntString(Vec3d vec3d) {
+        return "(" + (int) vec3d.x + ", " + (int) vec3d.y + ", " + (int) vec3d.z + ")";
     }
     public static String giveMeTheFuckingTextFromOrderedText(OrderedText text) {
         StringBuilder msg = new StringBuilder();

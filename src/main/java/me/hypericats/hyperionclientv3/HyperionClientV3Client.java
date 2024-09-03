@@ -42,6 +42,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 		settingsSaver = new ModuleSettingsSaver();
 		settingsSaver.loadSettings();
 		hyperionClientV3Screen = new HyperionClientV3Screen();
+		WaypointSaver waypointSaver = new WaypointSaver();
+		waypointSaver.init();
 	}
 
 	protected static void registerMenuKeybind() {
@@ -72,6 +74,9 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//fix custom names on player entities (npcs)
 	//waypoints
 	//open inv in portals
+	//invsee other players
+
+	//waypoint not rendering if far away
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();

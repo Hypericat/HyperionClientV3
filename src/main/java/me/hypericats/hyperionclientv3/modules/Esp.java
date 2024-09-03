@@ -5,7 +5,7 @@ import me.hypericats.hyperionclientv3.Module;
 import me.hypericats.hyperionclientv3.enums.EspBoxType;
 import me.hypericats.hyperionclientv3.enums.EspColorType;
 import me.hypericats.hyperionclientv3.enums.EspType;
-import me.hypericats.hyperionclientv3.events.RenderListener;
+import me.hypericats.hyperionclientv3.events.RenderHandListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.moduleOptions.*;
 import me.hypericats.hyperionclientv3.util.ChatUtils;
@@ -29,7 +29,7 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Esp extends Module implements RenderListener, TickListener {
+public abstract class Esp extends Module implements RenderHandListener, TickListener {
     public Esp(boolean shouldSaveState) {
         super(shouldSaveState, false);
         initOptions();
@@ -127,8 +127,6 @@ public abstract class Esp extends Module implements RenderListener, TickListener
         matrices.multiply(camera.getRotation());
         matrices.scale(-0.025f, -0.025f, 0.025f);
         Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-        float g = MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25f);
-        int j = (int)(g * 255.0f) << 24;
         TextRenderer textRenderer = client.textRenderer;
         float h = -textRenderer.getWidth(text) / 2f;
 

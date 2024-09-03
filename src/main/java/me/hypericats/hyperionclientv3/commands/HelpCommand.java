@@ -2,7 +2,6 @@ package me.hypericats.hyperionclientv3.commands;
 
 import me.hypericats.hyperionclientv3.util.ChatUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
-import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
@@ -10,7 +9,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Help extends Command {
+public class HelpCommand extends Command {
     public String getStart() {
         return "help";
     }
@@ -21,11 +20,13 @@ public class Help extends Command {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         List<String> text = new ArrayList<>();
+        text.add(" ");
         text.add("&&6-------------------------------------------");
         for (Command command : CommandHandlerDispatcher.getCommands()) {
-            text.add("&&6" + command.getStart() + " : " + command.getProperUsage());
+            text.add("&&c" + command.getStart() + "&&f : &&6" + command.getProperUsage());
         }
         text.add("&&6-------------------------------------------");
+        text.add(" ");
         for (String str : text) {
             ChatUtils.sendMsg(str);
         }
