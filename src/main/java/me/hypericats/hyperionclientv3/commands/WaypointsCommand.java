@@ -75,7 +75,7 @@ public class WaypointsCommand extends Command {
     }
     private void add(String name) {
         if (MinecraftClient.getInstance().player == null) throwError("Player is null!");
-        Waypoint waypoint = new Waypoint(name, MinecraftClient.getInstance().player.getBoundingBox().getCenter(), -256, true, MinecraftClient.getInstance());
+        Waypoint waypoint = new Waypoint(name, MinecraftClient.getInstance().player.getBoundingBox().getCenter(), MinecraftClient.getInstance());
         WaypointHandler.addToLibrary(waypoint);
         feedBack("Successfully added waypoint &&c" + name + "&&a at &&f" + ChatUtils.Vec3dToIntString(waypoint.getPos()));
     }

@@ -37,6 +37,8 @@ public class ModuleEditScreen extends Screen {
         this.module = module;
         keybindWidget = new KeybindWidget(this.module);
         widgets.add(keybindWidget);
+        widgets.addAll(module.getCustomWidgets());
+
         for (ModuleOption<?> option : module.getOptions().getAllOptions()) {
             if (option instanceof BooleanOption) {
                 widgets.add(new ToggleOptionsWidget((BooleanOption) option));

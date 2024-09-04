@@ -3,6 +3,8 @@ package me.hypericats.hyperionclientv3;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.ModuleToggleListener;
 import me.hypericats.hyperionclientv3.events.eventData.ModuleToggleData;
+import me.hypericats.hyperionclientv3.gui.CustomWidget;
+import me.hypericats.hyperionclientv3.gui.ICustomWidget;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.ModuleOptions;
 import me.hypericats.hyperionclientv3.util.ChatUtils;
@@ -11,11 +13,14 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Module {
     private boolean state;
-
     public abstract void onEnable();
     protected ModuleOptions options = new ModuleOptions();
+    protected List<CustomWidget> customWidgets = new ArrayList<>();
     protected abstract void initOptions();
     private InputUtil.Key keyBind;
     private boolean sendMessage;
@@ -50,6 +55,12 @@ public abstract class Module {
 
     public ModuleOptions getOptions() {
         return this.options;
+    }
+    public void addCustomWidgets(CustomWidget iCustomWidget) {
+        this.customWidgets.add(iCustomWidget);
+    }
+    public List<CustomWidget> getCustomWidgets() {
+        return this.customWidgets;
     }
     public void setEnabled(boolean enabled) {
         setEnabled(enabled, sendMessage);

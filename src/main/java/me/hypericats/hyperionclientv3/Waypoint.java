@@ -8,10 +8,12 @@ import net.minecraft.client.network.ServerInfo;
 import net.minecraft.entity.Entity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.net.InetSocketAddress;
+import java.util.EnumSet;
 
 public class Waypoint {
     private String name;
@@ -27,7 +29,7 @@ public class Waypoint {
     private double minRange;
     public Waypoint(String name, Vec3d pos, RegistryKey<World> worldDimension, String identifier, int color, boolean visible, float scale, double maxRange, double minRange, boolean scaleScale, boolean renderBackground) {
         this.name = name;
-        this.pos = pos;
+        this.pos = pos.floorAlongAxes(EnumSet.of(Direction.Axis.Y));
         this.worldDimension = worldDimension;
         this.identifier = identifier;
         this.color = color;
@@ -41,7 +43,7 @@ public class Waypoint {
 
 
     public Waypoint(String name, Vec3d pos, RegistryKey<World> worldDimension, String identifier, int color, boolean visible) {
-        this(name, pos, worldDimension, identifier, color, visible, 0.015f, -1d, -1d, true,false);
+        this(name, pos, worldDimension, identifier, color, visible, 0.03f, -1d, -1d, true,false);
     }
 
     public Waypoint(String name, Vec3d pos, int color, boolean visible, MinecraftClient client) {
