@@ -31,6 +31,7 @@ public class HyperionClientV3Screen extends Screen {
     private String openKeyTranslationKey = "key.keyboard.right.shift";
     private String searchString = "";
     private List<Module> toRenderModules = new ArrayList<>();
+    private ModuleEditScreen moduleEditScreen;
     private Vector2d mouseClick;
     private int mouseButton = -1;
     private int currentBarSize = -1;
@@ -156,7 +157,8 @@ public class HyperionClientV3Screen extends Screen {
             if (mouseButton == 0) {
                 m.toggle();
             } else {
-                client.setScreen(new ModuleEditScreen(m, this));
+                moduleEditScreen = new ModuleEditScreen(m, this);
+                client.setScreen(moduleEditScreen);
                 SoundHandler.playSound(SoundEvents.ENTITY_ARROW_HIT, 2f);
             }
         }
@@ -186,7 +188,9 @@ public class HyperionClientV3Screen extends Screen {
             }
         }
     }
-
+    public ModuleEditScreen getModuleEditScreen() {
+        return moduleEditScreen;
+    }
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         super.mouseClicked(mouseX, mouseY, button);

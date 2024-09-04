@@ -1,10 +1,8 @@
 package me.hypericats.hyperionclientv3.modules;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.hypericats.hyperionclientv3.HackType;
+import me.hypericats.hyperionclientv3.*;
 import me.hypericats.hyperionclientv3.Module;
-import me.hypericats.hyperionclientv3.SoundHandler;
-import me.hypericats.hyperionclientv3.Waypoint;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.PostRenderListener;
@@ -14,7 +12,9 @@ import me.hypericats.hyperionclientv3.events.eventData.PostRenderData;
 import me.hypericats.hyperionclientv3.events.eventData.PreRenderEntityData;
 import me.hypericats.hyperionclientv3.events.eventData.RenderHandData;
 import me.hypericats.hyperionclientv3.gui.CustomWidget;
+import me.hypericats.hyperionclientv3.gui.HyperionClientV3Screen;
 import me.hypericats.hyperionclientv3.gui.ICustomWidget;
+import me.hypericats.hyperionclientv3.gui.WaypointEditScreen;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
@@ -188,7 +188,7 @@ public class WaypointHandler extends Module implements ICustomWidget, PostRender
         if (button != 0) return;
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null) return;
-        client.setScreen(null);
+        client.setScreen(new WaypointEditScreen(HyperionClientV3Client.hyperionClientV3Screen.getModuleEditScreen(), getWaypointLibrary()));
     }
 
     @Override
