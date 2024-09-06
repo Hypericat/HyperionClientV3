@@ -96,9 +96,11 @@ public class HyperionClientV3Screen extends Screen {
         //*0.75f causes a little bit of overlap with the fill
         int y = (int) ((origin.getY() / titleScale) - client.textRenderer.fontHeight * 0.75f);
         // Scale the matrix
+        context.getMatrices().push();
         context.getMatrices().scale(titleScale, titleScale, titleScale);
         context.drawText(client.textRenderer, text, x, y, ColorUtils.getRgbColor(), true);
-        context.getMatrices().scale(1 / titleScale, 1 / titleScale, 1 / titleScale);
+
+        context.getMatrices().pop();
     }
     private int renderCursorSystem(DrawContext context, MinecraftClient client) {
         //bar under cursor

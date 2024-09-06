@@ -8,6 +8,7 @@ import net.minecraft.client.network.ServerInfo;
 import net.minecraft.entity.Entity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -124,6 +125,9 @@ public class Waypoint {
     public int getColor() {
         return color;
     }
+    public int getColorFullAlpha() {
+        return ColorHelper.Argb.getArgb(255, ColorHelper.Argb.getRed(this.getColor()), ColorHelper.Argb.getGreen(this.getColor()), ColorHelper.Argb.getBlue(this.getColor()));
+    }
 
     public void setColor(int color) {
         this.color = color;
@@ -173,5 +177,28 @@ public class Waypoint {
 
     public void setScaleScale(boolean scaleScale) {
         this.scaleScale = scaleScale;
+    }
+    public double getX() {
+        return pos.x;
+    }
+
+    public void setX(double x) {
+        this.pos = new Vec3d(x, pos.y, pos.z);
+    }
+
+    public double getY() {
+        return pos.y;
+    }
+
+    public void setY(double y) {
+        this.pos = new Vec3d(pos.x, y, pos.z);
+    }
+
+    public double getZ() {
+        return pos.z;
+    }
+
+    public void setZ(double z) {
+        this.pos = new Vec3d(pos.x, pos.y, z);
     }
 }

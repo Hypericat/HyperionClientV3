@@ -182,7 +182,7 @@ public abstract class Esp extends Module implements RenderHandListener, TickList
             if (boxType == EspBoxType.SHAPE) {
                 box = new Box(-0.5, 0, -0.5, 0.5, 1, 0.5);
             } else {
-                box = e.getBoundingBox().expand(extraBoxSize.getValue()).offset(e.getPos().negate());
+                        box = e.getBoundingBox().expand(extraBoxSize.getValue()).offset(e.getPos().negate());
             }
 
             if (renderOuterBox.getValue()) {

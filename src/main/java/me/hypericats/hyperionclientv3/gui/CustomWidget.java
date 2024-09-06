@@ -33,7 +33,7 @@ public class CustomWidget extends ModuleOptionsWidget {
     @Override
     public void click(double x, double y, int button) {
         executor.execute(button);
-        executor.playSound();
+        executor.playSound(button);
     }
 
     @Override
