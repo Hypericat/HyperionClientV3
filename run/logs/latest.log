@@ -1,5 +1,5 @@
-[20:56:49] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.2
-[20:56:49] [main/INFO] (FabricLoader) Loading 59 mods:
+[15:36:44] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.2
+[15:36:44] [main/INFO] (FabricLoader) Loading 59 mods:
 	- fabric-api 0.92.2+1.20.1
 	- fabric-api-base 0.4.31+1802ada577
 	- fabric-api-lookup-api-v1 1.6.36+1802ada577
@@ -59,14 +59,14 @@
 	- java 17
 	- minecraft 1.20.1
 	- mixinextras 0.4.1
-[20:56:50] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[20:56:50] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[20:56:50] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[20:56:51] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[20:56:51] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[20:56:54] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 87 milliseconds
-[20:56:55] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[20:56:56] [Render thread/ERROR] (Minecraft) Failed to verify authentication
+[15:36:44] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[15:36:45] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[15:36:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
+[15:36:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
+[15:36:47] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[15:36:54] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 185 milliseconds
+[15:36:57] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[15:36:58] [Render thread/ERROR] (Minecraft) Failed to verify authentication
 com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
 	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156) ~[authlib-4.0.43.jar:?]
@@ -84,58 +84,80 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129) ~[authlib-4.0.43.jar:?]
 	... 9 more
-[20:56:56] [Render thread/INFO] (Minecraft) Setting user: Player336
-[20:56:56] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[20:56:56] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.1 SNAPSHOT
-[20:56:57] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-networking-v0, fabricloader, fabric-item-group-api-v1, fabric-renderer-indigo, fabric-lifecycle-events-v1, fabric-transitive-access-wideners-v1, fabric-models-v0, fabric-key-binding-api-v1, fabric-commands-v0, fabric-data-generation-api-v1, fabric-resource-loader-v0, fabric-rendering-fluids-v1, fabric-api, fabric-convention-tags-v1, fabric-object-builder-api-v1, fabric-entity-events-v1, fabric-recipe-api-v1, fabric-keybindings-v0, fabric-events-lifecycle-v0, fabric-particles-v1, fabric-blockrenderlayer-v1, fabric-sound-api-v1, fabric-mining-level-api-v1, fabric-api-base, fabric-rendering-data-attachment-v1, fabric-command-api-v2, fabric-command-api-v1, fabric-renderer-registries-v1, fabric-block-api-v1, fabric-events-interaction-v0, fabric-client-tags-api-v1, fabric-data-attachment-api-v1, fabric-block-view-api-v2, fabric-loot-tables-v1, fabric-item-api-v1, fabric-resource-conditions-api-v1, fabric-crash-report-info-v1, fabric-game-rule-api-v1, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-screen-api-v1, fabric-gametest-api-v1, fabric-networking-api-v1, fabric-loot-api-v2, fabric-biome-api-v1, fabric-renderer-api-v1, fabric-rendering-v1, fabric-screen-handler-api-v1, fabric-registry-sync-v0, fabric-api-lookup-api-v1, fabric-dimensions-v1, fabric-containers-v0, fabric-rendering-v0, fabric-transfer-api-v1, fabric-content-registries-v0)
-[20:56:57] [Worker-Main-8/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
-[20:56:57] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
-[20:56:57] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: Invalid session id
-[20:56:58] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[20:56:58] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[20:56:58] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Razer BlackShark V2 X USB)
-[20:56:58] [Render thread/INFO] (Minecraft) Sound engine started
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[20:56:58] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[20:56:58] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[20:57:31] [Render thread/INFO] (Minecraft) Connecting to localhost, 25565
-[20:57:32] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[20:57:32] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[20:57:32] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[20:57:32] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[20:57:32] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[20:57:32] [Render thread/WARN] (Minecraft) Unknown feature flag: minecraft:update_1_21
-[20:57:32] [Render thread/INFO] (Minecraft) [System] [CHAT] Player336 joined the game
-[20:57:32] [Render thread/INFO] (Minecraft) Loaded 2 advancements
-[20:57:32] [Render thread/WARN] (Minecraft) Received passengers for unknown entity
-[20:57:44] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4KillAura§r has been §aenabled
-[20:57:50] [Render thread/INFO] (Minecraft) [System] [CHAT] [Debug]: Unable to open game mode switcher; no permission
-[20:57:57] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Made Player336 a server operator]
-[20:58:00] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4KillAura§r has been §cdisabled
-[20:58:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4KillAura§r has been §aenabled
-[20:58:02] [Render thread/INFO] (Minecraft) [System] [CHAT] Player336 has made the advancement [Monster Hunter]
-[20:58:02] [Render thread/INFO] (Minecraft) Loaded 41 advancements
-[20:58:04] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Creative Mode
-[20:58:05] [Render thread/INFO] (Minecraft) Loaded 43 advancements
-[20:58:08] [Render thread/INFO] (Minecraft) Loaded 57 advancements
-[20:58:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4FullBright§r has been §aenabled
-[20:58:17] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §aenabled
-[20:58:30] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §cdisabled
-[20:58:30] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §aenabled
-[20:58:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §cdisabled
-[20:58:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §aenabled
-[20:58:32] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §cdisabled
-[20:58:32] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §aenabled
-[20:58:32] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §cdisabled
-[20:58:33] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §aenabled
-[20:58:40] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Speed§r has been §cdisabled
+[15:36:58] [Render thread/INFO] (Minecraft) Setting user: Player603
+[15:36:58] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[15:36:59] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.1 SNAPSHOT
+[15:37:00] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-rendering-fluids-v1, fabric-command-api-v1, fabric-crash-report-info-v1, fabric-api-lookup-api-v1, fabric-block-view-api-v2, fabric-events-interaction-v0, fabric-renderer-api-v1, fabric-loot-api-v2, fabricloader, fabric-dimensions-v1, fabric-commands-v0, fabric-networking-api-v1, fabric-rendering-v1, fabric-transitive-access-wideners-v1, fabric-particles-v1, fabric-resource-conditions-api-v1, fabric-data-generation-api-v1, fabric-events-lifecycle-v0, fabric-models-v0, fabric-sound-api-v1, fabric-lifecycle-events-v1, fabric-mining-level-api-v1, fabric-screen-api-v1, fabric-command-api-v2, fabric-item-group-api-v1, fabric-rendering-v0, fabric-convention-tags-v1, fabric-blockrenderlayer-v1, fabric-content-registries-v0, fabric-gametest-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-containers-v0, fabric-object-builder-api-v1, fabric-rendering-data-attachment-v1, fabric-game-rule-api-v1, fabric-networking-v0, fabric-renderer-registries-v1, fabric-client-tags-api-v1, fabric-entity-events-v1, fabric-data-attachment-api-v1, fabric-api-base, fabric-renderer-indigo, fabric-message-api-v1, fabric-block-api-v1, fabric-model-loading-api-v1, fabric-transfer-api-v1, fabric-screen-handler-api-v1, fabric-item-api-v1, fabric-resource-loader-v0, fabric-recipe-api-v1, fabric-loot-tables-v1, fabric-api, fabric-biome-api-v1, fabric-registry-sync-v0)
+[15:37:00] [Worker-Main-6/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
+[15:37:00] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
+[15:37:01] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: Invalid session id
+[15:37:02] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
+[15:37:02] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[15:37:03] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[15:37:03] [Render thread/INFO] (Minecraft) Sound engine started
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[15:37:03] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[15:37:04] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[15:37:04] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[15:37:04] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[15:37:04] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[15:37:20] [Render thread/INFO] (Minecraft) Loaded 7 recipes
+[15:37:20] [Render thread/INFO] (Minecraft) Loaded 1271 advancements
+[15:37:21] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 2.344 ms
+[15:37:21] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.20.1
+[15:37:21] [Server thread/INFO] (Minecraft) Generating keypair
+[15:37:22] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:25] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:26] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:26] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:26] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[15:37:27] [progressListener/INFO] (Minecraft) Preparing spawn area: 9%
+[15:37:27] [progressListener/INFO] (Minecraft) Preparing spawn area: 77%
+[15:37:28] [progressListener/INFO] (Minecraft) Time elapsed: 5640 ms
+[15:37:28] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
+[15:37:28] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[15:37:29] [Server thread/INFO] (Minecraft) Player603[local:E:e0d32509] logged in with entity id 13 at (-256.10389502369344, 52.53371348527326, -252.38341288818037)
+[15:37:29] [Server thread/INFO] (Minecraft) Player603 joined the game
+[15:37:29] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[15:37:29] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[15:37:29] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[15:37:29] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[15:37:29] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[15:37:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §cBoundingBox does not work in singlePlayer, it will not work while in this world!
+[15:37:29] [Render thread/INFO] (hyperionclientv3) §cBoundingBox does not work in singlePlayer, it will not work while in this world!
+[15:37:30] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[15:37:30] [Render thread/INFO] (Minecraft) Loaded 11 advancements
+[15:37:36] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Flight§r has been §aenabled
+[15:37:37] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Flight§r has been §cdisabled
+[15:37:37] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[15:37:37] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:overworld
+[15:37:37] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_nether
+[15:37:37] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_end
+[15:37:42] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4BarrierESP§r has been §aenabled
+[15:37:44] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[15:37:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:overworld
+[15:37:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_nether
+[15:37:44] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_end
+[15:38:01] [Server thread/INFO] (Minecraft) [Player603: Changed the block at -247, 68, -257]
+[15:38:01] [Render thread/INFO] (Minecraft) [System] [CHAT] Changed the block at -247, 68, -257
+[15:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Blink§r has been §aenabled
+[15:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §cBlink does not work in singlePlayer, it will not work while in this world!
+[15:38:09] [Render thread/INFO] (hyperionclientv3) §cBlink does not work in singlePlayer, it will not work while in this world!
+[15:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Blink§r has been §cdisabled
+[15:38:10] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[15:38:10] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:overworld
+[15:38:10] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_nether
+[15:38:10] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Fuck Shit Fuck]'/minecraft:the_end

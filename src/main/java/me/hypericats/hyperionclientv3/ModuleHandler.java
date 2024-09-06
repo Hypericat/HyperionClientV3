@@ -46,6 +46,8 @@ public class ModuleHandler {
         modules.add(new BiggerHitboxes());
         modules.add(new Jesus());
         modules.add(new WaypointHandler());
+        modules.add(new BlockForceResourcePacks());
+        modules.add(new ForceRenderBarriers());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
