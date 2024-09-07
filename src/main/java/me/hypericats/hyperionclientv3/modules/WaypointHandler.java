@@ -6,16 +6,10 @@ import me.hypericats.hyperionclientv3.Module;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.PostRenderListener;
-import me.hypericats.hyperionclientv3.events.PreRenderEntityListener;
-import me.hypericats.hyperionclientv3.events.RenderHandListener;
 import me.hypericats.hyperionclientv3.events.eventData.PostRenderData;
-import me.hypericats.hyperionclientv3.events.eventData.PreRenderEntityData;
-import me.hypericats.hyperionclientv3.events.eventData.RenderHandData;
 import me.hypericats.hyperionclientv3.gui.CustomWidget;
-import me.hypericats.hyperionclientv3.gui.HyperionClientV3Screen;
 import me.hypericats.hyperionclientv3.gui.ICustomWidget;
 import me.hypericats.hyperionclientv3.gui.WaypointEditScreen;
-import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -24,13 +18,11 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Matrix4f;
-import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +62,8 @@ public class WaypointHandler extends Module implements ICustomWidget, PostRender
                 waypointPos = delta.multiply(renderDistance);
             } else {
                 waypointPos = waypoint.getPos().subtract(cameraPos);
-                renderCube(waypoint, waypointPos, matrices, client);
+                //render cube doesn't work because it doesn't render in right position but I don't want it anyways
+                //renderCube(waypoint, waypointPos, matrices, client);
             }
 
             matrices.translate(waypointPos.x, waypointPos.y, waypointPos.z);
@@ -82,7 +75,7 @@ public class WaypointHandler extends Module implements ICustomWidget, PostRender
                 float distance = (float) waypointPos.distanceTo(Vec3d.ZERO);
                adjustedScale = Math.max(adjustedScale * distance * 0.1f, adjustedScale);
         }
-        matrices.scale(-adjustedScale, -adjustedScale, adjustedScale);
+        matrices.scale(adjustedScale, -adjustedScale, adjustedScale);
 
             Matrix4f matrix4f = matrices.peek().getPositionMatrix();
             TextRenderer textRenderer = client.textRenderer;

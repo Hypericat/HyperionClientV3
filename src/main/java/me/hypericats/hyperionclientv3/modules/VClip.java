@@ -43,7 +43,7 @@ public class VClip extends Module {
         if (client.player == null) return;
         if (client.interactionManager == null) return;
 
-        Vec3d pos = client.player.getPos().add(client.player.getRotationVec(client.getTickDelta()).multiply(distance.getValue()));
+        Vec3d pos = client.player.getPos().add(client.player.getRotationVec(client.getRenderTickCounter().getTickDelta(true)).multiply(distance.getValue()));
         PlayerUtils.packetTpToPos(pos, client, client.player.getPos());
 
         SoundHandler.playSound(SoundEvents.ENTITY_ENDERMAN_TELEPORT);

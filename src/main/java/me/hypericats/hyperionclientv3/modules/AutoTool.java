@@ -13,14 +13,22 @@ import me.hypericats.hyperionclientv3.util.BlockUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.GameMode;
+
+import java.lang.ref.Reference;
+import java.util.Optional;
 
 public class AutoTool extends Module implements TickListener, UpdateBlockBreakingProgressListener {
     public AutoTool() {
@@ -84,13 +92,17 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
     }
     private static float getSpeed(ItemStack stack, BlockState state) {
         float speed = stack.getMiningSpeedMultiplier(state);
-        if(speed > 1)
-        {
-            int efficiency =
-                    EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack);
-            if(efficiency > 0 && !stack.isEmpty())
-                speed += efficiency * efficiency + 1;
-        }
+
+        if(speed <= 1) return speed;
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.world == null) return speed;
+        Registry<Enchantment> enchantmentRegistry = client.world.getRegistryManager().get(RegistryKeys.ENCHANTMENT);
+        Optional<RegistryEntry.Reference<Enchantment>> eff = enchantmentRegistry.getEntry(Enchantments.EFFICIENCY);
+        if (eff.isEmpty()) return speed;
+
+        int efficiency = EnchantmentHelper.getLevel(eff.get(), stack);
+        if(efficiency > 0 && !stack.isEmpty())
+            speed += efficiency * efficiency + 1;
         return speed;
     }
 

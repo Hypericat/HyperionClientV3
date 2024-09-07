@@ -16,8 +16,6 @@ import org.joml.Vector3f;
 
 public class ViewInventoryScreen extends InventoryScreen {
     PlayerEntity player;
-    private int mouseX;
-    private int mouseY;
 
     public ViewInventoryScreen(PlayerEntity player) {
         super(player);
@@ -34,8 +32,6 @@ public class ViewInventoryScreen extends InventoryScreen {
     }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.mouseX = mouseX;
-        this.mouseY = mouseY;
         super.render(context, mouseX, mouseY, delta);
     }
 
@@ -59,6 +55,6 @@ public class ViewInventoryScreen extends InventoryScreen {
         quaternionYaw = quaternionYaw.mul(quaternionPitch);
 
         Vector3f vector3f = new Vector3f(0.0F, player.getHeight() / 2.0F + 0.0625F, 0.0F);
-        InventoryScreen.drawEntity(context, i + 51, j + 75, 30, vector3f, quaternionYaw, quaternionPitch, player);
+        InventoryScreen.drawEntity(context, i + 51, j + 40, 30, vector3f, quaternionYaw, quaternionPitch, player);
     }
 }

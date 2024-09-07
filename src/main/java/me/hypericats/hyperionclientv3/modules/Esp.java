@@ -21,6 +21,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Colors;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
@@ -108,7 +109,8 @@ public abstract class Esp extends Module implements RenderHandListener, TickList
         if (maxHealth * 0.333f < health) return "&&e";
         return "&&c";
     }
-    //EntityRendererMixin for alwaysrenderPlayerNames
+    //EntityRendererMixin for alwaysRenderPlayerNames
+    //LivingEntityRendererMixin for alwaysRenderPlayerNames
     public boolean getAlwaysRenderPlayerName() {
         return renderPlayerName.getValue() && this.options.getOptionByName(renderPlayerName.getName()) != null;
     }
@@ -126,7 +128,7 @@ public abstract class Esp extends Module implements RenderHandListener, TickList
         matrices.push();
         matrices.translate(0.0f, f, 0.0f);
         matrices.multiply(camera.getRotation());
-        matrices.scale(-0.025f, -0.025f, 0.025f);
+        matrices.scale(0.025f, -0.025f, 0.025f);
         Matrix4f matrix4f = matrices.peek().getPositionMatrix();
         TextRenderer textRenderer = client.textRenderer;
         float h = -textRenderer.getWidth(text) / 2f;
@@ -149,15 +151,15 @@ public abstract class Esp extends Module implements RenderHandListener, TickList
             float green = ColorHelper.Argb.getGreen(color) / 255f;
             float blue = ColorHelper.Argb.getBlue(color) / 255f;
             RenderSystem.setShaderColor(red, green, blue, tracerAlpha.getValue().floatValue() / 255f);
+            RenderSystem.setShader(GameRenderer::getPositionProgram);
 
             Matrix4f matrix = matrices.peek().getPositionMatrix();
-            Tessellator tessellator = Tessellator.getInstance();
-            BufferBuilder bufferBuilder = tessellator.getBuffer();
-            RenderSystem.setShader(GameRenderer::getPositionProgram);
-            bufferBuilder.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
+            Tessellator tessellator = RenderSystem.renderThreadTesselator();
+            BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
 
-            bufferBuilder.vertex(matrix, (float) (tracerStartPos.x - relativeEntityPos.x), (float) (tracerStartPos.y - relativeEntityPos.y), (float) (tracerStartPos.z - relativeEntityPos.z)).next();
-            bufferBuilder.vertex(matrix, 0, 0, 0).next();
+
+            bufferBuilder.vertex(matrix, (float) (tracerStartPos.x - relativeEntityPos.x), (float) (tracerStartPos.y - relativeEntityPos.y), (float) (tracerStartPos.z - relativeEntityPos.z));
+            bufferBuilder.vertex(matrix, 0, 0, 0);
 
             BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
             matrices.pop();

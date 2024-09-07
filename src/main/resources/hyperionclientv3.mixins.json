@@ -26,9 +26,11 @@
     "ItemRendererMixin",
     "KeyBindingMixin",
     "LivingEntityMixin",
+    "LivingEntityRendererMixin",
     "MinecraftClientMixin",
     "MouseMixin",
     "NarratorManagerMixin",
+    "ScreenMixin",
     "SessionMixin",
     "SimpleOptionMixin",
     "WorldRendererMixin"

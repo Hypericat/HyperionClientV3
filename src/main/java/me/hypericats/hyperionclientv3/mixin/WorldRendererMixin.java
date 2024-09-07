@@ -36,14 +36,16 @@ public class WorldRendererMixin {
 	@Shadow @Final private BufferBuilderStorage bufferBuilders;
 
 	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/BufferBuilderStorage;getEntityVertexConsumers()Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;", shift = At.Shift.AFTER))
-	private void onRender(float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, Matrix4f matrix4f2, CallbackInfo ci, @Local MatrixStack matrices) {
-		PreRenderEntityData preRenderEntityData = new PreRenderEntityData(matrices, tickDelta, this.bufferBuilders.getEntityVertexConsumers(), camera);
+	private void onRender(RenderTickCounter tickCounter, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, Matrix4f matrix4f2, CallbackInfo ci, @Local MatrixStack matrices) {
+		PreRenderEntityData preRenderEntityData = new PreRenderEntityData(matrices, MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true), this.bufferBuilders.getEntityVertexConsumers(), camera);
 		EventHandler.onEvent(PreRenderEntityListener.class, preRenderEntityData);
 	}
-	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4fStack;popMatrix()Lorg/joml/Matrix4fStack;", shift = At.Shift.BEFORE))
-	private void onPostRender(float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, Matrix4f matrix4f2, CallbackInfo ci, @Local MatrixStack matrices) {
-
-		PostRenderData postRenderData = new PostRenderData(matrices, tickDelta, this.bufferBuilders.getEntityVertexConsumers(), camera);
+	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderChunkDebugInfo(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/render/Camera;)V", shift = At.Shift.BEFORE))
+	private void onPostRender(RenderTickCounter tickCounter, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, Matrix4f matrix4f2, CallbackInfo ci, @Local MatrixStack matrices) {
+		matrices.push();
+		matrices.multiplyPositionMatrix(matrices.peek().getPositionMatrix());
+		PostRenderData postRenderData = new PostRenderData(matrices, MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true), this.bufferBuilders.getEntityVertexConsumers(), camera);
 		EventHandler.onEvent(PostRenderListener.class, postRenderData);
+		matrices.pop();
 	}
 }

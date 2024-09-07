@@ -10,8 +10,10 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
+import org.joml.Matrix4f;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -44,9 +46,11 @@ public class GameRenderMixin {
                     opcode = Opcodes.GETFIELD,
                     ordinal = 0),
             method = "renderWorld", cancellable = true)
-    private void onRenderWorldHandRendering(float tickDelta, long limitTime, CallbackInfo ci, @Local MatrixStack matrices)
+    private void onRenderWorldHandRendering(RenderTickCounter tickCounter, CallbackInfo ci, @Local(ordinal = 1) Matrix4f matrix4f2)
     {
-        RenderHandData data = new RenderHandData(matrices, tickDelta, this.buffers.getEntityVertexConsumers());
+        MatrixStack matrices = new MatrixStack();
+        matrices.multiplyPositionMatrix(matrix4f2);
+        RenderHandData data = new RenderHandData(matrices, MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true), this.buffers.getEntityVertexConsumers());
         EventHandler.onEvent(RenderHandListener.class, data);
         if (data.isCancelled()) ci.cancel();
     }

@@ -31,7 +31,7 @@ public class Velocity extends Module implements RecievePacketListener {
         if (client.player == null) return;
         RecievePacketData packetData = (RecievePacketData) data;
         Packet<?> packet = packetData.getPacket();
-        if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket && velocityPacket.getId() == client.player.getId()) {
+        if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket && velocityPacket.getEntityId() == client.player.getId()) {
 
             Vec3d velocity = getNewVel(velocityPacket);
 
@@ -40,7 +40,7 @@ public class Velocity extends Module implements RecievePacketListener {
                 return;
             }
 
-            packetData.setNewPacket(new EntityVelocityUpdateS2CPacket(velocityPacket.getId(), velocity));
+            packetData.setNewPacket(new EntityVelocityUpdateS2CPacket(velocityPacket.getEntityId(), velocity));
         }
 
     }

@@ -1,6 +1,7 @@
 package me.hypericats.hyperionclientv3.gui;
 
 import me.hypericats.hyperionclientv3.Waypoint;
+import me.hypericats.hyperionclientv3.mixinInterface.IScreen;
 import me.hypericats.hyperionclientv3.modules.WaypointHandler;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
@@ -10,6 +11,7 @@ import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
@@ -39,12 +41,13 @@ public class WaypointEditScreen extends Screen {
         int yOffset = 30;
         RenderUtil.fillWithBorder(context, xSide - xOffset, startY - yOffset, MinecraftClient.getInstance().getWindow().getScaledWidth() - xSide + xOffset, MinecraftClient.getInstance().getWindow().getHeight(), -1778384896, -1, 3, true);
 
+        for (Drawable drawable : ((IScreen) this).getDrawables()) {
+            drawable.render(context, mouseX, mouseY, delta);
+        }
         for (WaypointWidget widget : waypointWidgets) {
             widget.render(context, mouseX, mouseY, delta);
         }
         drawTitle(startY - yOffset, context);
-
-        super.render(context, mouseX, mouseY, delta);
     }
     private void drawTitle(int y, DrawContext context) {
         float scale = 4f;
@@ -76,18 +79,13 @@ public class WaypointEditScreen extends Screen {
             widget.setX(xSide);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (keyCode == InputUtil.GLFW_KEY_ESCAPE) {
+            client.setScreen(parent);
+            return true;
+        }
+        return false;
+    }
 }

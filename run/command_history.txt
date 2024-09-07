@@ -1,0 +1,5 @@
+/enchant @s minecraft:efficiency 4
+/enchant @s minecraft:efficiency 5
+/enchant @s minecraft:efficiency 2
+/clear
+/tp @s 0 100 0

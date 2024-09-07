@@ -68,7 +68,7 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         }
 
         float yPos = 2f;
-        if (!client.options.getReducedDebugInfo().getValue()) {
+        if (!client.getDebugHud().shouldShowDebugHud()) {
             if (showFps.getValue()) {
                 client.textRenderer.draw("FPS " + client.getCurrentFps(), 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
                 yPos += 10f;

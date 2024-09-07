@@ -53,7 +53,7 @@ public class KillAura extends Module implements TickListener, SendPacketListener
         }
 
 
-        double range = useReachDistance.getValue() ? client.player.getEntityInteractionRange() : this.range.getValue();
+        double range = useReachDistance.getValue() ? client.player.isCreative() ? 5f : 4.5f : this.range.getValue();
 
         //offset playerPosition to getEyeHeight
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition().add(0, client.player.getStandingEyeHeight(), 0), range, client);
@@ -102,8 +102,8 @@ public class KillAura extends Module implements TickListener, SendPacketListener
         Entity target = toAttack.get(0);
         Vec3d pos = target.getBoundingBox().getCenter();
 
-        float currentYaw = lastYaw == Float.MIN_VALUE ? client.player.getYaw(client.getTickDelta()) : lastYaw;
-        float currentPitch = lastPitch == Float.MIN_VALUE ? client.player.getPitch(client.getTickDelta()) : lastPitch;
+        float currentYaw = lastYaw == Float.MIN_VALUE ? client.player.getYaw(client.getRenderTickCounter().getTickDelta(true)) : lastYaw;
+        float currentPitch = lastPitch == Float.MIN_VALUE ? client.player.getPitch(client.getRenderTickCounter().getTickDelta(true)) : lastPitch;
         double yawRad = Math.toRadians(currentYaw);
         double pitchRad = Math.toRadians(currentPitch);
         Vec3d currentLookDirection = new Vec3d(

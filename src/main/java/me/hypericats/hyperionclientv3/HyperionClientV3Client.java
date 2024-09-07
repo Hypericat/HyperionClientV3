@@ -65,8 +65,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 			}
 		});
 	}
-	//jesus
-	//speed
 	//infina jump
 	//ghost block
 	//auto totem
@@ -74,7 +72,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//slow attack speed rendering
 
 	//block esp / chest esp
-	//bounding box item falling through
 	//fix custom names on player entities (npcs)
 	//open inv in portals
 	//gui screen black instead of blue
@@ -86,9 +83,5 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 
 	//to fix TODO
-
-	//hacks gui f3 menu opened
-	//esp and waypoints box not rendering at right place
-	//criticals not working while sprinting
 
 }
