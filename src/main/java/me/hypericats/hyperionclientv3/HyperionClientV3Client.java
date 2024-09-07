@@ -4,11 +4,14 @@ import me.hypericats.hyperionclientv3.commands.CommandHandlerDispatcher;
 import me.hypericats.hyperionclientv3.gui.HyperionClientV3Screen;
 import me.hypericats.hyperionclientv3.util.FileUtil;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.SharedConstants;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
@@ -18,6 +21,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	public static final String MODID = "hyperionclientv3";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+	public static final String defaultName = "User";
+	public static final boolean isDev = true;
 	public static KeybindLoader keybindLoader;
 	public static ModuleSettingsSaver settingsSaver;
 	public static HyperionClientV3Screen hyperionClientV3Screen;
@@ -27,11 +32,12 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
+
 	}
 
 	public static void actuallyInit() {
+		SharedConstants.isDevelopment = isDev;
 		LOGGER.info("Initializing HyperionClientV3");
-		SharedConstants.isDevelopment = true;
 		FileUtil.createDir(FileUtil.HypCv3Dir);
 		CommandHandlerDispatcher.initCommands();
 		keybindLoader = new KeybindLoader();
@@ -65,14 +71,14 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//ghost block
 	//auto totem
 
+	//kill aura fix dont use client rotation save rotation from last packet
+
 	//slow attack speed rendering
 
 	//block esp / chest esp
 	//bounding box item falling through
-	//open command blocks
 	//fix custom names on player entities (npcs)
 	//open inv in portals
-	//invsee other players
 
 
 	//Todo

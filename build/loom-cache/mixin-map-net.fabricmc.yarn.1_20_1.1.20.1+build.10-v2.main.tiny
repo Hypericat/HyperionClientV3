@@ -18,6 +18,7 @@ FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin	I	itemUseCooldow
 FIELD	me/hypericats/hyperionclientv3/mixin/MinecraftServerMixin	Lnet/minecraft/world/level/storage/LevelStorage$Session;	session	field_23784
 FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lcom/mojang/text2speech/Narrator;	narrator	field_2055
 FIELD	me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin	Lnet/minecraft/client/MinecraftClient;	client	field_39755
+FIELD	me/hypericats/hyperionclientv3/mixin/SessionMixin	Ljava/lang/String;	username	field_1982
 FIELD	me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin	Ljava/lang/Object;	value	field_37868
 FIELD	me/hypericats/hyperionclientv3/mixin/WorldRendererMixin	Lnet/minecraft/client/render/BufferBuilderStorage;	bufferBuilders	field_20951
 METHOD	me/hypericats/hyperionclientv3/mixin/ChatHudMixin	(DD)I	getMessageIndex	method_45588

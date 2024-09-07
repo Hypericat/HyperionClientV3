@@ -4,7 +4,6 @@
   "package": "me.hypericats.hyperionclientv3.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BarrierBlockMixin",
     "ChunkRegionMixin",
     "MinecraftServerMixin"
   ],
@@ -18,6 +17,7 @@
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
     "ClientPlayNetworkHandlerMixin",
+    "ClientWorldMixin",
     "EntityMixin",
     "EntityRendererMixin",
     "GameRenderMixin",
@@ -29,6 +29,7 @@
     "MinecraftClientMixin",
     "MouseMixin",
     "NarratorManagerMixin",
+    "SessionMixin",
     "SimpleOptionMixin",
     "WorldRendererMixin"
   ],

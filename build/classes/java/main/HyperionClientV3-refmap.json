@@ -3,9 +3,6 @@
     "me/hypericats/hyperionclientv3/mixin/AbstractBlockStateMixin": {
       "isFullCube(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z": "Lnet/minecraft/class_4970$class_4971;method_26234(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)Z"
     },
-    "me/hypericats/hyperionclientv3/mixin/BarrierBlockMixin": {
-      "getRenderType": "Lnet/minecraft/class_2213;method_9604(Lnet/minecraft/class_2680;)Lnet/minecraft/class_2464;"
-    },
     "me/hypericats/hyperionclientv3/mixin/BlockCollisionSpliteratorMixin": {
       "<init>": "Lnet/minecraft/class_5329;<init>(Lnet/minecraft/class_1941;Lnet/minecraft/class_1297;Lnet/minecraft/class_238;ZLjava/util/function/BiFunction;)V",
       "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;": "Lnet/minecraft/class_2680;method_26194(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;",
@@ -47,6 +44,9 @@
     },
     "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
       "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
+    },
+    "me/hypericats/hyperionclientv3/mixin/ClientWorldMixin": {
+      "getBlockParticle": "Lnet/minecraft/class_638;method_35752()Lnet/minecraft/class_2248;"
     },
     "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
       "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
@@ -91,6 +91,10 @@
     "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
       "isActive": "Lnet/minecraft/class_333;method_1791()Z"
     },
+    "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
+      "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
+      "Lnet/minecraft/client/util/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
+    },
     "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
       "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
     },
@@ -104,9 +108,6 @@
     "named:intermediary": {
       "me/hypericats/hyperionclientv3/mixin/AbstractBlockStateMixin": {
         "isFullCube(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z": "Lnet/minecraft/class_4970$class_4971;method_26234(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)Z"
-      },
-      "me/hypericats/hyperionclientv3/mixin/BarrierBlockMixin": {
-        "getRenderType": "Lnet/minecraft/class_2213;method_9604(Lnet/minecraft/class_2680;)Lnet/minecraft/class_2464;"
       },
       "me/hypericats/hyperionclientv3/mixin/BlockCollisionSpliteratorMixin": {
         "<init>": "Lnet/minecraft/class_5329;<init>(Lnet/minecraft/class_1941;Lnet/minecraft/class_1297;Lnet/minecraft/class_238;ZLjava/util/function/BiFunction;)V",
@@ -150,6 +151,9 @@
       "me/hypericats/hyperionclientv3/mixin/ClientPlayerInteractionManagerMixin": {
         "updateBlockBreakingProgress": "Lnet/minecraft/class_636;method_2902(Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;)Z"
       },
+      "me/hypericats/hyperionclientv3/mixin/ClientWorldMixin": {
+        "getBlockParticle": "Lnet/minecraft/class_638;method_35752()Lnet/minecraft/class_2248;"
+      },
       "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
         "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
       },
@@ -192,6 +196,10 @@
       },
       "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
         "isActive": "Lnet/minecraft/class_333;method_1791()Z"
+      },
+      "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
+        "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
+        "Lnet/minecraft/client/util/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
       },
       "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
         "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
