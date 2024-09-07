@@ -36,22 +36,7 @@ public abstract class ChunkRegionMixin {
 
 	@Shadow @Final private static Logger LOGGER;
 
-	@Shadow @Final private ChunkPos lowerCorner;
-
-	@Shadow @Final private ChunkPos upperCorner;
-
 	@Shadow public abstract Chunk getChunk(int chunkX, int chunkZ);
-
-	@Inject(method = "getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;[Ljava/lang/Object;)V"), cancellable = true)
-	private void injected(int chunkX, int chunkZ, ChunkStatus leastStatus, boolean create, CallbackInfoReturnable<Chunk> cir) {
-		if (!SharedConstants.isDevelopment) return;
-		LOGGER.error("Requested chunk : {} {}", (Object)chunkX, (Object)chunkZ);
-		LOGGER.error("Region bounds : {} {} | {} {}", this.lowerCorner.x, this.lowerCorner.z, this.upperCorner.x, this.upperCorner.z);
-		if (MinecraftClient.getInstance().player != null) {
-			MinecraftClient.getInstance().player.sendMessage(Text.of("Failed to load chunk at " + lowerCorner.x + " " + lowerCorner.z + " | " + upperCorner.x + " " + upperCorner.z));
-		}
-		cir.setReturnValue(null);
-	}
 	@Inject(method = "getBlockState", at = @At(value = "HEAD"), cancellable = true)
 	private void injected(BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
 			if (!SharedConstants.isDevelopment) return;

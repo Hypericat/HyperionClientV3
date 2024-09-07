@@ -9,7 +9,7 @@ import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.RecievePacketData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.ResourcePackSendS2CPacket;
+import net.minecraft.network.packet.s2c.common.ResourcePackSendS2CPacket;
 
 public class BlockForceResourcePacks extends Module implements RecievePacketListener {
     public BlockForceResourcePacks() {

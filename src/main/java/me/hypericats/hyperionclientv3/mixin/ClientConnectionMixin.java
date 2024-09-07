@@ -23,9 +23,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientConnection.class)
 public abstract class ClientConnectionMixin implements IClientConnection {
 
-	@Shadow protected abstract void sendImmediately(Packet<?> packet, @Nullable PacketCallbacks callbacks);
 
 	@Shadow public abstract void send(Packet<?> packet, @Nullable PacketCallbacks callbacks);
+
+	@Shadow protected abstract void sendImmediately(Packet<?> packet, @Nullable PacketCallbacks callbacks, boolean flush);
 
 	@Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
 	private void onSendPacket(Packet<?> packet, PacketCallbacks callbacks, CallbackInfo ci) {
@@ -51,6 +52,6 @@ public abstract class ClientConnectionMixin implements IClientConnection {
 	}
 
 	public void sendPacketImmediately(Packet<?> packet) {
-		sendImmediately(packet, null);
+		sendImmediately(packet, null, false);
 	}
 }

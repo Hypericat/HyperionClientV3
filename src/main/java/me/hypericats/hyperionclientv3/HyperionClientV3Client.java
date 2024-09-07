@@ -71,8 +71,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//ghost block
 	//auto totem
 
-	//kill aura fix dont use client rotation save rotation from last packet
-
 	//slow attack speed rendering
 
 	//block esp / chest esp
@@ -83,5 +81,11 @@ public class HyperionClientV3Client implements ClientModInitializer {
 
 	//Todo
 	//Use hashmap for ModuleHandler.getByKeybind();
+
+
+
+	//to fix
+	//gui screen darker
+	//hacks gui f3 menu opened
 
 }

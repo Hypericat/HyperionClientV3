@@ -12,6 +12,7 @@ import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.math.Box;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class ViewInventoryScreen extends InventoryScreen {
     PlayerEntity player;
@@ -57,5 +58,7 @@ public class ViewInventoryScreen extends InventoryScreen {
         Quaternionf quaternionPitch = new Quaternionf().rotateX(-1 * ((float) Math.PI));
         quaternionYaw = quaternionYaw.mul(quaternionPitch);
 
-        InventoryScreen.drawEntity(context, i + 51, j + 75, 30, quaternionYaw, quaternionPitch, player);}
+        Vector3f vector3f = new Vector3f(0.0F, player.getHeight() / 2.0F + 0.0625F, 0.0F);
+        InventoryScreen.drawEntity(context, i + 51, j + 75, 30, vector3f, quaternionYaw, quaternionPitch, player);
+    }
 }

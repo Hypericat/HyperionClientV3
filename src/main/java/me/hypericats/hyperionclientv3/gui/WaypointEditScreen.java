@@ -34,7 +34,7 @@ public class WaypointEditScreen extends Screen {
     }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
+        this.renderBackground(context, mouseX, mouseY, delta);
         int xOffset = 18;
         int yOffset = 30;
         RenderUtil.fillWithBorder(context, xSide - xOffset, startY - yOffset, MinecraftClient.getInstance().getWindow().getScaledWidth() - xSide + xOffset, MinecraftClient.getInstance().getWindow().getHeight(), -1778384896, -1, 3, true);

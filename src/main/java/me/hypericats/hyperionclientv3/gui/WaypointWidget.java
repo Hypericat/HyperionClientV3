@@ -147,7 +147,7 @@ public class WaypointWidget implements Widget {
         TextFieldWidget field = new TextFieldWidget(textRenderer, 0, 0, width, textRenderer.fontHeight * 2, null);
         field.setChangedListener(changedListener);
         field.setText(text);
-        field.setCursor(0);
+        field.setCursor(0, false);
         widgets.add(field);
         fieldNames.add(new Pair<>(field, displayName));
     }

@@ -19,8 +19,7 @@
       "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
-      "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;",
-      "getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;": "Lnet/minecraft/class_3233;method_8402(IILnet/minecraft/class_2806;Z)Lnet/minecraft/class_2791;"
+      "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"
     },
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
       "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
@@ -92,8 +91,8 @@
       "isActive": "Lnet/minecraft/class_333;method_1791()Z"
     },
     "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
-      "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
-      "Lnet/minecraft/client/util/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
+      "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
+      "Lnet/minecraft/client/session/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
     },
     "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
       "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
@@ -125,8 +124,7 @@
         "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
-        "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;",
-        "getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;": "Lnet/minecraft/class_3233;method_8402(IILnet/minecraft/class_2806;Z)Lnet/minecraft/class_2791;"
+        "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
         "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
@@ -198,8 +196,8 @@
         "isActive": "Lnet/minecraft/class_333;method_1791()Z"
       },
       "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
-        "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
-        "Lnet/minecraft/client/util/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
+        "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
+        "Lnet/minecraft/client/session/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
       },
       "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
         "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
