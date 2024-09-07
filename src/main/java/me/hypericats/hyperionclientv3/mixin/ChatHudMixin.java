@@ -21,7 +21,7 @@ public abstract class ChatHudMixin implements IChatHud {
 
     @Shadow @Final private List<ChatHudLine.Visible> visibleMessages;
 
-    @ModifyConstant(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", constant = @Constant(intValue = 100), expect = 2)
+    @ModifyConstant(method = "addVisibleMessage", constant = @Constant(intValue = 100), expect = 2)
     public int getMaxHistory(int original) {
         return 16384;
     }

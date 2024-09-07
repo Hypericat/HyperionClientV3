@@ -28,11 +28,6 @@ public class EntityRendererMixin<T extends Entity> {
         EventHandler.onEvent(RenderEntityListener.class, data);
         if (data.isCancelled()) ci.cancel();
     }
-    @Inject(at = @At(value = "HEAD"), method = "renderLabelIfPresent", cancellable = true)
-    private void onRenderLabel(T entity, Text text, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci)
-    {
-
-    }
 
     //remove length requirement of 64
     @Redirect(method = "renderLabelIfPresent", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;getSquaredDistanceToCamera(Lnet/minecraft/entity/Entity;)D"))

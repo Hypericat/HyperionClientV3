@@ -19,6 +19,7 @@ import net.minecraft.client.util.math.Vector2f;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
+import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import org.joml.Math;
@@ -228,7 +229,7 @@ public class HyperionClientV3Screen extends Screen {
         InvWalk invWalk = (InvWalk) ModuleHandler.getModuleByClass(InvWalk.class);
         if (invWalk != null && invWalk.shouldBlockHyperionHacksScreenTyping()) return true;
 
-        if (!SharedConstants.isValidChar(chr)) return false;
+        if (!StringHelper.isValidChar(chr)) return false;
         searchString += Character.toString(chr);
         updateModules();
         return true;

@@ -32,7 +32,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
 		EventHandler.onEvent(PreJoinWorldListener.class, new PreJoinWorldData(this.world));
 	}
 
-	@Inject(method = "onPlayerRespawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;)V", shift = At.Shift.AFTER))
+	@Inject(method = "onPlayerRespawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V", shift = At.Shift.AFTER))
 	private void onPlayerRespawn(CallbackInfo ci) {
 		EventHandler.onEvent(PostJoinWorldListener.class, new PostJoinWorldData(this.world));
 	}

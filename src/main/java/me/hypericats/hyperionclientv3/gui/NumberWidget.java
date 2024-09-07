@@ -12,6 +12,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.Vector2f;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Colors;
+import net.minecraft.util.StringHelper;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.ColorHelper;
 import org.joml.Math;
@@ -85,7 +86,7 @@ public class NumberWidget extends ModuleOptionsWidget {
         lastSyncStatus = updateStatus();
     }
     public void onCharTyped(char chr, int modifiers) {
-        if (!SharedConstants.isValidChar(chr)) return;
+        if (!StringHelper.isValidChar(chr)) return;
         if (MinecraftClient.getInstance().textRenderer.getWidth(fieldString + chr) * textScale > this.getWidth()) return;
 
         fieldString += chr;

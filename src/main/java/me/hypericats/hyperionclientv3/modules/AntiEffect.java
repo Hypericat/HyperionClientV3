@@ -10,6 +10,7 @@ import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.network.packet.s2c.play.EntityStatusEffectS2CPacket;
+import net.minecraft.registry.entry.RegistryEntry;
 
 public class AntiEffect extends Module implements RecievePacketListener {
     public AntiEffect() {
@@ -25,7 +26,7 @@ public class AntiEffect extends Module implements RecievePacketListener {
         if (!(packetData.getPacket() instanceof EntityStatusEffectS2CPacket effectPacket)) return;
         if (shouldBlockEffect(effectPacket.getEffectId())) data.cancel();
     }
-    private boolean shouldBlockEffect(StatusEffect effect) {
+    private boolean shouldBlockEffect(RegistryEntry<StatusEffect> effect) {
         if (blockBlindess.getValue() && effect == StatusEffects.BLINDNESS) return true;
         if (blockNausea.getValue() && effect == StatusEffects.NAUSEA) return true;
         if (blockDarkness.getValue() && effect == StatusEffects.DARKNESS) return true;

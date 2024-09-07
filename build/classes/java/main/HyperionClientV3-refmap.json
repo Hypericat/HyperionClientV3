@@ -12,7 +12,7 @@
       "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
     },
     "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
-      "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_2561;Lnet/minecraft/class_7469;ILnet/minecraft/class_7591;Z)V"
+      "addVisibleMessage": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_303;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
       "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
@@ -26,7 +26,7 @@
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ClientPlayNetworkHandlerMixin": {
-      "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;)V",
+      "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;Lnet/minecraft/class_434$class_9678;)V",
       "Lnet/minecraft/client/render/debug/DebugRenderer;reset()V": "Lnet/minecraft/class_863;method_20413()V",
       "onGameJoin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V",
       "onPlayerRespawn": "Lnet/minecraft/class_634;method_11117(Lnet/minecraft/class_2724;)V",
@@ -55,12 +55,12 @@
       "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;getSquaredDistanceToCamera(Lnet/minecraft/entity/Entity;)D": "Lnet/minecraft/class_898;method_23168(Lnet/minecraft/class_1297;)D",
       "Lnet/minecraft/entity/Entity;isSneaky()Z": "Lnet/minecraft/class_1297;method_21751()Z",
       "render": "Lnet/minecraft/class_897;method_3936(Lnet/minecraft/class_1297;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
-      "renderLabelIfPresent": "Lnet/minecraft/class_897;method_3926(Lnet/minecraft/class_1297;Lnet/minecraft/class_2561;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+      "renderLabelIfPresent": "Lnet/minecraft/class_897;method_3926(Lnet/minecraft/class_1297;Lnet/minecraft/class_2561;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;IF)V"
     },
     "me/hypericats/hyperionclientv3/mixin/GameRenderMixin": {
       "Lnet/minecraft/client/render/GameRenderer;renderHand:Z": "Lnet/minecraft/class_757;field_3992:Z",
       "getFov(Lnet/minecraft/client/render/Camera;FZ)D": "Lnet/minecraft/class_757;method_3196(Lnet/minecraft/class_4184;FZ)D",
-      "renderWorld": "Lnet/minecraft/class_757;method_3188(FJLnet/minecraft/class_4587;)V"
+      "renderWorld": "Lnet/minecraft/class_757;method_3188(FJ)V"
     },
     "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
       "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
@@ -79,7 +79,7 @@
       "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
     },
     "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
-      "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_18096(Lnet/minecraft/class_437;)V",
+      "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_56134(Lnet/minecraft/class_437;)V",
       "run": "Lnet/minecraft/class_310;method_1514()V",
       "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
       "tick": "Lnet/minecraft/class_310;method_1574()V"
@@ -99,8 +99,7 @@
     },
     "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
       "Lnet/minecraft/client/render/BufferBuilderStorage;getEntityVertexConsumers()Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;": "Lnet/minecraft/class_4599;method_23000()Lnet/minecraft/class_4597$class_4598;",
-      "Lnet/minecraft/client/util/math/MatrixStack;pop()V": "Lnet/minecraft/class_4587;method_22909()V",
-      "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
+      "render": "Lnet/minecraft/class_761;method_22710(FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
     }
   },
   "data": {
@@ -117,7 +116,7 @@
         "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
       },
       "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
-        "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_2561;Lnet/minecraft/class_7469;ILnet/minecraft/class_7591;Z)V"
+        "addVisibleMessage": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_303;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
         "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
@@ -131,7 +130,7 @@
         "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientPlayNetworkHandlerMixin": {
-        "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;)V",
+        "Lnet/minecraft/client/MinecraftClient;joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V": "Lnet/minecraft/class_310;method_1481(Lnet/minecraft/class_638;Lnet/minecraft/class_434$class_9678;)V",
         "Lnet/minecraft/client/render/debug/DebugRenderer;reset()V": "Lnet/minecraft/class_863;method_20413()V",
         "onGameJoin": "Lnet/minecraft/class_634;method_11120(Lnet/minecraft/class_2678;)V",
         "onPlayerRespawn": "Lnet/minecraft/class_634;method_11117(Lnet/minecraft/class_2724;)V",
@@ -160,12 +159,12 @@
         "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;getSquaredDistanceToCamera(Lnet/minecraft/entity/Entity;)D": "Lnet/minecraft/class_898;method_23168(Lnet/minecraft/class_1297;)D",
         "Lnet/minecraft/entity/Entity;isSneaky()Z": "Lnet/minecraft/class_1297;method_21751()Z",
         "render": "Lnet/minecraft/class_897;method_3936(Lnet/minecraft/class_1297;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
-        "renderLabelIfPresent": "Lnet/minecraft/class_897;method_3926(Lnet/minecraft/class_1297;Lnet/minecraft/class_2561;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+        "renderLabelIfPresent": "Lnet/minecraft/class_897;method_3926(Lnet/minecraft/class_1297;Lnet/minecraft/class_2561;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;IF)V"
       },
       "me/hypericats/hyperionclientv3/mixin/GameRenderMixin": {
         "Lnet/minecraft/client/render/GameRenderer;renderHand:Z": "Lnet/minecraft/class_757;field_3992:Z",
         "getFov(Lnet/minecraft/client/render/Camera;FZ)D": "Lnet/minecraft/class_757;method_3196(Lnet/minecraft/class_4184;FZ)D",
-        "renderWorld": "Lnet/minecraft/class_757;method_3188(FJLnet/minecraft/class_4587;)V"
+        "renderWorld": "Lnet/minecraft/class_757;method_3188(FJ)V"
       },
       "me/hypericats/hyperionclientv3/mixin/InGameHudMixin": {
         "render": "Lnet/minecraft/class_329;method_1753(Lnet/minecraft/class_332;F)V"
@@ -184,7 +183,7 @@
         "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
       },
       "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
-        "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_18096(Lnet/minecraft/class_437;)V",
+        "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_56134(Lnet/minecraft/class_437;)V",
         "run": "Lnet/minecraft/class_310;method_1514()V",
         "scheduleStop": "Lnet/minecraft/class_310;method_1592()V",
         "tick": "Lnet/minecraft/class_310;method_1574()V"
@@ -204,8 +203,7 @@
       },
       "me/hypericats/hyperionclientv3/mixin/WorldRendererMixin": {
         "Lnet/minecraft/client/render/BufferBuilderStorage;getEntityVertexConsumers()Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;": "Lnet/minecraft/class_4599;method_23000()Lnet/minecraft/class_4597$class_4598;",
-        "Lnet/minecraft/client/util/math/MatrixStack;pop()V": "Lnet/minecraft/class_4587;method_22909()V",
-        "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V"
+        "render": "Lnet/minecraft/class_761;method_22710(FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
       }
     }
   }

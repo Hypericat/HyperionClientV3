@@ -16,6 +16,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAttachmentType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
@@ -121,7 +122,7 @@ public abstract class Esp extends Module implements RenderHandListener, TickList
         return string;
     }
     private void renderLabel(Entity entity, String text, MatrixStack matrices, VertexConsumerProvider vertexConsumers, Camera camera, MinecraftClient client) {
-        float f = (entity instanceof PlayerEntity || (entity instanceof MobEntity m && m.shouldRenderName() && m.hasCustomName() && MinecraftClient.getInstance().getEntityRenderDispatcher().targetedEntity == m)) ? entity.getNameLabelHeight() + 0.3f : entity.getNameLabelHeight();
+        float f = (entity instanceof PlayerEntity || (entity instanceof MobEntity m && m.shouldRenderName() && m.hasCustomName() && MinecraftClient.getInstance().getEntityRenderDispatcher().targetedEntity == m)) ? entity.getHeight() + 0.8f : entity.getHeight() + 0.3f;
         matrices.push();
         matrices.translate(0.0f, f, 0.0f);
         matrices.multiply(camera.getRotation());

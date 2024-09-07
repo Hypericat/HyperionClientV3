@@ -1,5 +1,6 @@
 package me.hypericats.hyperionclientv3.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.RenderHandListener;
@@ -43,7 +44,7 @@ public class GameRenderMixin {
                     opcode = Opcodes.GETFIELD,
                     ordinal = 0),
             method = "renderWorld", cancellable = true)
-    private void onRenderWorldHandRendering(float tickDelta, long limitTime, MatrixStack matrices, CallbackInfo ci)
+    private void onRenderWorldHandRendering(float tickDelta, long limitTime, CallbackInfo ci, @Local MatrixStack matrices)
     {
         RenderHandData data = new RenderHandData(matrices, tickDelta, this.buffers.getEntityVertexConsumers());
         EventHandler.onEvent(RenderHandListener.class, data);

@@ -53,7 +53,7 @@ public class KillAura extends Module implements TickListener, SendPacketListener
         }
 
 
-        double range = useReachDistance.getValue() ? client.interactionManager.getReachDistance() : this.range.getValue();
+        double range = useReachDistance.getValue() ? client.player.getEntityInteractionRange() : this.range.getValue();
 
         //offset playerPosition to getEyeHeight
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition().add(0, client.player.getStandingEyeHeight(), 0), range, client);

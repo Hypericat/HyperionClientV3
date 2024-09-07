@@ -7,6 +7,7 @@ import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.network.packet.BrandCustomPayload;
 import net.minecraft.network.packet.c2s.common.CustomPayloadC2SPacket;
 import net.minecraft.util.Identifier;
 
@@ -21,17 +22,8 @@ public class VanillaSpoofer extends Module implements SendPacketListener {
         if (client.player == null) return;
         SendPacketData packetData = (SendPacketData) data;
         if (!(packetData.getPacket() instanceof CustomPayloadC2SPacket packet)) return;
-        Identifier channel = packet.payload().id();
-        if(channel.getNamespace().equals("minecraft") && channel.getPath().equals("register")) {
-            packetData.cancel();
-            return;
-        }
-        //if(packet.getChannel().getNamespace().equals("minecraft") && packet.getChannel().getPath().equals("brand") && !packet.getData().readString().contains("vanilla")) {
-        //    packetData.setPacket(new CustomPayloadC2SPacket(CustomPayloadC2SPacket.BRAND, new PacketByteBuf(Unpooled.buffer()).writeString("vanilla")));
-        //    return;
-        //}
-        if(channel.getNamespace().equals("fabric"))
-            packetData.cancel();
+        if(packet.payload() instanceof BrandCustomPayload)
+            packetData.setPacket(new CustomPayloadC2SPacket(new BrandCustomPayload("vanilla")));
     }
     @Override
     public void onEnable() {
