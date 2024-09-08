@@ -21,6 +21,7 @@
     "EntityMixin",
     "EntityRendererMixin",
     "GameRenderMixin",
+    "HandledScreenMixin",
     "InGameHudMixin",
     "InGameOverlayRendererMixin",
     "ItemRendererMixin",

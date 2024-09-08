@@ -14,7 +14,7 @@ glintStrength:1.0
 prioritizeChunkUpdates:0
 fullscreen:false
 graphicsMode:0
-guiScale:2
+guiScale:3
 maxFps:260
 mipmapLevels:4
 narrator:0

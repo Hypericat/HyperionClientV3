@@ -10,6 +10,7 @@ import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.DisconnectData;
 import me.hypericats.hyperionclientv3.events.eventData.PostJoinWorldData;
 import me.hypericats.hyperionclientv3.mixinInterface.IMinecraftClient;
+import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.world.ClientWorld;
@@ -18,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin implements IMinecraftClient {
@@ -46,5 +48,10 @@ public class MinecraftClientMixin implements IMinecraftClient {
 	}
 	public int getItemUseCooldown() {
 		return this.itemUseCooldown;
+	}
+
+	@Inject(method = "getWindowTitle", at = @At("HEAD"), cancellable = true)
+	public void onGetWindowTitle(CallbackInfoReturnable<String> cir) {
+		cir.setReturnValue(HyperionClientV3Client.windowTitle + " " + SharedConstants.getGameVersion().getName());
 	}
 }

@@ -22,6 +22,7 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public static final String MODID = "hyperionclientv3";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 	public static final String defaultName = "User";
+	public static final String windowTitle = "HyperionClientV3";
 	public static final boolean isDev = true;
 	public static KeybindLoader keybindLoader;
 	public static ModuleSettingsSaver settingsSaver;

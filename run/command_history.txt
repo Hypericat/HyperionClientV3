@@ -24,3 +24,6 @@
 /gamerule commandBlockOutput false
 /clear @s minecraft:cobblestone
 /clear
+/time set night
+/setblock 268 63 187 bed
+/setblock 268 63 187 blue_bed
