@@ -7,8 +7,8 @@ Description: Unexpected error
 java.lang.IllegalStateException: Already building!
 	at net.minecraft.client.render.BufferBuilder.begin(BufferBuilder.java:142)
 	at me.hypericats.hyperionclientv3.util.RenderUtil.drawOutlinedBox(RenderUtil.java:76)
-	at me.hypericats.hyperionclientv3.modules.Esp.drawBoxes(Esp.java:193)
-	at me.hypericats.hyperionclientv3.modules.Esp.render(Esp.java:77)
+	at me.hypericats.hyperionclientv3.modules.EntityEsp.drawBoxes(Esp.java:193)
+	at me.hypericats.hyperionclientv3.modules.EntityEsp.render(Esp.java:77)
 	at me.hypericats.hyperionclientv3.modules.HostileEntityEsp.onEvent(HostileEntityEsp.java:34)
 	at me.hypericats.hyperionclientv3.event.EventHandler.onEvent(EventHandler.java:18)
 	at net.minecraft.client.render.GameRenderer.handler$zgb000$hyperionclientv3$onRenderWorldHandRendering(GameRenderer.java:1598)
@@ -31,8 +31,8 @@ Thread: Render thread
 Stacktrace:
 	at net.minecraft.client.render.BufferBuilder.begin(BufferBuilder.java:142)
 	at me.hypericats.hyperionclientv3.util.RenderUtil.drawOutlinedBox(RenderUtil.java:76)
-	at me.hypericats.hyperionclientv3.modules.Esp.drawBoxes(Esp.java:193)
-	at me.hypericats.hyperionclientv3.modules.Esp.render(Esp.java:77)
+	at me.hypericats.hyperionclientv3.modules.EntityEsp.drawBoxes(Esp.java:193)
+	at me.hypericats.hyperionclientv3.modules.EntityEsp.render(Esp.java:77)
 	at me.hypericats.hyperionclientv3.modules.HostileEntityEsp.onEvent(HostileEntityEsp.java:34)
 	at me.hypericats.hyperionclientv3.event.EventHandler.onEvent(EventHandler.java:18)
 	at net.minecraft.client.render.GameRenderer.handler$zgb000$hyperionclientv3$onRenderWorldHandRendering(GameRenderer.java:1598)

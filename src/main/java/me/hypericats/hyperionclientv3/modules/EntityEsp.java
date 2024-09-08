@@ -16,12 +16,10 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAttachmentType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Colors;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
@@ -31,8 +29,8 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Esp extends Module implements RenderHandListener, TickListener {
-    public Esp(boolean shouldSaveState) {
+public abstract class EntityEsp extends Module implements RenderHandListener, TickListener {
+    public EntityEsp(boolean shouldSaveState) {
         super(shouldSaveState, false);
         initOptions();
     }

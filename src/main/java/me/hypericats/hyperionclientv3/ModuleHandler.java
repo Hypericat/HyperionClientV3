@@ -50,6 +50,7 @@ public class ModuleHandler {
         modules.add(new ForceRenderBarriers());
         modules.add(new Nuker());
         modules.add(new InvPortal());
+        modules.add(new BlockEntityEsp());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

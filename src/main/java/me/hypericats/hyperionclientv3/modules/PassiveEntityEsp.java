@@ -12,7 +12,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.PassiveEntity;
 
-public class PassiveEntityEsp extends Esp implements RenderHandListener, TickListener, RenderEntityListener {
+public class PassiveEntityEsp extends EntityEsp implements RenderHandListener, TickListener, RenderEntityListener {
     public PassiveEntityEsp() {
         super(true);
     }

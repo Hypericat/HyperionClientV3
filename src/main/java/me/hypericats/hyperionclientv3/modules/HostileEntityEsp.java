@@ -12,7 +12,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.HostileEntity;
 
-public class HostileEntityEsp extends Esp implements RenderHandListener, TickListener, RenderEntityListener {
+public class HostileEntityEsp extends EntityEsp implements RenderHandListener, TickListener, RenderEntityListener {
     public HostileEntityEsp() {
         super(true);
     }

@@ -14,7 +14,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class PlayerEsp extends Esp implements RenderHandListener, TickListener, RenderEntityListener {
+public class PlayerEsp extends EntityEsp implements RenderHandListener, TickListener, RenderEntityListener {
     public PlayerEsp() {
         super(true);
     }

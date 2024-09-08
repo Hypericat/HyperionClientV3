@@ -12,7 +12,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 
-public class ItemEntityEsp extends Esp implements RenderHandListener, TickListener, RenderEntityListener {
+public class ItemEntityEsp extends EntityEsp implements RenderHandListener, TickListener, RenderEntityListener {
     public ItemEntityEsp() {
         super(true);
     }

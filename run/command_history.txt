@@ -24,6 +24,8 @@
 /gamerule commandBlockOutput false
 /clear @s minecraft:cobblestone
 /clear
+/summon minecraft:zombie
 /time set night
 /setblock 268 63 187 bed
 /setblock 268 63 187 blue_bed
+/tp @s 0 100 0

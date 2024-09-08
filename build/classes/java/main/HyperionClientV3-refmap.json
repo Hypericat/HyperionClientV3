@@ -8,6 +8,9 @@
       "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;": "Lnet/minecraft/class_2680;method_26194(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;",
       "computeNext": "Lnet/minecraft/class_5329;computeNext()Ljava/lang/Object;"
     },
+    "me/hypericats/hyperionclientv3/mixin/BlockEntityRendererDispatcherMixin": {
+      "render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V": "Lnet/minecraft/class_824;method_23079(Lnet/minecraft/class_827;Lnet/minecraft/class_2586;FLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
+    },
     "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
       "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
     },
@@ -122,6 +125,9 @@
         "<init>": "Lnet/minecraft/class_5329;<init>(Lnet/minecraft/class_1941;Lnet/minecraft/class_1297;Lnet/minecraft/class_238;ZLjava/util/function/BiFunction;)V",
         "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;": "Lnet/minecraft/class_2680;method_26194(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;",
         "computeNext": "Lnet/minecraft/class_5329;computeNext()Ljava/lang/Object;"
+      },
+      "me/hypericats/hyperionclientv3/mixin/BlockEntityRendererDispatcherMixin": {
+        "render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V": "Lnet/minecraft/class_824;method_23079(Lnet/minecraft/class_827;Lnet/minecraft/class_2586;FLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
         "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"

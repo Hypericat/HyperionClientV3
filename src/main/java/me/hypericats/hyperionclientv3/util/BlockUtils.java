@@ -5,9 +5,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.chunk.WorldChunk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,5 +80,38 @@ public class BlockUtils {
     }
     public static boolean canBeClicked(BlockPos pos, MinecraftClient client) {
         return client.world.getBlockState(pos).getOutlineShape(client.world, pos) != VoxelShapes.empty();
+    }
+
+    public static List<WorldChunk> getLoadedChunks(MinecraftClient client) {
+        List<WorldChunk> chunks = new ArrayList<>();
+        if (client.world == null) return chunks;
+        if (client.player == null) return chunks;
+
+        int viewDistance = client.options.getClampedViewDistance() + 2;
+        ChunkPos center = client.player.getChunkPos();
+        for (ChunkPos chunkX : getXChunks(viewDistance, center)) {
+            for (ChunkPos chunkPos : getZChunks(viewDistance, chunkX)) {
+                if (client.world.isChunkLoaded(chunkPos.x, chunkPos.z)) {
+                    WorldChunk chunk = client.world.getChunk(chunkPos.x, chunkPos.z);
+                    if (chunk == null) continue;
+                    chunks.add(chunk);
+                }
+            }
+        }
+        return chunks;
+    }
+    public static List<ChunkPos> getXChunks(int radius, ChunkPos center) {
+        List<ChunkPos> chunks = new ArrayList<>();
+        for (int x = -radius; x <= radius; x++) {
+            chunks.add(new ChunkPos(center.x + x, center.z));
+        }
+        return chunks;
+    }
+    public static List<ChunkPos> getZChunks(int radius, ChunkPos center) {
+        List<ChunkPos> chunks = new ArrayList<>();
+        for (int z = -radius; z <= radius; z++) {
+            chunks.add(new ChunkPos(center.x, center.z + z));
+        }
+        return chunks;
     }
 }

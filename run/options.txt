@@ -14,7 +14,7 @@ glintStrength:1.0
 prioritizeChunkUpdates:0
 fullscreen:false
 graphicsMode:0
-guiScale:3
+guiScale:2
 maxFps:260
 mipmapLevels:4
 narrator:0
@@ -22,7 +22,7 @@ particles:0
 reducedDebugInfo:false
 renderClouds:"false"
 renderDistance:12
-simulationDistance:12
+simulationDistance:5
 screenEffectScale:1.0
 soundDevice:""
 autoJump:false
