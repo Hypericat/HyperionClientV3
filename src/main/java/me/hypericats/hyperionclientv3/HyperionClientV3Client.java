@@ -75,6 +75,8 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	//fix custom names on player entities (npcs)
 	//open inv in portals
 	//gui screen black instead of blue
+	//when speed and pos gets reset matrices get warped or something and cant move head knida snaps to axis when moving fast horizontally vertical is fine
+	//fix forcerenderbarriers
 
 
 	//Todo

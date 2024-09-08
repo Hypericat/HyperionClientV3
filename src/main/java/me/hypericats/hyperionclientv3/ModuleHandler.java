@@ -48,6 +48,7 @@ public class ModuleHandler {
         modules.add(new WaypointHandler());
         modules.add(new BlockForceResourcePacks());
         modules.add(new ForceRenderBarriers());
+        modules.add(new Nuker());
 
     }
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {

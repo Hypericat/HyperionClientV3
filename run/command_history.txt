@@ -3,3 +3,24 @@
 /enchant @s minecraft:efficiency 2
 /clear
 /tp @s 0 100 0
+/give @s minecraft:netherite_shovel
+/give @s minecraft:command_block
+/setblock ~ ~ ~ glass
+/fill -28 84 -111
+/enchant @s minecraft:efficiency 5
+/fill -42 79 -69
+/fill -42 79 -69 -62 79 -89 bedrock
+/give @s minecraft:wooden_pickaxe
+/setblock -54 79 -76 stone
+/setblock -55 79 -77 stone
+/enchant @s minecraft:efficiency 5
+/give @a netherite_shovel[enchantments={levels:{efficiency:100}},unbreakable={}]
+/give @a minecraft:netherite_pickaxel[enchantments={levels:{efficiency:100}},unbreakable={}]
+/give @a minecraft:netherite_pickaxe[enchantments={levels:{efficiency:100}},unbreakable={}]
+/setblock ~ ~ ~ glass
+/fill -43 84 -96
+/fill -43 84 -96 ~ ~ ~ stone
+/fill -43 84 -96 -55 95 -112 stone
+/gamerule commandBlockOutput false
+/clear @s minecraft:cobblestone
+/clear

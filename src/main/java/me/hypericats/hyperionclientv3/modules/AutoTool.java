@@ -63,6 +63,9 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
         oldSlot = -1;
     }
     public void onAttackBlock(BlockPos block, Direction dir, MinecraftClient client) {
+        syncSlot(block, client);
+    }
+    public void syncSlot(BlockPos block, MinecraftClient client) {
         BlockState state = client.world.getBlockState(block);
         if (state.getOutlineShape(client.world, block) == VoxelShapes.empty()) return;
 

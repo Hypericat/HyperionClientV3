@@ -66,7 +66,6 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
         if (showBlinkStatus.getValue() && ModuleHandler.isModuleEnable(Blink.class)) {
             client.textRenderer.draw("Blink ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Blink") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f + 8f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
         }
-
         float yPos = 2f;
         if (!client.getDebugHud().shouldShowDebugHud()) {
             if (showFps.getValue()) {

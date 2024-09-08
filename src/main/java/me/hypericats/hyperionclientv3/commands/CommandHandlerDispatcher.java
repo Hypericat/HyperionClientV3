@@ -38,6 +38,7 @@ public class CommandHandlerDispatcher {
         commands.add(new DamageCommand());
         commands.add(new WaypointsCommand());
         commands.add(new InvCommand());
+        commands.add(new RepCommand());
     }
     public static String stripCommandNominator(String string) {
         if (string.startsWith(getCommandNominator())) return string.substring(getCommandNominator().length());
