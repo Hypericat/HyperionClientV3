@@ -51,7 +51,7 @@ public class Flight extends Module implements TickListener {
     public void doBypass(Vec3d pos, MinecraftClient client) {
         ticks++;
         if (ticks >= tickInterval.getValue()) {
-            PacketUtil.sendPos(pos.getX(), pos.getY() - dropDistance.getValue(),pos.getZ(), client.player.isOnGround());
+            PacketUtil.sendPos(pos.getX(), pos.getY() - dropDistance.getValue(), pos.getZ(), client.player.isOnGround());
             ticks = 0;
         }
         if (ticks == 1) {
