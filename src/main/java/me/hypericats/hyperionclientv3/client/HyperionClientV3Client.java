@@ -4,6 +4,7 @@ import me.hypericats.hyperionclientv3.KeybindLoader;
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.util.FileUtil;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

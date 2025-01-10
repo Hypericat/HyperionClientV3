@@ -15,7 +15,10 @@ import net.minecraft.network.PacketCallbacks;
 import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.config.SelectKnownPacksC2SPacket;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.profiler.MultiValueDebugSampleLogImpl;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,17 +37,11 @@ public abstract class ClientConnectionMixin implements IClientConnection {
 
 	@Shadow protected abstract void sendImmediately(Packet<?> packet, @Nullable PacketCallbacks callbacks, boolean flush);
 
+	@Shadow public abstract void resetPacketSizeLog(MultiValueDebugSampleLogImpl log);
+
 	@Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
 	private void onSendPacket(Packet<?> packet, PacketCallbacks callbacks, CallbackInfo ci) {
 		SendPacketData data = new SendPacketData(packet, callbacks);
-		if (data.getPacket() instanceof SelectKnownPacksC2SPacket pack) {
-			ByteBuf buf = Unpooled.buffer();
-			SelectKnownPacksC2SPacket.CODEC.encode(buf, pack);
-			System.out.println("Found selectKnownPacks: ");
-			debugBuf(buf);
-
-
-		}
 		EventHandler.onEvent(SendPacketListener.class, data);
 		if (!data.isCancelled()) return;
 		ci.cancel();

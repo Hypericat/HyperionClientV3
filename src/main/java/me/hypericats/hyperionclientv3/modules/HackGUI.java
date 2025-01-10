@@ -16,6 +16,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.ColorHelper;
@@ -44,6 +45,7 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
             updateModuleListOrder((ModuleToggleData) data);
             return;
         }
+
 
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.getWindow() == null) return;

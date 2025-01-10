@@ -18,6 +18,10 @@ public class VanillaSpoofer extends Module implements SendPacketListener {
 
     @Override
     public void onEvent(EventData data) {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("Warning vanilla spoofer manual return! please fix!");
+        }
+        if (true) return;
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         SendPacketData packetData = (SendPacketData) data;
