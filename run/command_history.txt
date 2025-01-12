@@ -29,9 +29,15 @@
 /setblock 268 63 187 bed
 /setblock 268 63 187 blue_bed
 /tp @s 0 100 0
+/give @s minecraft:diamond_pickaxe
+/gamerule maxEntityCramming 1312312312
+/tp @s ~ 5000 ~
 /summon minecraft:zombie
 /tp @s Winston0
 /kill Winston0
 /gamemode creative Winstona0
 /weather clear
 /give @s minecraft:diamond_shovel
+/gamemode spectator
+/gamemode creative
+/gamemode spectator

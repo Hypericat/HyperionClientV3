@@ -34,9 +34,11 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
     private BooleanOption doOffGroundBypass;
     private BooleanOption blockSneaks;
     private BooleanOption blockLooks;
+    private BooleanOption reload;
     private boolean isOnGround;
     private Flight flight;
 
+    //Look at ChunkOcclusionDataBuilderMixin, this makes it so the blocks aren't culled underground
     @Override
     public void onEvent(EventData data) {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -94,6 +96,10 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
 
         isOnGround = client.player.isOnGround();
 
+        if(reload.getValue()) {
+            client.worldRenderer.reload();
+        }
+
         EventHandler.register(TickListener.class, this);
         EventHandler.register(SendPacketListener.class, this);
         EventHandler.register(IsFullCubeListener.class, this);
@@ -104,10 +110,12 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
         doOffGroundBypass = new BooleanOption(true, "Bypass Mid Air Kick", true);
         blockLooks = new BooleanOption(true, "Block Look Packets", true);
         blockSneaks = new BooleanOption(true, "Block Sneak Packets", true);
+        reload = new BooleanOption(true, "Reload World", true);
 
         options.addOption(doOffGroundBypass);
         options.addOption(blockLooks);
         options.addOption(blockSneaks);
+        options.addOption(reload);
     }
     public Vec3d getFakePlayerPosition() {
         if (fakePlayer != null)
@@ -133,6 +141,10 @@ public class Freecam extends Module implements TickListener, SendPacketListener,
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         client.player.setVelocity(Vec3d.ZERO);
+
+        if(reload.getValue()) {
+            client.worldRenderer.reload();
+        }
     }
 
     @Override

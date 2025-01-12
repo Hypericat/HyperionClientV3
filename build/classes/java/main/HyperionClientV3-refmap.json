@@ -1,6 +1,7 @@
 {
   "mappings": {
     "me/hypericats/hyperionclientv3/mixin/AbstractBlockStateMixin": {
+      "getAmbientOcclusionLightLevel(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F": "Lnet/minecraft/class_4970$class_4971;method_26210(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)F",
       "isFullCube(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z": "Lnet/minecraft/class_4970$class_4971;method_26234(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)Z"
     },
     "me/hypericats/hyperionclientv3/mixin/BlockCollisionSpliteratorMixin": {
@@ -12,7 +13,8 @@
       "render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V": "Lnet/minecraft/class_824;method_23079(Lnet/minecraft/class_827;Lnet/minecraft/class_2586;FLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
-      "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
+      "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F",
+      "shouldDrawSide": "Lnet/minecraft/class_2248;method_9607(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;Lnet/minecraft/class_2338;)Z"
     },
     "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
       "addVisibleMessage": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_303;)V"
@@ -20,6 +22,9 @@
     "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
       "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
       "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
+    },
+    "me/hypericats/hyperionclientv3/mixin/ChunkOcclusionDataBuilderMixin": {
+      "markClosed(Lnet/minecraft/util/math/BlockPos;)V": "Lnet/minecraft/class_852;method_3682(Lnet/minecraft/class_2338;)V"
     },
     "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
       "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"
@@ -119,6 +124,7 @@
   "data": {
     "named:intermediary": {
       "me/hypericats/hyperionclientv3/mixin/AbstractBlockStateMixin": {
+        "getAmbientOcclusionLightLevel(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F": "Lnet/minecraft/class_4970$class_4971;method_26210(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)F",
         "isFullCube(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z": "Lnet/minecraft/class_4970$class_4971;method_26234(Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)Z"
       },
       "me/hypericats/hyperionclientv3/mixin/BlockCollisionSpliteratorMixin": {
@@ -130,7 +136,8 @@
         "render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V": "Lnet/minecraft/class_824;method_23079(Lnet/minecraft/class_827;Lnet/minecraft/class_2586;FLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/BlockMixin": {
-        "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F"
+        "getVelocityMultiplier": "Lnet/minecraft/class_2248;method_23349()F",
+        "shouldDrawSide": "Lnet/minecraft/class_2248;method_9607(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_2350;Lnet/minecraft/class_2338;)Z"
       },
       "me/hypericats/hyperionclientv3/mixin/ChatHudMixin": {
         "addVisibleMessage": "Lnet/minecraft/class_338;method_1815(Lnet/minecraft/class_303;)V"
@@ -138,6 +145,9 @@
       "me/hypericats/hyperionclientv3/mixin/ChatScreenMixin": {
         "mouseClicked": "Lnet/minecraft/class_408;method_25402(DDI)Z",
         "render": "Lnet/minecraft/class_408;method_25394(Lnet/minecraft/class_332;IIF)V"
+      },
+      "me/hypericats/hyperionclientv3/mixin/ChunkOcclusionDataBuilderMixin": {
+        "markClosed(Lnet/minecraft/util/math/BlockPos;)V": "Lnet/minecraft/class_852;method_3682(Lnet/minecraft/class_2338;)V"
       },
       "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
         "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"

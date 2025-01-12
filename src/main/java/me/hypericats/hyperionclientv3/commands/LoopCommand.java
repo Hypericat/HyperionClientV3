@@ -1,6 +1,7 @@
 package me.hypericats.hyperionclientv3.commands;
 
 import me.hypericats.hyperionclientv3.util.ChatUtils;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.util.StringHelper;

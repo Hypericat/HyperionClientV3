@@ -189,7 +189,7 @@ public class BlockEntityEsp extends Module implements RenderHandListener, TickLi
 
     @Override
     public HackType getHackType() {
-        return HackType.RENDER;
+        return HackType.ESP;
     }
     @Override
     public void execute(int button) {

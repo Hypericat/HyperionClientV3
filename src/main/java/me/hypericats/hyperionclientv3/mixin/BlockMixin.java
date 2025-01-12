@@ -2,16 +2,18 @@ package me.hypericats.hyperionclientv3.mixin;
 
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventHandler;
-import me.hypericats.hyperionclientv3.events.InGameHudRenderListener;
-import me.hypericats.hyperionclientv3.events.eventData.InGameHudRenderData;
+import me.hypericats.hyperionclientv3.events.RenderBlockSideListener;
+import me.hypericats.hyperionclientv3.events.eventData.RenderBlockSideData;
 import me.hypericats.hyperionclientv3.modules.NoSlow;
+import me.hypericats.hyperionclientv3.util.NullBool;
 import net.minecraft.block.Block;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Block.class)
@@ -20,5 +22,19 @@ public class BlockMixin {
     private void onGetVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
         if (!ModuleHandler.isModuleEnable(NoSlow.class)) return;
         cir.setReturnValue(Math.max(cir.getReturnValueF(), 1f));
+    }
+
+    @Inject(at = @At("HEAD"), method = "shouldDrawSide", cancellable = true)
+    private static void shouldDrawSide(BlockState state, BlockView world, BlockPos pos, Direction side, BlockPos otherPos, CallbackInfoReturnable<Boolean> cir) {
+
+        RenderBlockSideData data = new RenderBlockSideData(state, world, pos, side, otherPos);
+        EventHandler.onEvent(RenderBlockSideListener.class, data);
+
+        NullBool cancel = data.isCancelledAsNullBool();
+        // No effect on cir
+        if (cancel == NullBool.NULL) return;
+
+        // Cancel if I dont want to render
+        cir.setReturnValue(!cancel.toBool());
     }
 }

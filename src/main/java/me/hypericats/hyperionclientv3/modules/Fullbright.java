@@ -10,6 +10,7 @@ import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.eventData.SettingsChangeData;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.SimpleOption;
 import net.minecraft.entity.effect.StatusEffectInstance;

@@ -1,12 +1,14 @@
 package me.hypericats.hyperionclientv3.event;
 
+import me.hypericats.hyperionclientv3.util.NullBool;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class EventData {
     private List<Object> objects = new ArrayList<>();
-    private boolean cancelled = false;
+    private NullBool cancelled = NullBool.NULL;
     public EventData(Object obj) {
         this(new Object[]{obj});
     }
@@ -41,12 +43,21 @@ public class EventData {
         return objects.size();
     }
     public void cancel() {
-        cancelled = true;
+        cancelled = NullBool.TRUE;
     }
     public boolean isCancelled() {
-        return cancelled;
+        return cancelled.toBool();
     }
+
     public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
+        if (cancelled) {
+            this.cancelled = NullBool.TRUE;
+            return;
+        }
+        this.cancelled = NullBool.FALSE;
+    }
+
+    public NullBool isCancelledAsNullBool() {
+        return cancelled;
     }
 }

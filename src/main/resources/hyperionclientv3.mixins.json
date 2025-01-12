@@ -4,6 +4,7 @@
   "package": "me.hypericats.hyperionclientv3.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractBlockMixin",
     "ChunkRegionMixin",
     "MinecraftServerMixin"
   ],
@@ -14,6 +15,7 @@
     "BlockMixin",
     "ChatHudMixin",
     "ChatScreenMixin",
+    "ChunkOcclusionDataBuilderMixin",
     "ClientConnectionMixin",
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",

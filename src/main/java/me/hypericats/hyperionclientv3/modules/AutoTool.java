@@ -4,12 +4,12 @@ import me.hypericats.hyperionclientv3.HackType;
 import me.hypericats.hyperionclientv3.Module;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
-import me.hypericats.hyperionclientv3.events.AttackBlockListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
 import me.hypericats.hyperionclientv3.events.UpdateBlockBreakingProgressListener;
-import me.hypericats.hyperionclientv3.events.eventData.AttackBlockData;
 import me.hypericats.hyperionclientv3.events.eventData.UpdateBlockBreakingProgressData;
-import me.hypericats.hyperionclientv3.util.BlockUtils;
+import me.hypericats.hyperionclientv3.util.IAbstractBlock;
+import me.hypericats.hyperionclientv3.util.ChatUtils;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
@@ -17,17 +17,17 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.GameMode;
 
-import java.lang.ref.Reference;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class AutoTool extends Module implements TickListener, UpdateBlockBreakingProgressListener {
@@ -43,6 +43,7 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
         if (client.interactionManager == null) return;
         if (client.world == null) return;
         if (client.interactionManager.getCurrentGameMode() != GameMode.SURVIVAL) return;
+
 
         if (data instanceof UpdateBlockBreakingProgressData blockData) {
             onAttackBlock(blockData.getBlockPos(), blockData.getDirection(), client);
@@ -64,6 +65,7 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
     }
     public void onAttackBlock(BlockPos block, Direction dir, MinecraftClient client) {
         syncSlot(block, client);
+        ChatUtils.sendDebug(1f / client.world.getBlockState(block).calcBlockBreakingDelta(client.player, client.world, block));
     }
     public void syncSlot(BlockPos block, MinecraftClient client) {
         BlockState state = client.world.getBlockState(block);
@@ -113,6 +115,20 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
     public void onEnable() {
         EventHandler.register(TickListener.class, this);
         EventHandler.register(UpdateBlockBreakingProgressListener.class, this);
+        System.out.println("START");
+        List<String> strings = new ArrayList<>();
+        for (Block block : Registries.BLOCK.stream().toList()) {
+            if (!((IAbstractBlock) block).isCollision()) {
+                String str = (block.asItem().toString().toUpperCase().replace("MINECRAFT:", ""));
+                if (strings.contains(str)) continue;
+                System.out.println(str);
+                strings.add(str);
+            }
+
+
+        }
+        System.out.println("END");
+
     }
 
     @Override

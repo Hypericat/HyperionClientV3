@@ -4,69 +4,72 @@ import me.hypericats.hyperionclientv3.modules.*;
 import net.minecraft.client.util.InputUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ModuleHandler {
-    private static final List<Module> modules = new ArrayList<>();
+    private static final HashMap<Class<?>, Module> modules = new HashMap<>();
     private static KeyInputHandler inputHandler;
     public static void initModules() {
         if (!modules.isEmpty()) return;
         inputHandler = new KeyInputHandler();
 
-        modules.add(new Flight());
-        modules.add(new KillAura());
-        modules.add(new Criticals());
-        modules.add(new Fullbright());
-        modules.add(new HackGUI());
-        modules.add(new InvWalk());
-        modules.add(new VClip());
-        modules.add(new InfAura());
-        modules.add(new Freecam());
-        modules.add(new NoFall());
-        modules.add(new VanillaSpoofer());
-        modules.add(new FastBreak());
-        modules.add(new AntiEffect());
-        modules.add(new NoOverlay());
-        modules.add(new LedgeProtection());
-        modules.add(new Velocity());
-        modules.add(new Blink());
-        modules.add(new Friends());
-        modules.add(new PlayerEsp());
-        modules.add(new HostileEntityEsp());
-        modules.add(new PassiveEntityEsp());
-        modules.add(new ItemEntityEsp());
-        modules.add(new ServerPlayerPacketBlocker());
-        modules.add(new NoSlow());
-        modules.add(new Zoom());
-        modules.add(new FastPlace());
-        modules.add(new AutoHit());
-        modules.add(new AutoTool());
-        modules.add(new Speed());
-        modules.add(new SmallHandRenderer());
-        modules.add(new BiggerHitboxes());
-        modules.add(new Jesus());
-        modules.add(new WaypointHandler());
-        modules.add(new BlockForceResourcePacks());
-        modules.add(new ForceRenderBarriers());
-        modules.add(new Nuker());
-        modules.add(new InvPortal());
-        modules.add(new BlockEntityEsp());
-
+        initModule(new Flight());
+        initModule(new KillAura());
+        initModule(new Criticals());
+        initModule(new Fullbright());
+        initModule(new HackGUI());
+        initModule(new InvWalk());
+        initModule(new VClip());
+        initModule(new InfAura());
+        initModule(new Freecam());
+        initModule(new NoFall());
+        initModule(new VanillaSpoofer());
+        initModule(new FastBreak());
+        initModule(new AntiEffect());
+        initModule(new NoOverlay());
+        initModule(new LedgeProtection());
+        initModule(new Velocity());
+        initModule(new Blink());
+        initModule(new Friends());
+        initModule(new PlayerEsp());
+        initModule(new HostileEntityEsp());
+        initModule(new PassiveEntityEsp());
+        initModule(new ItemEntityEsp());
+        initModule(new ServerPlayerPacketBlocker());
+        initModule(new NoSlow());
+        initModule(new Zoom());
+        initModule(new FastPlace());
+        initModule(new AutoHit());
+        initModule(new AutoTool());
+        initModule(new Speed());
+        initModule(new SmallHandRenderer());
+        initModule(new BiggerHitboxes());
+        initModule(new Jesus());
+        initModule(new WaypointHandler());
+        initModule(new BlockForceResourcePacks());
+        initModule(new ForceRenderBarriers());
+        initModule(new Nuker());
+        initModule(new InvPortal());
+        initModule(new BlockEntityEsp());
+        initModule(new Xray());
     }
+
+    private static void initModule(Module module) {
+        modules.put(module.getClass(), module);
+    }
+
     public static<T extends Module> Module getModuleByClass(Class<T> clss) {
-        for (Module m : modules) {
-            if (clss.isInstance(m)) return m;
-        }
-        return null;
+        return modules.get(clss);
     }
     public static Module getModuleByName(String name) {
-        for (Module m : modules) {
+        for (Module m : modules.values()) {
             if (m.getName().equalsIgnoreCase(name)) return m;
         }
         return null;
     }
     public static List<Module> getModules() {
-        return modules;
+        return modules.values().stream().toList();
     }
     public static<T extends Module>  boolean isModuleEnable(Class<T> clss) {
         Module module = getModuleByClass(clss);
@@ -77,7 +80,7 @@ public class ModuleHandler {
     //Perhaps use hashmap?
     public static List<Module> getModulesByKeybind(InputUtil.Key key) {
         List<Module> mod = new ArrayList<>();
-        for (Module m : modules) {
+        for (Module m : modules.values()) {
             if (m.getKey() == null) continue;
             if (m.getKey().getTranslationKey().equalsIgnoreCase(key.getTranslationKey())) mod.add(m);
         }

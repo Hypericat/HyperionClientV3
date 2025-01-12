@@ -4,6 +4,7 @@ import me.hypericats.hyperionclientv3.Waypoint;
 import me.hypericats.hyperionclientv3.mixinInterface.IScreen;
 import me.hypericats.hyperionclientv3.modules.WaypointHandler;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
+import me.hypericats.hyperionclientv3.util.PlayerInteractEntityC2SPacketHandler;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -12,6 +13,7 @@ import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
