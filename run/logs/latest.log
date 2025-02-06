@@ -1,5 +1,5 @@
-[18:36:40] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.5
-[18:36:40] [main/INFO] (FabricLoader) Loading 55 mods:
+[14:36:35] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.5
+[14:36:36] [main/INFO] (FabricLoader) Loading 55 mods:
 	- fabric-api 0.103.0+1.21.1
 	- fabric-api-base 0.4.42+6573ed8c19
 	- fabric-api-lookup-api-v1 1.6.68+b559734419
@@ -55,268 +55,409 @@
 	- java 21
 	- minecraft 1.21.1
 	- mixinextras 0.4.1
-[18:36:40] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.3+mixin.0.8.7/51ee0a44ab05f6fddd66b09e66b3a16904f9c55d/sponge-mixin-0.15.3+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[18:36:40] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[18:36:40] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[18:36:40] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[18:36:41] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[18:36:42] [Datafixer Bootstrap/INFO] (Minecraft) 226 Datafixer optimizations took 304 milliseconds
-[18:36:42] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[18:36:46] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[18:36:46] [Render thread/INFO] (Minecraft) Setting user: User
-[18:36:46] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[18:36:47] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
-[18:36:48] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-renderer-registries-v1, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v0, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader
-[18:36:48] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
-[18:36:48] [Worker-Main-20/INFO] (Minecraft) Found unifont_jp_patch-15.1.05.hex, loading
-[18:36:48] [Worker-Main-11/INFO] (Minecraft) Found unifont_all_no_pua-15.1.05.hex, loading
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: START
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: AIR
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_SAPLING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_PROPAGULE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: POWERED_RAIL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DETECTOR_RAIL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: COBWEB
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SHORT_GRASS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: FERN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUSH
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SEAGRASS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DANDELION
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TORCHFLOWER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: POPPY
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BLUE_ORCHID
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ALLIUM
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: AZURE_BLUET
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: RED_TULIP
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ORANGE_TULIP
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WHITE_TULIP
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_TULIP
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OXEYE_DAISY
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CORNFLOWER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WITHER_ROSE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LILY_OF_THE_VALLEY
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BROWN_MUSHROOM
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: RED_MUSHROOM
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TORCH
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: REDSTONE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WHEAT_SEEDS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: RAIL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_HANGING_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LEVER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: STONE_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: REDSTONE_TORCH
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: STONE_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SUGAR_CANE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SOUL_TORCH
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PUMPKIN_SEEDS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MELON_SEEDS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: VINE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: GLOW_LICHEN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: NETHER_WART
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TRIPWIRE_HOOK
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: STRING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CARROT
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: POTATO
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_WEIGHTED_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: HEAVY_WEIGHTED_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ACTIVATOR_RAIL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SUNFLOWER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LILAC
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ROSE_BUSH
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PEONY
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TALL_GRASS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LARGE_FERN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WHITE_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: ORANGE_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: MAGENTA_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_BLUE_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: YELLOW_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LIME_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: GRAY_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_GRAY_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CYAN_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PURPLE_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BLUE_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BROWN_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: GREEN_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: RED_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BLACK_BANNER
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TORCHFLOWER_SEEDS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PITCHER_POD
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PITCHER_PLANT
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BEETROOT_SEEDS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: STRUCTURE_VOID
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: KELP
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_TUBE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BRAIN_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUBBLE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_FIRE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_HORN_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TUBE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BRAIN_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BUBBLE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: FIRE_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: HORN_CORAL
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_TUBE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BRAIN_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUBBLE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_FIRE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_HORN_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TUBE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BRAIN_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BUBBLE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: FIRE_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: HORN_CORAL_FAN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SCAFFOLDING
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SWEET_BERRIES
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_FUNGUS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_ROOTS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: NETHER_SPROUTS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_FUNGUS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WEEPING_VINES
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: TWISTING_VINES
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_ROOTS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_SIGN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: POLISHED_BLACKSTONE_PRESSURE_PLATE
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: POLISHED_BLACKSTONE_BUTTON
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SCULK_VEIN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: GLOW_BERRIES
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SPORE_BLOSSOM
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_PETALS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: BIG_DRIPLEAF
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: SMALL_DRIPLEAF
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: HANGING_ROOTS
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: FROGSPAWN
-[18:36:48] [Render thread/INFO] (Minecraft) [STDOUT]: END
-[18:36:49] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[18:36:49] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[18:36:49] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Razer BlackShark V2 X USB)
-[18:36:49] [Render thread/INFO] (Minecraft) Sound engine started
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[18:36:49] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[18:36:49] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[18:37:39] [Render thread/INFO] (Minecraft) Loaded 1290 recipes
-[18:37:39] [Render thread/INFO] (Minecraft) Loaded 1399 advancements
-[18:37:39] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 1.386 ms
-[18:37:39] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.21.1
-[18:37:39] [Server thread/INFO] (Minecraft) Generating keypair
-[18:37:39] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[18:37:40] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
-[18:37:40] [progressListener/INFO] (Minecraft) Time elapsed: 391 ms
-[18:37:40] [Server thread/INFO] (Minecraft) Changing view distance to 13, from 10
-[18:37:40] [Server thread/INFO] (Minecraft) Changing simulation distance to 5, from 0
-[18:37:41] [Server thread/INFO] (Minecraft) User[local:E:0965e4dd] logged in with entity id 60 at (0.5222539986205722, -8.0, -33.30000001192093)
-[18:37:41] [Server thread/INFO] (Minecraft) User joined the game
-[18:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:41] [Render thread/INFO] (Minecraft) Loaded 2 advancements
-[18:37:53] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Xray§r has been §cdisabled
-[18:37:56] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §aenabled
-[18:37:56] [Render thread/WARN] (Minecraft) Duplicate entity UUID da075988-6245-3890-84d4-251ff8c86547: FakePlayerEntity['User'/469, l='ClientLevel', x=0.41, y=-8.00, z=-33.70]
-[18:37:57] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §cdisabled
-[18:37:58] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:37:58] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:37:59] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:37:59] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:00] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:01] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:01] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §aenabled
-[18:38:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §cdisabled
-[18:38:05] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:06] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:06] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §aenabled
-[18:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Freecam§r has been §cdisabled
-[18:38:09] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:09] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:09] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:10] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:10] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
-[18:38:25] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[18:38:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:overworld
-[18:38:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_nether
-[18:38:25] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_end
-[18:38:26] [Render thread/INFO] (Minecraft) [STDOUT]: Saving Waypoints
-[18:38:26] [Render thread/INFO] (Minecraft) [STDOUT]: Saving Waypoints
-[18:38:26] [Render thread/INFO] (Minecraft) [STDOUT]: Saving Waypoints
-[18:38:26] [Render thread/INFO] (Minecraft) [STDOUT]: Saving Waypoints
-[18:38:26] [Render thread/INFO] (Minecraft) [STDOUT]: Saving Waypoints
-[18:38:26] [Server thread/INFO] (Minecraft) User lost connection: Disconnected
-[18:38:26] [Server thread/INFO] (Minecraft) User left the game
-[18:38:26] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[18:38:26] [Server thread/INFO] (Minecraft) Stopping server
-[18:38:26] [Server thread/INFO] (Minecraft) Saving players
-[18:38:26] [Server thread/INFO] (Minecraft) Saving worlds
-[18:38:26] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:overworld
-[18:38:26] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_nether
-[18:38:26] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_end
-[18:38:26] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (Test): All chunks are saved
-[18:38:26] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[18:38:26] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[18:38:26] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
-[18:38:27] [Render thread/INFO] (Minecraft) Stopping!
+[14:36:36] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.3+mixin.0.8.7/51ee0a44ab05f6fddd66b09e66b3a16904f9c55d/sponge-mixin-0.15.3+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[14:36:36] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[14:36:36] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
+[14:36:36] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[14:36:38] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[14:36:40] [Datafixer Bootstrap/INFO] (Minecraft) 226 Datafixer optimizations took 783 milliseconds
+[14:36:49] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[14:36:49] [Render thread/INFO] (Minecraft) Setting user: User
+[14:36:50] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[14:36:51] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
+[14:36:52] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-renderer-registries-v1, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v0, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader
+[14:36:53] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
+[14:36:53] [Worker-Main-13/INFO] (Minecraft) Found unifont_all_no_pua-15.1.05.hex, loading
+[14:36:53] [Worker-Main-15/INFO] (Minecraft) Found unifont_jp_patch-15.1.05.hex, loading
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: START
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: AIR
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_SAPLING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_PROPAGULE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: POWERED_RAIL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DETECTOR_RAIL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: COBWEB
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SHORT_GRASS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: FERN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUSH
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SEAGRASS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DANDELION
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TORCHFLOWER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: POPPY
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BLUE_ORCHID
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ALLIUM
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: AZURE_BLUET
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: RED_TULIP
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ORANGE_TULIP
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WHITE_TULIP
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_TULIP
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OXEYE_DAISY
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CORNFLOWER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WITHER_ROSE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LILY_OF_THE_VALLEY
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BROWN_MUSHROOM
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: RED_MUSHROOM
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TORCH
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: REDSTONE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WHEAT_SEEDS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: RAIL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_HANGING_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LEVER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: STONE_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: REDSTONE_TORCH
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: STONE_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SUGAR_CANE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SOUL_TORCH
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PUMPKIN_SEEDS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MELON_SEEDS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: VINE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: GLOW_LICHEN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: NETHER_WART
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TRIPWIRE_HOOK
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: STRING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CARROT
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: POTATO
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: OAK_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPRUCE_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIRCH_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: JUNGLE_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACACIA_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CHERRY_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DARK_OAK_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MANGROVE_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BAMBOO_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_WEIGHTED_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: HEAVY_WEIGHTED_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ACTIVATOR_RAIL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SUNFLOWER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LILAC
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ROSE_BUSH
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PEONY
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TALL_GRASS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LARGE_FERN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WHITE_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: ORANGE_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: MAGENTA_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_BLUE_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: YELLOW_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LIME_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: GRAY_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: LIGHT_GRAY_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CYAN_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PURPLE_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BLUE_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BROWN_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: GREEN_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: RED_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BLACK_BANNER
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TORCHFLOWER_SEEDS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PITCHER_POD
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PITCHER_PLANT
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BEETROOT_SEEDS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: STRUCTURE_VOID
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: KELP
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_TUBE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BRAIN_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUBBLE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_FIRE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_HORN_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TUBE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BRAIN_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BUBBLE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: FIRE_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: HORN_CORAL
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_TUBE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BRAIN_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_BUBBLE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_FIRE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: DEAD_HORN_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TUBE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BRAIN_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BUBBLE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: FIRE_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: HORN_CORAL_FAN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SCAFFOLDING
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SWEET_BERRIES
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_FUNGUS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_ROOTS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: NETHER_SPROUTS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_FUNGUS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WEEPING_VINES
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: TWISTING_VINES
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_ROOTS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: CRIMSON_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: WARPED_SIGN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: POLISHED_BLACKSTONE_PRESSURE_PLATE
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: POLISHED_BLACKSTONE_BUTTON
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SCULK_VEIN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: GLOW_BERRIES
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SPORE_BLOSSOM
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: PINK_PETALS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: BIG_DRIPLEAF
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: SMALL_DRIPLEAF
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: HANGING_ROOTS
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: FROGSPAWN
+[14:36:53] [Render thread/INFO] (Minecraft) [STDOUT]: END
+[14:36:55] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
+[14:36:55] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[14:36:55] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[14:36:55] [Render thread/INFO] (Minecraft) Sound engine started
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[14:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[14:36:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[14:36:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[14:36:56] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[14:36:56] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[14:36:56] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[14:36:56] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[14:37:01] [Render thread/INFO] (Minecraft) Loaded 1290 recipes
+[14:37:02] [Render thread/INFO] (Minecraft) Loaded 1399 advancements
+[14:37:02] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 3.601 ms
+[14:37:02] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.21.1
+[14:37:02] [Server thread/INFO] (Minecraft) Generating keypair
+[14:37:04] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[14:37:04] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[14:37:04] [progressListener/INFO] (Minecraft) Preparing spawn area: 0%
+[14:37:04] [progressListener/INFO] (Minecraft) Time elapsed: 823 ms
+[14:37:05] [Server thread/INFO] (Minecraft) Changing view distance to 13, from 10
+[14:37:05] [Server thread/INFO] (Minecraft) Changing simulation distance to 5, from 0
+[14:37:06] [Server thread/INFO] (Minecraft) User[local:E:23b5bfc4] logged in with entity id 108 at (3.3855381945900125, 59.200000047683716, -29.363460375750552)
+[14:37:06] [Server thread/INFO] (Minecraft) User joined the game
+[14:37:07] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[14:37:07] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[14:37:07] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[14:37:07] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[14:37:07] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[14:37:07] [Render thread/INFO] (Minecraft) [System] [CHAT] §cBoundingBox does not work in singlePlayer, it will not work while in this world!
+[14:37:07] [Render thread/INFO] (hyperionclientv3) §cBoundingBox does not work in singlePlayer, it will not work while in this world!
+[14:37:07] [Render thread/INFO] (Minecraft) Loaded 3 advancements
+[14:37:10] [Server thread/INFO] (Minecraft) [User: Set own game mode to Survival Mode]
+[14:37:10] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Survival Mode
+[14:37:10] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:11] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:12] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:13] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:14] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:15] [Server thread/INFO] (Minecraft) [User: Set own game mode to Creative Mode]
+[14:37:15] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Creative Mode
+[14:37:15] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:15] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:15] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:16] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:17] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:17] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:17] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:17] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:18] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:18] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:18] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:18] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:18] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:19] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:19] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:19] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:19] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4NoBlockParticles§r has been §cdisabled
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:25] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:26] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:27] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:27] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:27] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:27] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4NoBlockParticles§r has been §aenabled
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:30] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:31] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:32] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:33] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:33] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:33] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:33] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:33] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:34] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:35] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:35] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:35] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:35] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:36] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:36] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:37] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:37] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:38] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:39] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:39] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:39] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:39] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:40] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:41] [Render thread/INFO] (Minecraft) [STDOUT]: Progress!
+[14:37:41] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[14:37:41] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:overworld
+[14:37:42] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_nether
+[14:37:42] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test]'/minecraft:the_end

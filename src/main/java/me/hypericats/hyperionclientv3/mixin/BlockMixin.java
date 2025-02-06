@@ -4,16 +4,23 @@ import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.RenderBlockSideListener;
 import me.hypericats.hyperionclientv3.events.eventData.RenderBlockSideData;
+import me.hypericats.hyperionclientv3.modules.NoBlockParticles;
 import me.hypericats.hyperionclientv3.modules.NoSlow;
 import me.hypericats.hyperionclientv3.util.NullBool;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Block.class)
@@ -36,5 +43,10 @@ public class BlockMixin {
 
         // Cancel if I dont want to render
         cir.setReturnValue(!cancel.toBool());
+    }
+
+    @Inject(at = @At("HEAD"), method = {"spawnBreakParticles"}, cancellable = true)
+    private void onSpawnBreakParticles(World world, PlayerEntity player, BlockPos pos, BlockState state, CallbackInfo ci) {
+        if (ModuleHandler.isModuleEnable(NoBlockParticles.class)) ci.cancel();
     }
 }

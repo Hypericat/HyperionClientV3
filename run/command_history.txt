@@ -41,3 +41,5 @@
 /gamemode spectator
 /gamemode creative
 /gamemode spectator
+/particle minecraft:dust_pillar
+/particle dust_pillar{block_state:{Name:redstone_block}} ~ ~1 ~ .2 .2 .2 .0001 100 normal

@@ -53,6 +53,7 @@ public class ModuleHandler {
         initModule(new InvPortal());
         initModule(new BlockEntityEsp());
         initModule(new Xray());
+        initModule(new NoBlockParticles());
     }
 
     private static void initModule(Module module) {

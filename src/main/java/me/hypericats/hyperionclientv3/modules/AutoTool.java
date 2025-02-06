@@ -65,7 +65,7 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
     }
     public void onAttackBlock(BlockPos block, Direction dir, MinecraftClient client) {
         syncSlot(block, client);
-        ChatUtils.sendDebug(1f / client.world.getBlockState(block).calcBlockBreakingDelta(client.player, client.world, block));
+        //ChatUtils.sendDebug(1f / client.world.getBlockState(block).calcBlockBreakingDelta(client.player, client.world, block));
     }
     public void syncSlot(BlockPos block, MinecraftClient client) {
         BlockState state = client.world.getBlockState(block);
