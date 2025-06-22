@@ -40,7 +40,7 @@ public abstract class ChatScreenMixin extends Screen {
     @Inject(at = @At(value = "HEAD"), method = "render")
     private void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (!this.chatField.getText().startsWith(CommandHandlerDispatcher.getCommandNominator())) return;
-        RenderUtil.fillWithBorder(context, 2, this.height - 14, this.width - 2, this.height -2, 0, ColorHelper.Argb.getArgb(255, 0, 255, 255), 1);
+        RenderUtil.fillWithBorder(context, 2, this.height - 14, this.width - 2, this.height -2, 0, ColorHelper.getArgb(255, 0, 255, 255), 1);
     }
 
     @Inject(at = @At(value = "HEAD"), method = "mouseClicked")

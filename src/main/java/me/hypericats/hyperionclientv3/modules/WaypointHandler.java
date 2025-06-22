@@ -98,12 +98,12 @@ public class WaypointHandler extends Module implements ICustomWidget, PostRender
         offsetPos = new Vec3d(-offsetPos.getX(), offsetPos.getY(), -offsetPos.getZ());
         Box box = new Box(1, 1, 1, -1, -1, -1);
         int color = waypoint.getColor();
-        RenderSystem.setShaderColor(ColorHelper.Argb.getRed(color) / 255f, ColorHelper.Argb.getGreen(color) / 255f, ColorHelper.Argb.getBlue(color) / 255f, 0.1f);
+        RenderSystem.setShaderColor(ColorHelper.getRed(color) / 255f, ColorHelper.getGreen(color) / 255f, ColorHelper.getBlue(color) / 255f, 0.1f);
 
         matrices.multiply(client.getEntityRenderDispatcher().getRotation());
         matrices.translate(offsetPos.x, offsetPos.y, offsetPos.z);
         RenderUtil.drawSolidBox(box, matrices);
-        RenderSystem.setShaderColor(ColorHelper.Argb.getRed(color) / 255f, ColorHelper.Argb.getGreen(color) / 255f, ColorHelper.Argb.getBlue(color) / 255f, 0.5f);
+        RenderSystem.setShaderColor(ColorHelper.getRed(color) / 255f, ColorHelper.getGreen(color) / 255f, ColorHelper.getBlue(color) / 255f, 0.5f);
 
         matrices.pop();
 

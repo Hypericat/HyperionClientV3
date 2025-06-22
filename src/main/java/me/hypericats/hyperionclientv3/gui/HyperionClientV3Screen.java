@@ -36,9 +36,9 @@ public class HyperionClientV3Screen extends Screen {
     private Vector2d mouseClick;
     private int mouseButton = -1;
     private int currentBarSize = -1;
-    public static int orangeColor = ColorHelper.Argb.getArgb(255, 252, 111, 3);
-    public static int backgroundColor = ColorHelper.Argb.getArgb(95, 170, 255, 255);
-    public static int offColor = ColorHelper.Argb.getArgb(120, 30, 30, 30);
+    public static int orangeColor = ColorHelper.getArgb(255, 252, 111, 3);
+    public static int backgroundColor = ColorHelper.getArgb(95, 170, 255, 255);
+    public static int offColor = ColorHelper.getArgb(120, 30, 30, 30);
     public HyperionClientV3Screen() {
         super(Text.of("Hyperion Client 3"));
         registerListeners();
@@ -78,7 +78,7 @@ public class HyperionClientV3Screen extends Screen {
         renderModules(context, origin, border , client, y);
     }
     private void renderStaticElements(DrawContext context, Vector2f origin, Vector2f border, MinecraftClient client) {
-        int backgroundA = ColorHelper.Argb.getArgb(200, 85, 128, 128);
+        int backgroundA = ColorHelper.getArgb(200, 85, 128, 128);
         /**
         context.fill((int) origin.getX(), (int) origin.getY(), (int) border.getX(), (int) border.getY(), backgroundColor);
         int overlap = 4;
@@ -115,7 +115,7 @@ public class HyperionClientV3Screen extends Screen {
         if (currentBarSize < maxSize) currentBarSize ++;
         if (currentBarSize > maxSize) currentBarSize --;
         int width = 2;
-        context.fill(xCenter - currentBarSize, y - width, xCenter + currentBarSize, y + width, ColorHelper.Argb.getArgb(255, 100, 255, 255));
+        context.fill(xCenter - currentBarSize, y - width, xCenter + currentBarSize, y + width, ColorHelper.getArgb(255, 100, 255, 255));
         // Calculate the X and Y positions before scaling
         int textWidth = client.textRenderer.getWidth(searchString);
         int textX = (int) ((this.width / 2) / textScale - textWidth / 2);
@@ -133,8 +133,8 @@ public class HyperionClientV3Screen extends Screen {
         int spacing = 18;
         int width = 70;
         int height = 15;
-        int activeColor = ColorHelper.Argb.getArgb(150, 85, 255, 115);
-        int inactiveColor = ColorHelper.Argb.getArgb(150, 250, 85, 85);
+        int activeColor = ColorHelper.getArgb(150, 85, 255, 115);
+        int inactiveColor = ColorHelper.getArgb(150, 250, 85, 85);
         int y = cursorYHeight;
         int xOffset = 0;
         int xModifier = -1;
@@ -166,7 +166,7 @@ public class HyperionClientV3Screen extends Screen {
             }
         }
         context.drawText(client.textRenderer, m.getName(), x - client.textRenderer.getWidth(m.getName()) / 2, (int) (y - height + client.textRenderer.fontHeight * 0.1f), Colors.BLACK, false);
-        context.drawText(client.textRenderer, m.getHackType().getName(), x - client.textRenderer.getWidth(m.getHackType().getName()) / 2, (int) (y - height + 12), ColorHelper.Argb.getArgb(150, 0, 0, 0), false);
+        context.drawText(client.textRenderer, m.getHackType().getName(), x - client.textRenderer.getWidth(m.getHackType().getName()) / 2, (int) (y - height + 12), ColorHelper.getArgb(150, 0, 0, 0), false);
     }
     public void updateModules() {
         toRenderModules.clear();

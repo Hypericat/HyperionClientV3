@@ -19,7 +19,7 @@ public class ChatUtils {
         if (MinecraftClient.getInstance().player == null) return;
         StackTraceElement[] elements = e.getStackTrace();
         for (StackTraceElement element : elements) {
-            MinecraftClient.getInstance().player.sendMessage(Text.of(element.toString()));
+            MinecraftClient.getInstance().player.sendMessage(Text.of(element.toString()), false);
         }
     }
     public static String Vec3dToIntString(Vec3d vec3d) {
@@ -37,35 +37,35 @@ public class ChatUtils {
     public static void sendOfficial(String msg) {
         if (client.player == null) return;
         msg = msg.replaceAll("&&", "§");
-        client.player.sendMessage(Text.of("§6[Hyperion Client V3] §f" + msg));
+        client.player.sendMessage(Text.of("§6[Hyperion Client V3] §f" + msg), false);
         removeMessageIfContains("[Hyperion Client V3]");
     }
     public static void sendMsg(String msg) {
         if (client.player == null) return;
         msg = msg.replaceAll("&&", "§");
-        client.player.sendMessage(Text.of(msg));
+        client.player.sendMessage(Text.of(msg), false);
     }
     public static String replaceColorCodes(String s) {
         return s.replaceAll("&&", "§");
     }
     public static void debugMousePos() {
         if (client.player == null) return;
-        client.player.sendMessage(Text.of(String.valueOf(client.mouse.getX())));
+        client.player.sendMessage(Text.of(String.valueOf(client.mouse.getX())), false);
     }
 
     public static void sendError(Object msg1) {
         String msg = format(msg1);
-        if (client.player != null) client.player.sendMessage(Text.of("§c" + msg));
+        if (client.player != null) client.player.sendMessage(Text.of("§c" + msg), false);
         HyperionClientV3Client.LOGGER.info(("§c" + msg));
     }
     public static void sendLog(Object msg1) {
         String msg = format(msg1);
         HyperionClientV3Client.LOGGER.info(("§c" + msg));
-        if (client.player != null) client.player.sendMessage(Text.of("§c" + msg));
+        if (client.player != null) client.player.sendMessage(Text.of("§c" + msg), false);
     }
     public static void sendDebug(Object msg1) {
         String msg = format(msg1);
-        if (client.player != null) client.player.sendMessage(Text.of("§a" + msg));
+        if (client.player != null) client.player.sendMessage(Text.of("§a" + msg), false);
         HyperionClientV3Client.LOGGER.info(("§a" + msg));
     }
     public static void displayHud(Object msg1) {

@@ -10,20 +10,14 @@ public class RenderBlockSideData extends EventData {
     public BlockState getBlockState() {
         return getArg(0);
     }
-    public BlockView getWorld() {
-        return getArg(1);
-    }
-    public BlockPos getBlockPos() {
+    public Direction getDir() {
         return getArg(2);
     }
-    public Direction getDir() {
-        return getArg(3);
-    }
-    public BlockPos getOtherBlockPos() {
-        return getArg(4);
+    public BlockPos getOtherBlockState() {
+        return getArg(1);
     }
 
-    public RenderBlockSideData(BlockState state, BlockView world, BlockPos pos, Direction side, BlockPos otherPos) {
-        super(state, world, pos, side, otherPos);
+    public RenderBlockSideData(BlockState state, BlockState otherState, Direction side) {
+        super(state, otherState, side);
     }
 }

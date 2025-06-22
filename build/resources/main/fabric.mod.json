@@ -23,8 +23,8 @@
     "hyperionclientv3.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.5",
+    "fabricloader": ">=0.16.10",
     "fabric": "*",
-    "minecraft": "1.21.1"
+    "minecraft": "1.21.4"
   }
 }

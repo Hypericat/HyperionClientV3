@@ -11,6 +11,7 @@ import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.player.PlayerPosition;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
@@ -31,17 +32,18 @@ public class ServerPlayerPacketBlocker extends Module implements RecievePacketLi
         RecievePacketData packetData = (RecievePacketData) data;
         Packet<?> packet = packetData.getPacket();
         if (!(packet instanceof PlayerPositionLookS2CPacket playerPositionLookS2CPacket)) return;
-        Vec3d packetPos = new Vec3d(playerPositionLookS2CPacket.getX(), playerPositionLookS2CPacket.getY(), playerPositionLookS2CPacket.getZ());
+        Vec3d packetPos = new Vec3d(playerPositionLookS2CPacket.change().position().getX(), playerPositionLookS2CPacket.change().position().getY(), playerPositionLookS2CPacket.change().position().getZ());
 
         if (blockSmallMovements.getValue() && (packetPos.distanceTo(PlayerUtils.getServerPosition()) < smallMovementThreshHold.getValue()) || smallMovementThreshHold.getValue() < 0) {
             packetData.cancel();
             //pretend the teleport was accepted
-            PacketUtil.send(new TeleportConfirmC2SPacket(playerPositionLookS2CPacket.getTeleportId()));
+            PacketUtil.send(new TeleportConfirmC2SPacket(playerPositionLookS2CPacket.teleportId()));
             return;
         }
 
         if (!blockLooks.getValue()) return;
-       packetData.setNewPacket(new PlayerPositionLookS2CPacket(playerPositionLookS2CPacket.getX(), playerPositionLookS2CPacket.getY(), playerPositionLookS2CPacket.getZ(), client.player.getYaw(), client.player.getPitch(), playerPositionLookS2CPacket.getFlags(), playerPositionLookS2CPacket.getTeleportId()));
+
+       packetData.setNewPacket(new PlayerPositionLookS2CPacket(playerPositionLookS2CPacket.teleportId(), new PlayerPosition(playerPositionLookS2CPacket.change().position(), playerPositionLookS2CPacket.change().deltaMovement(), client.player.getYaw(), client.player.getPitch()), playerPositionLookS2CPacket.relatives()));
 
     }
     @Override

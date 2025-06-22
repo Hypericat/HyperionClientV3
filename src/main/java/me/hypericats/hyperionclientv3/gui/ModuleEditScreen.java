@@ -29,8 +29,8 @@ public class ModuleEditScreen extends Screen {
     private KeybindWidget keybindWidget;
     private boolean mouseDraggingToggle = false;
     private List<ModuleOptionsWidget> widgets = new ArrayList<>();
-    public static int orangeColor = ColorHelper.Argb.getArgb(255, 252, 111, 3);
-    public static int backgroundColor = ColorHelper.Argb.getArgb(95, 170, 255, 255);
+    public static int orangeColor = ColorHelper.getArgb(255, 252, 111, 3);
+    public static int backgroundColor = ColorHelper.getArgb(95, 170, 255, 255);
     public ModuleEditScreen(Module module, HyperionClientV3Screen parent) {
         super(Text.of(module.getName() + " Edit Screen"));
         this.parent = parent;
@@ -99,7 +99,7 @@ public class ModuleEditScreen extends Screen {
         renderOptions(context, origin, border, client);
     }
     private void renderStaticElements(DrawContext context, Vector2f origin, Vector2f border, MinecraftClient client) {
-        int backgroundA = ColorHelper.Argb.getArgb(200, 85, 128, 128);
+        int backgroundA = ColorHelper.getArgb(200, 85, 128, 128);
         RenderUtil.fillWithBorder(context, (int) origin.getX(), (int) origin.getY(), (int) border.getX(), (int) border.getY(), backgroundColor, backgroundA, 4);
 
         float titleScale = 4f;

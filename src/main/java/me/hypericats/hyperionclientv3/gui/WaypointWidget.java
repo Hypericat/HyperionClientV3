@@ -102,10 +102,10 @@ public class WaypointWidget implements Widget {
         initTextField(45, String.valueOf(waypoint.getX()), s -> setPos(s, Direction.Axis.X), "X Pos");
         initTextField(45, String.valueOf(waypoint.getY()), s -> setPos(s, Direction.Axis.Y), "Y Pos");
         initTextField(45, String.valueOf(waypoint.getZ()), s -> setPos(s, Direction.Axis.Z), "Z Pos");
-        initTextField(30, String.valueOf(ColorHelper.Argb.getAlpha(waypoint.getColor())), s -> setColor(s, 0), "Alpha");
-        initTextField(30, String.valueOf(ColorHelper.Argb.getRed(waypoint.getColor())), s -> setColor(s, 1), "Red");
-        initTextField(30, String.valueOf(ColorHelper.Argb.getGreen(waypoint.getColor())), s -> setColor(s, 2), "Green");
-        initTextField(30, String.valueOf(ColorHelper.Argb.getBlue(waypoint.getColor())), s -> setColor(s, 3), "Blue");
+        initTextField(30, String.valueOf(ColorHelper.getAlpha(waypoint.getColor())), s -> setColor(s, 0), "Alpha");
+        initTextField(30, String.valueOf(ColorHelper.getRed(waypoint.getColor())), s -> setColor(s, 1), "Red");
+        initTextField(30, String.valueOf(ColorHelper.getGreen(waypoint.getColor())), s -> setColor(s, 2), "Green");
+        initTextField(30, String.valueOf(ColorHelper.getBlue(waypoint.getColor())), s -> setColor(s, 3), "Blue");
         initTextField(50, String.valueOf(waypoint.getMaxRange()), this::setMaxRange, "Max Range");
         initTextField(50, String.valueOf(waypoint.getMinRange()), this::setMinRange, "Min Range");
         initTextField(50, String.valueOf(waypoint.getScale()), this::setScale, "Scale");
@@ -234,15 +234,15 @@ public class WaypointWidget implements Widget {
             return;
         }
         int currentColor = waypoint.getColor();
-        int a = ColorHelper.Argb.getAlpha(currentColor);
-        int r = ColorHelper.Argb.getRed(currentColor);
-        int g = ColorHelper.Argb.getGreen(currentColor);
-        int b = ColorHelper.Argb.getBlue(currentColor);
+        int a = ColorHelper.getAlpha(currentColor);
+        int r = ColorHelper.getRed(currentColor);
+        int g = ColorHelper.getGreen(currentColor);
+        int b = ColorHelper.getBlue(currentColor);
         switch (index) {
-            case (0) -> waypoint.setColor(ColorHelper.Argb.getArgb(color, r, g, b));
-            case (1) -> waypoint.setColor(ColorHelper.Argb.getArgb(a, color, g, b));
-            case (2) -> waypoint.setColor(ColorHelper.Argb.getArgb(a, r, color, b));
-            case (3) -> waypoint.setColor(ColorHelper.Argb.getArgb(a, r, g, color));
+            case (0) -> waypoint.setColor(ColorHelper.getArgb(color, r, g, b));
+            case (1) -> waypoint.setColor(ColorHelper.getArgb(a, color, g, b));
+            case (2) -> waypoint.setColor(ColorHelper.getArgb(a, r, color, b));
+            case (3) -> waypoint.setColor(ColorHelper.getArgb(a, r, g, color));
         }
         updateColor();
     }

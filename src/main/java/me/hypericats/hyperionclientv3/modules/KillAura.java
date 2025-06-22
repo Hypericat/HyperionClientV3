@@ -95,7 +95,7 @@ public class KillAura extends Module implements TickListener, SendPacketListener
             data.cancel();
             return;
         }
-        data.setPacket(new PlayerMoveC2SPacket.PositionAndOnGround(full.getX(1d), full.getY(1d), full.getZ(1d), full.isOnGround()));
+        data.setPacket(new PlayerMoveC2SPacket.PositionAndOnGround(full.getX(1d), full.getY(1d), full.getZ(1d), full.isOnGround(), false));
     }
     private void doRotation(List<Entity> toAttack, float attackProgress, MinecraftClient client) {
         if (toAttack.size() != 1) return;
@@ -115,7 +115,7 @@ public class KillAura extends Module implements TickListener, SendPacketListener
         Vec3d interpolatedDirection = currentLookDirection.lerp(targetDirection, attackProgress).normalize();
         float newYaw = (float) MathHelper.atan2(interpolatedDirection.z, interpolatedDirection.x) * (180.0f / (float) Math.PI) - 90.0f;
         float newPitch = (float) -MathHelper.atan2(interpolatedDirection.y, Math.sqrt(interpolatedDirection.x * interpolatedDirection.x + interpolatedDirection.z * interpolatedDirection.z)) * (180.0f / (float) Math.PI);
-        PlayerMoveC2SPacket.LookAndOnGround packet = new PlayerMoveC2SPacket.LookAndOnGround(newYaw, newPitch, client.player.isOnGround());
+        PlayerMoveC2SPacket.LookAndOnGround packet = new PlayerMoveC2SPacket.LookAndOnGround(newYaw, newPitch, client.player.isOnGround(), false);
         PacketUtil.sendImmediately(packet);
         lastYaw = newYaw;
         lastPitch = newPitch;

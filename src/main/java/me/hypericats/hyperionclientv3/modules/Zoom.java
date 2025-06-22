@@ -37,17 +37,17 @@ public class Zoom extends Module implements MouseScrollListener {
         options.addOption(seizureMode);
     }
 
-    public double onGetFov(double fov, MinecraftClient client) {
+    public float onGetFov(double fov, MinecraftClient client) {
         SimpleOption<Double> mouseSensitivitySetting =
                 client.options.getMouseSensitivity();
         if (!seizureMode.getValue()) {
             mouseSensitivitySetting.setValue(defaultMouseSensitivity * (1.0 / currentLevel));
-            return fov / currentLevel;
+            return (float) (fov / currentLevel);
         }
         Random random = new Random();
         float rand = random.nextFloat() * 20;
         mouseSensitivitySetting.setValue(defaultMouseSensitivity * (1.0 / rand));
-        return fov / rand;
+        return (float) (fov / rand);
     }
 
     @Override

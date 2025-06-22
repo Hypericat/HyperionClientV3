@@ -34,7 +34,7 @@ public abstract class LivingEntityMixin implements ILivingEntity {
 	}
 
 	@Inject(at = @At("HEAD"), method = {"addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z"}, cancellable = true)
-	private static void addStatusEffect(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
+	private void addStatusEffect(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
 		AddStatusEffectData data = new AddStatusEffectData(effect, source);
 		EventHandler.onEvent(AddStatusEffectListener.class, data);
 		if (data.isCancelled()) cir.setReturnValue(false);

@@ -9,6 +9,7 @@ import me.hypericats.hyperionclientv3.events.InGameHudRenderListener;
 import me.hypericats.hyperionclientv3.events.ModuleToggleListener;
 import me.hypericats.hyperionclientv3.events.eventData.InGameHudRenderData;
 import me.hypericats.hyperionclientv3.events.eventData.ModuleToggleData;
+import me.hypericats.hyperionclientv3.mixinInterface.IDrawContext;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.util.ColorUtils;
 import net.minecraft.client.MinecraftClient;
@@ -62,26 +63,26 @@ public class HackGUI extends Module implements InGameHudRenderListener, ModuleTo
 
         DrawContext context = ((InGameHudRenderData) data).getDrawContext();
         if (showFreecamStatus.getValue() && ModuleHandler.isModuleEnable(Freecam.class)) {
-            client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 14f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+            client.textRenderer.draw("Freecam ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Freecam") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f - 14f, textColor, false, context.getMatrices().peek().getPositionMatrix(), ((IDrawContext) context).getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.getArgb(0, 0, 0, 0), 0xF000F0);
         }
 
         if (showBlinkStatus.getValue() && ModuleHandler.isModuleEnable(Blink.class)) {
-            client.textRenderer.draw("Blink ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Blink") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f + 8f, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+            client.textRenderer.draw("Blink ", client.getWindow().getScaledWidth() / 2f - client.textRenderer.getWidth("Blink") / 2f,  MinecraftClient.getInstance().getWindow().getScaledHeight() / 2f + 8f, textColor, false, context.getMatrices().peek().getPositionMatrix(), ((IDrawContext) context).getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.getArgb(0, 0, 0, 0), 0xF000F0);
         }
         float yPos = 2f;
         if (!client.getDebugHud().shouldShowDebugHud()) {
             if (showFps.getValue()) {
-                client.textRenderer.draw("FPS " + client.getCurrentFps(), 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                client.textRenderer.draw("FPS " + client.getCurrentFps(), 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), ((IDrawContext) context).getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.getArgb(0, 0, 0, 0), 0xF000F0);
                 yPos += 10f;
             }
             if (showCords.getValue()) {
-                client.textRenderer.draw( "Location X: " + (int) pos.x + " Y: " + (int) pos.y + " Z: " + (int) pos.z, 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                client.textRenderer.draw( "Location X: " + (int) pos.x + " Y: " + (int) pos.y + " Z: " + (int) pos.z, 2f, yPos, textColor, false, context.getMatrices().peek().getPositionMatrix(), ((IDrawContext) context).getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.getArgb(0, 0, 0, 0), 0xF000F0);
                 yPos += 10f;
             }
         }
         if (showHacksList.getValue()) {
             for (String str : moduleListOrdered) {
-                client.textRenderer.draw(str, x - client.textRenderer.getWidth(str), y, textColor, false, context.getMatrices().peek().getPositionMatrix(), context.getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.Argb.getArgb(0, 0, 0, 0), 0xF000F0);
+                client.textRenderer.draw(str, x - client.textRenderer.getWidth(str), y, textColor, false, context.getMatrices().peek().getPositionMatrix(), ((IDrawContext) context).getVertexConsumers(), TextRenderer.TextLayerType.NORMAL, ColorHelper.getArgb(0, 0, 0, 0), 0xF000F0);
                 y -= 10;
             }
         }

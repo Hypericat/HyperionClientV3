@@ -101,8 +101,8 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
         if(speed <= 1) return speed;
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.world == null) return speed;
-        Registry<Enchantment> enchantmentRegistry = client.world.getRegistryManager().get(RegistryKeys.ENCHANTMENT);
-        Optional<RegistryEntry.Reference<Enchantment>> eff = enchantmentRegistry.getEntry(Enchantments.EFFICIENCY);
+        Registry<Enchantment> enchantmentRegistry = client.world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+        Optional<RegistryEntry.Reference<Enchantment>> eff = enchantmentRegistry.getEntry(Enchantments.EFFICIENCY.getValue());
         if (eff.isEmpty()) return speed;
 
         int efficiency = EnchantmentHelper.getLevel(eff.get(), stack);
@@ -115,20 +115,6 @@ public class AutoTool extends Module implements TickListener, UpdateBlockBreakin
     public void onEnable() {
         EventHandler.register(TickListener.class, this);
         EventHandler.register(UpdateBlockBreakingProgressListener.class, this);
-        System.out.println("START");
-        List<String> strings = new ArrayList<>();
-        for (Block block : Registries.BLOCK.stream().toList()) {
-            if (!((IAbstractBlock) block).isCollision()) {
-                String str = (block.asItem().toString().toUpperCase().replace("MINECRAFT:", ""));
-                if (strings.contains(str)) continue;
-                System.out.println(str);
-                strings.add(str);
-            }
-
-
-        }
-        System.out.println("END");
-
     }
 
     @Override

@@ -13,6 +13,8 @@ import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import me.hypericats.hyperionclientv3.util.RenderUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gl.ShaderProgramKey;
+import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
@@ -145,11 +147,11 @@ public abstract class EntityEsp extends Module implements RenderHandListener, Ti
             matrices.translate(relativeEntityPos.getX(), relativeEntityPos.getY(), relativeEntityPos.getZ());
 
             int color = Friends.isFriend(e) ? friendColor.getValue() : (espColorType.getValue() == EspColorType.STATIC ? defaultColor.getValue() : PlayerUtils.getColorOutline(e, range.getValue()));
-            float red = ColorHelper.Argb.getRed(color) / 255f;
-            float green = ColorHelper.Argb.getGreen(color) / 255f;
-            float blue = ColorHelper.Argb.getBlue(color) / 255f;
+            float red = ColorHelper.getRed(color) / 255f;
+            float green = ColorHelper.getGreen(color) / 255f;
+            float blue = ColorHelper.getBlue(color) / 255f;
             RenderSystem.setShaderColor(red, green, blue, tracerAlpha.getValue().floatValue() / 255f);
-            RenderSystem.setShader(GameRenderer::getPositionProgram);
+            RenderSystem.setShader(ShaderProgramKeys.POSITION_COLOR); // Fixed
 
             Matrix4f matrix = matrices.peek().getPositionMatrix();
             Tessellator tessellator = RenderSystem.renderThreadTesselator();
@@ -172,9 +174,9 @@ public abstract class EntityEsp extends Module implements RenderHandListener, Ti
 
 
             int color = Friends.isFriend(e) ? friendColor.getValue() : espColorType.getValue() == EspColorType.STATIC ? defaultColor.getValue() : PlayerUtils.getColorOutline(e, range.getValue());
-            float red = ColorHelper.Argb.getRed(color) / 255f;
-            float green = ColorHelper.Argb.getGreen(color) / 255f;
-            float blue = ColorHelper.Argb.getBlue(color) / 255f;
+            float red = ColorHelper.getRed(color) / 255f;
+            float green = ColorHelper.getGreen(color) / 255f;
+            float blue = ColorHelper.getBlue(color) / 255f;
 
             RenderSystem.setShaderColor(red, green, blue, outerBoxAlpha.getValue().floatValue() / 255f);
             Box box;
@@ -220,7 +222,7 @@ public abstract class EntityEsp extends Module implements RenderHandListener, Ti
         espType = new EnumStringOption<>(true, "ESP Type", EspType.BOXANDTRACER);
         espColorType = new EnumStringOption<>(true, "ESP Color Type", EspColorType.NEAR);
         espBoxType = new EnumStringOption<>(true, "ESP Box Type", EspBoxType.BOUNDINGBOX);
-        defaultColor = new NumberOption<>(true, "Default Color", ColorHelper.Argb.getArgb(255, 255, 0, 0));
+        defaultColor = new NumberOption<>(true, "Default Color", ColorHelper.getArgb(255, 255, 0, 0));
         innerBoxAlpha = new SliderOption<>(true, "Inner Box Alpha", 100d, 255d, 0d, 5d);
         outerBoxAlpha = new SliderOption<>(true, "Outer Box Alpha", 255d, 255d, 0d, 5d);
         tracerAlpha = new SliderOption<>(true, "Tracer Alpha", 255d, 255d, 0d, 5d);
@@ -229,7 +231,7 @@ public abstract class EntityEsp extends Module implements RenderHandListener, Ti
         extraBoxSize = new SliderOption<>(true, "Extra Box Size", 0.1d, 3d, 0d, 0.1d);
         renderLabel = new BooleanOption(true, "Render Label", true);
 
-        friendColor = new NumberOption<>(true, "Friend Color", ColorHelper.Argb.getArgb(255, 0, 0, 255));
+        friendColor = new NumberOption<>(true, "Friend Color", ColorHelper.getArgb(255, 0, 0, 255));
         renderPlayerName = new BooleanOption(true, "Always Render Names", true);
 
         options.addOption(range);

@@ -9,6 +9,7 @@ import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
+import me.hypericats.hyperionclientv3.util.ChatUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerInteractEntityC2SPacketHandler;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
@@ -69,7 +70,7 @@ public class Criticals extends Module implements SendPacketListener {
         PacketUtil.sendPos(posX, posY, posZ, false);
     }
     public void doVelocityJump(MinecraftClient client) {
-        client.player.sendMessage(Text.of("This doesn't work yet criticals velocity jump."));
+        ChatUtils.sendMsg("This doesn't work yet! criticals velocity jump.");
     }
     @Override
     public void onEnable() {

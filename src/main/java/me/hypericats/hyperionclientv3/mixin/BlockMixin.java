@@ -32,9 +32,9 @@ public class BlockMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "shouldDrawSide", cancellable = true)
-    private static void shouldDrawSide(BlockState state, BlockView world, BlockPos pos, Direction side, BlockPos otherPos, CallbackInfoReturnable<Boolean> cir) {
+    private static void shouldDrawSide(BlockState state, BlockState otherState, Direction side, CallbackInfoReturnable<Boolean> cir) {
 
-        RenderBlockSideData data = new RenderBlockSideData(state, world, pos, side, otherPos);
+        RenderBlockSideData data = new RenderBlockSideData(state, otherState, side);
         EventHandler.onEvent(RenderBlockSideListener.class, data);
 
         NullBool cancel = data.isCancelledAsNullBool();

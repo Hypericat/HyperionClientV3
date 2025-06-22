@@ -35,10 +35,10 @@ public class BlockCollisionSpliteratorMixin {
         }
     }
 
-    @Redirect(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
-    private VoxelShape onGetCollisionShape(BlockState blockState, BlockView world, BlockPos blockPos, ShapeContext context) {
+    @Redirect(method = "computeNext", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/ShapeContext;getCollisionShape(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/CollisionView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;"))
+    private VoxelShape onGetCollisionShape(ShapeContext instance, BlockState blockState, CollisionView collisionView, BlockPos blockPos) {
         Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
-        if (entity == null || MinecraftClient.getInstance().player == null || freecam == null) return blockState.getCollisionShape(world, blockPos, context);
-        return freecam.getEntityVoxelShape(entity, blockState, world, blockPos);
+        if (entity == null || MinecraftClient.getInstance().player == null || freecam == null) return blockState.getCollisionShape(collisionView, blockPos, instance);
+        return freecam.getEntityVoxelShape(entity, blockState, collisionView, blockPos);
     }
 }

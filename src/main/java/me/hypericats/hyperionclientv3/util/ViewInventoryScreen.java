@@ -44,12 +44,12 @@ public class ViewInventoryScreen extends InventoryScreen {
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         int i = this.x;
         int j = this.y;
-        context.drawTexture(BACKGROUND_TEXTURE, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+        context.drawTexture(RenderLayer::getGuiTextured, BACKGROUND_TEXTURE, i, j, 0f, 0f, this.backgroundWidth, this.backgroundHeight, this.backgroundWidth, this.backgroundHeight);
 
         float yaw = player.getYaw();
         float pitch = player.getPitch();
 
-// Create quaternions for the rotation
+        // Create quaternions for the rotation
         Quaternionf quaternionYaw = new Quaternionf().rotateY(-yaw * ((float) Math.PI / 180));
         Quaternionf quaternionPitch = new Quaternionf().rotateX(-1 * ((float) Math.PI));
         quaternionYaw = quaternionYaw.mul(quaternionPitch);

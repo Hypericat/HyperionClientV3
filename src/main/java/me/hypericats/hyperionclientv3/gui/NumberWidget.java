@@ -38,13 +38,13 @@ public class NumberWidget extends ModuleOptionsWidget {
         this.y = y;
 
         int width = 2;
-        int focusedColorSynced = ColorHelper.Argb.getArgb(255, 100, 255, 255);
-        int focusedColorDesynced = ColorHelper.Argb.getArgb(255, 255, 100, 100);
-        int unfocusedColorSynced = ColorHelper.Argb.getArgb(150, 100, 255, 255);
-        int unfocusedColorDesynced = ColorHelper.Argb.getArgb(150, 255, 100, 100);
+        int focusedColorSynced = ColorHelper.getArgb(255, 100, 255, 255);
+        int focusedColorDesynced = ColorHelper.getArgb(255, 255, 100, 100);
+        int unfocusedColorSynced = ColorHelper.getArgb(150, 100, 255, 255);
+        int unfocusedColorDesynced = ColorHelper.getArgb(150, 255, 100, 100);
         context.drawText(client.textRenderer, option.getName(), x - client.textRenderer.getWidth(option.getName()) / 2, y - client.textRenderer.fontHeight, Colors.BLACK, false);
         context.fill(x - this.getWidth() / 2, y - width + this.height, x + this.getWidth() / 2, y + width + this.getHeight(), parent.focusedNumberWidget == this ? lastSyncStatus ? focusedColorSynced : focusedColorDesynced : lastSyncStatus ? unfocusedColorSynced : unfocusedColorDesynced);
-        RenderUtil.fillWithBorder(context, x - this.getWidth() / 2, y, x + this.getWidth() / 2, y + this.getHeight(), 0, ColorHelper.Argb.getArgb(30, 0, 0, 0), 1, true);
+        RenderUtil.fillWithBorder(context, x - this.getWidth() / 2, y, x + this.getWidth() / 2, y + this.getHeight(), 0, ColorHelper.getArgb(30, 0, 0, 0), 1, true);
         // Calculate the X and Y positions before scaling
         int textWidth = client.textRenderer.getWidth(fieldString);
         int textX = (int) (x / textScale - textWidth / 2);

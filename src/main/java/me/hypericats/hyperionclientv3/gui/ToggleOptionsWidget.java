@@ -15,7 +15,7 @@ public class ToggleOptionsWidget extends ModuleOptionsWidget {
     public ToggleOptionsWidget(BooleanOption option) {
         super(option);
     }
-    private static final int enabledColor = ColorHelper.Argb.getArgb(255, 0, 255, 100);
+    private static final int enabledColor = ColorHelper.getArgb(255, 0, 255, 100);
     private static final int disabledColor = HyperionClientV3Screen.offColor;
 
 

@@ -37,7 +37,7 @@ public class MenuOptionWidget extends ModuleOptionsWidget {
         updatePos(x, y, context, origin, border, client, enums);
 
         int yOffset = y;
-        int backgroundColorEnabled = ColorHelper.Argb.getArgb(120, 35, 255, 35);
+        int backgroundColorEnabled = ColorHelper.getArgb(120, 35, 255, 35);
         int backgroundColorDisabled = HyperionClientV3Screen.offColor;
 
         context.drawText(client.textRenderer, option.getName(), x - client.textRenderer.getWidth(option.getName()) / 2, y - client.textRenderer.fontHeight, Colors.BLACK, false);

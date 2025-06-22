@@ -22,19 +22,19 @@ public class PacketUtil {
     {
         if (client.player == null) return;
         client.player.networkHandler.sendPacket(
-                new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, onGround));
+                new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, onGround, false));
     }
     public static void sendPos(Vec3d pos) {
         sendPos(pos, client.player.isOnGround());
     }
     public static void sendPos(Vec3d pos, boolean onGround) {
         if (client.player == null) return;
-        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(pos.x, pos.y, pos.z, client.player.isOnGround());
+        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(pos.x, pos.y, pos.z, client.player.isOnGround(), false);
         send(packet);
     }
     public static void sendPosImmediately(Vec3d pos, boolean onGround) {
         if (client.player == null) return;
-        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(pos.x, pos.y, pos.z, onGround);
+        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(pos.x, pos.y, pos.z, onGround, false);
         sendImmediately(packet);
     }
     public static void sendPosImmediately(Vec3d pos) {
@@ -53,7 +53,7 @@ public class PacketUtil {
     }
     public static void sendPosImmediately(double x, double y, double z, boolean onGround) {
         if (client.player == null) return;
-        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, client.player.isOnGround());
+        PlayerMoveC2SPacket packet = new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, client.player.isOnGround(), false);
         sendImmediately(packet);
     }
     public static void sendImmediately(Packet<?> packet) {

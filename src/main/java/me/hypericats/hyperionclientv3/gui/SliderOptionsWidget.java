@@ -31,7 +31,7 @@ public class SliderOptionsWidget extends ModuleOptionsWidget {
         int thickness = 2;
         int yPos = y + this.height / 2;
         //line
-        context.fill(x - this.getWidth() / 2, yPos - thickness, x + this.getWidth() / 2, yPos + thickness, ColorHelper.Argb.getArgb(255, 100, 255, 255));
+        context.fill(x - this.getWidth() / 2, yPos - thickness, x + this.getWidth() / 2, yPos + thickness, ColorHelper.getArgb(255, 100, 255, 255));
 
         //handle
         int size = 6;

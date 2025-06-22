@@ -27,8 +27,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class GameRenderMixin {
     @Shadow @Final private BufferBuilderStorage buffers;
 
-    @Inject(at = @At(value = "RETURN", ordinal = 1), method = {"getFov(Lnet/minecraft/client/render/Camera;FZ)D"}, cancellable = true)
-    private void onGetFov(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Double> cir)
+    @Inject(at = @At(value = "RETURN", ordinal = 1), method = {"getFov"}, cancellable = true)
+    private void onGetFov(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Float> cir)
     {
         MinecraftClient client = MinecraftClient.getInstance();
         Zoom zoom = (Zoom) ModuleHandler.getModuleByClass(Zoom.class);
@@ -38,7 +38,7 @@ public class GameRenderMixin {
             return;
         }
         zoom.enable(client);
-        cir.setReturnValue(zoom.onGetFov(cir.getReturnValueD(), client));
+        cir.setReturnValue(zoom.onGetFov(cir.getReturnValueF(), client));
     }
     @Inject(
             at = @At(value = "FIELD",

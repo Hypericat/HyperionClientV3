@@ -6,6 +6,7 @@
   "mixins": [
     "AbstractBlockMixin",
     "ChunkRegionMixin",
+    "DebugRendererMixin",
     "MinecraftServerMixin"
   ],
   "client": [
@@ -21,8 +22,11 @@
     "ClientPlayerInteractionManagerMixin",
     "ClientPlayNetworkHandlerMixin",
     "ClientWorldMixin",
+    "DrawContextMixin",
     "EntityMixin",
+    "EntityRenderDispatcherMixin",
     "EntityRendererMixin",
+    "GameMenuScreenMixin",
     "GameRenderMixin",
     "HandledScreenMixin",
     "InGameHudMixin",
@@ -30,7 +34,6 @@
     "ItemRendererMixin",
     "KeyBindingMixin",
     "LivingEntityMixin",
-    "LivingEntityRendererMixin",
     "MinecraftClientMixin",
     "MouseMixin",
     "NarratorManagerMixin",

@@ -126,7 +126,7 @@ public class Waypoint {
         return color;
     }
     public int getColorFullAlpha() {
-        return ColorHelper.Argb.getArgb(255, ColorHelper.Argb.getRed(this.getColor()), ColorHelper.Argb.getGreen(this.getColor()), ColorHelper.Argb.getBlue(this.getColor()));
+        return ColorHelper.getArgb(255, ColorHelper.getRed(this.getColor()), ColorHelper.getGreen(this.getColor()), ColorHelper.getBlue(this.getColor()));
     }
 
     public void setColor(int color) {

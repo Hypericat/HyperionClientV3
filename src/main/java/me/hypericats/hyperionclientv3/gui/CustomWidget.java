@@ -19,7 +19,7 @@ public class CustomWidget extends ModuleOptionsWidget {
     public void render(int centerX, int y, DrawContext context, Vector2f origin, Vector2f border, MinecraftClient client) {
         this.x = centerX;
         this.y = y;
-        context.fill(x - this.getWidth() / 2, y, x + getWidth() / 2, y + getHeight(), ColorHelper.Argb.getArgb(150, 255, 145, 0));
+        context.fill(x - this.getWidth() / 2, y, x + getWidth() / 2, y + getHeight(), ColorHelper.getArgb(150, 255, 145, 0));
 
         context.drawText(client.textRenderer, name, x - client.textRenderer.getWidth(name) / 2, y - client.textRenderer.fontHeight, Colors.BLACK, false);
     }

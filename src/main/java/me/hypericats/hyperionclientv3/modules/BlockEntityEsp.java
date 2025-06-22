@@ -20,6 +20,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.sound.SoundEvents;
@@ -110,12 +111,12 @@ public class BlockEntityEsp extends Module implements RenderHandListener, TickLi
         matrices.push();
 
         if (target.isRenderOuterBox()) {
-            RenderSystem.setShaderColor(ColorHelper.Argb.getRed(target.getDefaultColor()) / 255f, ColorHelper.Argb.getGreen(target.getDefaultColor()) / 255f, ColorHelper.Argb.getBlue(target.getDefaultColor()) / 255f, target.getOuterBoxAlpha() / 255f);
+            RenderSystem.setShaderColor(ColorHelper.getRed(target.getDefaultColor()) / 255f, ColorHelper.getGreen(target.getDefaultColor()) / 255f, ColorHelper.getBlue(target.getDefaultColor()) / 255f, target.getOuterBoxAlpha() / 255f);
             RenderUtil.drawOutlinedBox(box, matrices);
         }
 
         if (target.isRenderOuterBox()) {
-            RenderSystem.setShaderColor(ColorHelper.Argb.getRed(target.getDefaultColor()) / 255f, ColorHelper.Argb.getGreen(target.getDefaultColor()) / 255f, ColorHelper.Argb.getBlue(target.getDefaultColor()) / 255f, target.getInnerBoxAlpha() / 255f);
+            RenderSystem.setShaderColor(ColorHelper.getRed(target.getDefaultColor()) / 255f, ColorHelper.getGreen(target.getDefaultColor()) / 255f, ColorHelper.getBlue(target.getDefaultColor()) / 255f, target.getInnerBoxAlpha() / 255f);
             RenderUtil.drawSolidBox(box, matrices);
         }
 
@@ -141,8 +142,8 @@ public class BlockEntityEsp extends Module implements RenderHandListener, TickLi
         Vec3d tracerStartPos = client.player.getRotationVec(tickDelta).add(camera.getPos()).subtract(pos.toCenterPos());
         matrices.push();
 
-        RenderSystem.setShaderColor(ColorHelper.Argb.getRed(target.getDefaultColor()) / 255f, ColorHelper.Argb.getGreen(target.getDefaultColor()) / 255f, ColorHelper.Argb.getBlue(target.getDefaultColor()) / 255f, target.getTracerAlpha() / 255f);
-        RenderSystem.setShader(GameRenderer::getPositionProgram);
+        RenderSystem.setShaderColor(ColorHelper.getRed(target.getDefaultColor()) / 255f, ColorHelper.getGreen(target.getDefaultColor()) / 255f, ColorHelper.getBlue(target.getDefaultColor()) / 255f, target.getTracerAlpha() / 255f);
+        RenderSystem.setShader(ShaderProgramKeys.POSITION_COLOR);
         Matrix4f matrix = matrices.peek().getPositionMatrix();
         Tessellator tessellator = RenderSystem.renderThreadTesselator();
         BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);

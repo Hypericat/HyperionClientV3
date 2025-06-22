@@ -31,10 +31,11 @@ public class HelpCommand extends Command {
             ChatUtils.sendMsg(str);
         }
     }
+
     public void handle(String[] formatted, boolean b) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
-        client.player.sendMessage(Text.of("test"));
+        client.player.sendMessage(Text.of("test"), false);
         if (tryThrowErrorReturn(formatted.length < 2, "Invalid argument count specified!")) return;
         String strCount = formatted[1];
         int amount;
@@ -44,7 +45,7 @@ public class HelpCommand extends Command {
             throwError("Loop amount was not an integer!");
             return;
         }
-        client.player.sendMessage(Text.of("test"));
+        client.player.sendMessage(Text.of("test"), false);
         if (tryThrowErrorReturn(!client.player.isOnGround(), "You must be on the ground to use this!")) return;
         Vec3d pos = client.player.getPos();
 

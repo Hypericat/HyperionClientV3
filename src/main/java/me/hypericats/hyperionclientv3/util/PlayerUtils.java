@@ -46,7 +46,7 @@ public class PlayerUtils {
         double distancePercent = distance / range;
         int green = (int) (255 * distancePercent);
         int red = 255 - green;
-        return ColorHelper.Argb.getArgb(255, red, green, 0);
+        return ColorHelper.getArgb(255, red, green, 0);
     }
     public static List<Entity> getAttackListFromEntityTargets(List<Entity> entities, EntityTargetType targetType, EntityTargetPriority priority, Vec3d pos) {
         List<Entity> targets = new ArrayList<>();
