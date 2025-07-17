@@ -1,4 +1,4 @@
-version:3955
+version:4189
 ao:true
 biomeBlendRadius:1
 enableVsync:true
@@ -16,6 +16,7 @@ fullscreen:false
 graphicsMode:0
 guiScale:2
 maxFps:260
+inactivityFpsLimit:"afk"
 mipmapLevels:4
 narrator:0
 particles:0
@@ -26,6 +27,7 @@ simulationDistance:5
 screenEffectScale:1.0
 soundDevice:""
 autoJump:false
+rotateWithMinecart:false
 operatorItemsTab:false
 autoSuggestions:true
 chatColors:true
@@ -46,6 +48,7 @@ hideSplashTexts:false
 mouseSensitivity:0.5
 damageTiltStrength:1.0
 highContrast:false
+highContrastBlockOutline:false
 narratorHotkey:true
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
@@ -77,7 +80,6 @@ glDebugVerbosity:1
 skipMultiplayerWarning:true
 hideMatchedNames:true
 joinedFirstServer:true
-hideBundleTutorial:false
 syncChunkWrites:true
 showAutosaveIndicator:true
 allowServerListing:true

@@ -1,21 +1,26 @@
 package me.hypericats.hyperionclientv3;
 
+import me.hypericats.hyperionclientv3.auth.SessionHandler;
 import me.hypericats.hyperionclientv3.commands.CommandHandlerDispatcher;
 import me.hypericats.hyperionclientv3.gui.HyperionClientV3Screen;
+import me.hypericats.hyperionclientv3.mixin.SessionAccessor;
 import me.hypericats.hyperionclientv3.util.FileUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.SharedConstants;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.util.Clipboard;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.util.Uuids;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.util.UUID;
+import java.util.logging.FileHandler;
 
 public class HyperionClientV3Client implements ClientModInitializer {
 
@@ -23,7 +28,6 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 	public static final String defaultName = "User";
 	public static final String windowTitle = "HyperionClientV3";
-	public static final boolean isDev = true;
 	public static KeybindLoader keybindLoader;
 	public static ModuleSettingsSaver settingsSaver;
 	public static HyperionClientV3Screen hyperionClientV3Screen;
@@ -33,13 +37,20 @@ public class HyperionClientV3Client implements ClientModInitializer {
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
+	}
 
+	// Expensive don't spam, cache if needed
+	public static boolean getDevState() {
+		return new File(FileUtil.HypCv3Dir.getAbsolutePath() + "\\dev").isFile();
 	}
 
 	public static void actuallyInit() {
-		SharedConstants.isDevelopment = isDev;
 		LOGGER.info("Initializing HyperionClientV3");
 		FileUtil.createDir(FileUtil.HypCv3Dir);
+		if (getDevState()) {
+			SessionHandler.setSession(SessionHandler.getCrackedSession(defaultName));
+		}
+
 		CommandHandlerDispatcher.initCommands();
 		keybindLoader = new KeybindLoader();
 		ModuleHandler.initModules();

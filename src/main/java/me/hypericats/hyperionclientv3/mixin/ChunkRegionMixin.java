@@ -36,19 +36,4 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ChunkRegion.class)
 public abstract class ChunkRegionMixin {
 
-	@Shadow @Final private static Logger LOGGER;
-
-	@Shadow public abstract Chunk getChunk(int chunkX, int chunkZ);
-	@Inject(method = "getBlockState", at = @At(value = "HEAD"), cancellable = true)
-	private void injected(BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
-			if (!SharedConstants.isDevelopment) return;
-			Chunk chunk = this.getChunk(ChunkSectionPos.getSectionCoord(pos.getX()), ChunkSectionPos.getSectionCoord(pos.getZ()));
-			if (chunk == null) {
-				LOGGER.error("FAILED TO GET BLOCK STATE AT " + pos.toCenterPos().toString());
-				if (MinecraftClient.getInstance().player != null) ChatUtils.sendMsg("Failed to get block at " + pos.toCenterPos().toString());
-				cir.setReturnValue(Blocks.DIRT.getDefaultState());
-				return;
-			}
-			cir.setReturnValue(chunk.getBlockState(pos));
-	}
 }

@@ -28,9 +28,6 @@
     "me/hypericats/hyperionclientv3/mixin/ChunkOcclusionDataBuilderMixin": {
       "markClosed(Lnet/minecraft/util/math/BlockPos;)V": "Lnet/minecraft/class_852;method_3682(Lnet/minecraft/class_2338;)V"
     },
-    "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
-      "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"
-    },
     "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
       "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
       "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;)V"
@@ -102,6 +99,22 @@
     "me/hypericats/hyperionclientv3/mixin/LivingEntityMixin": {
       "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
     },
+    "me/hypericats/hyperionclientv3/mixin/MinecraftClientAccessor": {
+      "abuseReportContext": "field_39492:Lnet/minecraft/class_7574;",
+      "attackCooldown": "field_1771:I",
+      "authenticationService": "field_39420:Lcom/mojang/authlib/yggdrasil/YggdrasilAuthenticationService;",
+      "currentFps": "field_1738:I",
+      "doAttack": "method_1536()Z",
+      "gameProfileFuture": "field_45899:Ljava/util/concurrent/CompletableFuture;",
+      "networkProxy": "field_1739:Ljava/net/Proxy;",
+      "profileKeys": "field_39068:Lnet/minecraft/class_7853;",
+      "resourceReloadLogger": "field_33697:Lnet/minecraft/class_6360;",
+      "session": "field_1726:Lnet/minecraft/class_320;",
+      "sessionService": "field_1723:Lcom/mojang/authlib/minecraft/MinecraftSessionService;",
+      "skinProvider": "field_1707:Lnet/minecraft/class_1071;",
+      "socialInteractionsManager": "field_26842:Lnet/minecraft/class_5520;",
+      "userApiService": "field_26902:Lcom/mojang/authlib/minecraft/UserApiService;"
+    },
     "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
       "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_56134(Lnet/minecraft/class_437;)V",
       "getWindowTitle": "Lnet/minecraft/class_310;method_24287()Ljava/lang/String;",
@@ -112,12 +125,14 @@
     "me/hypericats/hyperionclientv3/mixin/MouseMixin": {
       "onMouseScroll": "Lnet/minecraft/class_312;method_1598(JDD)V"
     },
+    "me/hypericats/hyperionclientv3/mixin/MultiplayerScreenMixin": {
+      "init": "Lnet/minecraft/class_500;method_25426()V"
+    },
     "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
       "isActive": "Lnet/minecraft/class_333;method_1791()Z"
     },
-    "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
-      "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
-      "Lnet/minecraft/client/session/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
+    "me/hypericats/hyperionclientv3/mixin/SessionAccessor": {
+      "accessToken": "field_1983:Ljava/lang/String;"
     },
     "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
       "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"
@@ -152,9 +167,6 @@
       },
       "me/hypericats/hyperionclientv3/mixin/ChunkOcclusionDataBuilderMixin": {
         "markClosed(Lnet/minecraft/util/math/BlockPos;)V": "Lnet/minecraft/class_852;method_3682(Lnet/minecraft/class_2338;)V"
-      },
-      "me/hypericats/hyperionclientv3/mixin/ChunkRegionMixin": {
-        "getBlockState": "Lnet/minecraft/class_3233;method_8320(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;"
       },
       "me/hypericats/hyperionclientv3/mixin/ClientConnectionMixin": {
         "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
@@ -227,6 +239,22 @@
       "me/hypericats/hyperionclientv3/mixin/LivingEntityMixin": {
         "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z": "Lnet/minecraft/class_1309;method_37222(Lnet/minecraft/class_1293;Lnet/minecraft/class_1297;)Z"
       },
+      "me/hypericats/hyperionclientv3/mixin/MinecraftClientAccessor": {
+        "abuseReportContext": "field_39492:Lnet/minecraft/class_7574;",
+        "attackCooldown": "field_1771:I",
+        "authenticationService": "field_39420:Lcom/mojang/authlib/yggdrasil/YggdrasilAuthenticationService;",
+        "currentFps": "field_1738:I",
+        "doAttack": "method_1536()Z",
+        "gameProfileFuture": "field_45899:Ljava/util/concurrent/CompletableFuture;",
+        "networkProxy": "field_1739:Ljava/net/Proxy;",
+        "profileKeys": "field_39068:Lnet/minecraft/class_7853;",
+        "resourceReloadLogger": "field_33697:Lnet/minecraft/class_6360;",
+        "session": "field_1726:Lnet/minecraft/class_320;",
+        "sessionService": "field_1723:Lcom/mojang/authlib/minecraft/MinecraftSessionService;",
+        "skinProvider": "field_1707:Lnet/minecraft/class_1071;",
+        "socialInteractionsManager": "field_26842:Lnet/minecraft/class_5520;",
+        "userApiService": "field_26902:Lcom/mojang/authlib/minecraft/UserApiService;"
+      },
       "me/hypericats/hyperionclientv3/mixin/MinecraftClientMixin": {
         "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V": "Lnet/minecraft/class_310;method_56134(Lnet/minecraft/class_437;)V",
         "getWindowTitle": "Lnet/minecraft/class_310;method_24287()Ljava/lang/String;",
@@ -237,12 +265,14 @@
       "me/hypericats/hyperionclientv3/mixin/MouseMixin": {
         "onMouseScroll": "Lnet/minecraft/class_312;method_1598(JDD)V"
       },
+      "me/hypericats/hyperionclientv3/mixin/MultiplayerScreenMixin": {
+        "init": "Lnet/minecraft/class_500;method_25426()V"
+      },
       "me/hypericats/hyperionclientv3/mixin/NarratorManagerMixin": {
         "isActive": "Lnet/minecraft/class_333;method_1791()Z"
       },
-      "me/hypericats/hyperionclientv3/mixin/SessionMixin": {
-        "<init>": "Lnet/minecraft/class_320;<init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/class_320$class_321;)V",
-        "Lnet/minecraft/client/session/Session;username:Ljava/lang/String;": "Lnet/minecraft/class_320;field_1982:Ljava/lang/String;"
+      "me/hypericats/hyperionclientv3/mixin/SessionAccessor": {
+        "accessToken": "field_1983:Ljava/lang/String;"
       },
       "me/hypericats/hyperionclientv3/mixin/SimpleOptionMixin": {
         "setValue": "Lnet/minecraft/class_7172;method_41748(Ljava/lang/Object;)V"

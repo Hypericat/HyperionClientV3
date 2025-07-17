@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class FileUtil {
     public static MinecraftClient client = MinecraftClient.getInstance();
-    public static File MCDir = MinecraftClient.getInstance().runDirectory;
+    public static File MCDir = new File(System.getProperty("user.dir"));
     public static File HypCv3Dir = new File(MCDir.getAbsolutePath() + "\\HyperionClientV3");
 
     public static File createFile(String filename, File directory) {
