@@ -1,36 +1,3 @@
-/enchant @s minecraft:efficiency 4
-/enchant @s minecraft:efficiency 5
-/enchant @s minecraft:efficiency 2
-/clear
-/tp @s 0 100 0
-/give @s minecraft:netherite_shovel
-/give @s minecraft:command_block
-/setblock ~ ~ ~ glass
-/fill -28 84 -111
-/enchant @s minecraft:efficiency 5
-/fill -42 79 -69
-/fill -42 79 -69 -62 79 -89 bedrock
-/give @s minecraft:wooden_pickaxe
-/setblock -54 79 -76 stone
-/setblock -55 79 -77 stone
-/enchant @s minecraft:efficiency 5
-/give @a netherite_shovel[enchantments={levels:{efficiency:100}},unbreakable={}]
-/give @a minecraft:netherite_pickaxel[enchantments={levels:{efficiency:100}},unbreakable={}]
-/give @a minecraft:netherite_pickaxe[enchantments={levels:{efficiency:100}},unbreakable={}]
-/setblock ~ ~ ~ glass
-/fill -43 84 -96
-/fill -43 84 -96 ~ ~ ~ stone
-/fill -43 84 -96 -55 95 -112 stone
-/gamerule commandBlockOutput false
-/clear @s minecraft:cobblestone
-/clear
-/summon minecraft:zombie
-/time set night
-/setblock 268 63 187 bed
-/setblock 268 63 187 blue_bed
-/tp @s 0 100 0
-/give @s minecraft:diamond_pickaxe
-/gamerule maxEntityCramming 1312312312
 /tp @s ~ 5000 ~
 /summon minecraft:zombie
 /tp @s Winston0
@@ -46,3 +13,38 @@
 /dupe
 /lob
 /lobby
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/spawnpoint
+/effect give @e[type=minecraft:creeper] minecraft:resistance infinite 100 true
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/weather clear
+/op Hypericats
+/summon minecraft:warden
+/kill @e[type=minecraft:warden]
+/weather clear
+/tp @p H '
+/tp @p Hypericats
+/setblock ~ ~-5 ~ dirt
+/summon minecraft:creeper
+/tp @p 187 172 431
+/tp @p 56 91 162
+/inv Hypericats
+/give @p mace
+/summon minecraft:warden
+/summon wither
+/summon minecraft:warden
+/give @p mace
+/enchant @p minecraft:density 5
+/setblock ~ ~-1 ~ glass
+/summon minecraft:warden
+/effect give @p minecraft:instant_health
+/effect give @p minecraft:saturation infinite 100 true
+/setblock ~ ~ ~ glass

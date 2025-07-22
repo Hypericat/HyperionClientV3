@@ -42,7 +42,6 @@ public abstract class ClientPlayerInteractionManagerMixin implements IClientPlay
     @Inject(at = @At("HEAD"), method = "updateBlockBreakingProgress", cancellable = true)
     public void onUpdateBlockBreakingProgress(BlockPos pos, Direction direction, CallbackInfoReturnable<Boolean> cir) {
         UpdateBlockBreakingProgressData data = new UpdateBlockBreakingProgressData(pos, direction);
-        System.out.println("Progress!");
         EventHandler.onEvent(UpdateBlockBreakingProgressListener.class, data);
 
         if (data.isCancelled()) cir.cancel();

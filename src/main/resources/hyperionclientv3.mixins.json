@@ -18,6 +18,7 @@
     "ChatScreenMixin",
     "ChunkOcclusionDataBuilderMixin",
     "ClientConnectionMixin",
+    "ClientPlayerEntityAccessor",
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
     "ClientPlayNetworkHandlerMixin",

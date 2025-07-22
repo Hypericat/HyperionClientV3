@@ -5,23 +5,28 @@ import me.hypericats.hyperionclientv3.Module;
 import me.hypericats.hyperionclientv3.ModuleHandler;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
+import me.hypericats.hyperionclientv3.events.SendPacketListener;
 import me.hypericats.hyperionclientv3.events.TickListener;
+import me.hypericats.hyperionclientv3.events.eventData.SendPacketData;
+import me.hypericats.hyperionclientv3.mixin.ClientPlayerEntityAccessor;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.moduleOptions.SliderOption;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class Flight extends Module implements TickListener {
+public class Flight extends Module implements TickListener, SendPacketListener {
     private SliderOption<Double> dropDistance;
     private SliderOption<Double> speedModifier;
     private NumberOption<Double> sprintModifier;
     private NumberOption<Integer> tickInterval;
     private BooleanOption doFlyBypass;
     private int ticks = 0;
+
+    double lastPacketY = Double.MIN_VALUE;
 
     public Flight() {
         super(false);
@@ -32,10 +37,27 @@ public class Flight extends Module implements TickListener {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
         if (ModuleHandler.isModuleEnable(Freecam.class)) return;
+        if (data instanceof SendPacketData packetData) {
+            if (client.player.isOnGround() || !doFlyBypass.getValue()) return;
+            if (packetData.getPacket() instanceof PlayerMoveC2SPacket movePacket) {
+                if (ticks == 0) {
+                    data.cancel();
+                    return;
+                }
+                lastPacketY = movePacket.getY(client.player.getY());
+            }
+            return;
+        }
+        ((ClientPlayerEntityAccessor) client.player).setTickSinceLastMovementPacket(20);
         fly(client);
         if (!doFlyBypass.getValue() || client.player.isOnGround()) return;
         doBypass(client);
     }
+
+    public boolean willBypass() {
+        return this.ticks >= tickInterval.getValue() || ticks == 0;
+    }
+
     public void fly(MinecraftClient client) {
         if (client.player.hasVehicle()) return;
 
@@ -45,16 +67,18 @@ public class Flight extends Module implements TickListener {
         Vec3d velocity = getFlyVelocity(client, speed);
         client.player.setVelocity(velocity);
     }
+
     public void doBypass(MinecraftClient client) {
         doBypass(client.player.getPos(), client);
     }
+
     public void doBypass(Vec3d pos, MinecraftClient client) {
         ticks++;
         if (ticks >= tickInterval.getValue()) {
-            PacketUtil.sendPos(pos.getX(), pos.getY() - dropDistance.getValue(), pos.getZ(), client.player.isOnGround());
+            PacketUtil.sendPosImmediately(pos.getX(), lastPacketY - dropDistance.getValue(), pos.getZ(), client.player.isOnGround());
             ticks = 0;
         }
-        if (ticks == 1) {
+        if (ticks == -1) {
             PacketUtil.sendPos(pos.getX(), pos.getY() + dropDistance.getValue(), pos.getZ(), client.player.isOnGround());
         }
     }
@@ -86,7 +110,9 @@ public class Flight extends Module implements TickListener {
 
     @Override
     public void onEnable() {
+        this.lastPacketY = Double.MIN_VALUE;
         EventHandler.register(TickListener.class, this);
+        EventHandler.register(SendPacketListener.class, this);
     }
 
     @Override
@@ -107,6 +133,7 @@ public class Flight extends Module implements TickListener {
     @Override
     public void onDisable() {
         EventHandler.unregister(TickListener.class, this);
+        EventHandler.unregister(SendPacketListener.class, this);
     }
 
     @Override

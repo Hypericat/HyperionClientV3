@@ -8,6 +8,7 @@ import me.hypericats.hyperionclientv3.enums.EntityTargetPriority;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
+import me.hypericats.hyperionclientv3.mixinInterface.IEntity;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
@@ -16,11 +17,19 @@ import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.MovementType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +47,8 @@ public class InfAura extends Module implements TickListener {
     private FakePlayerEntity fakePlayer;
     private BooleanOption swingHand;
 
+    private PlayerEntity testPlayer;
+
     public InfAura() {
         super(false);
     }
@@ -50,6 +61,7 @@ public class InfAura extends Module implements TickListener {
 
         //check for cooldown
         if (waitCooldown.getValue() && client.player.getAttackCooldownProgress(0) != 1.0) return;
+        if (((Flight) ModuleHandler.getModuleByClass(Flight.class)).willBypass()) return;
 
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), this.range.getValue(), client);
         if (entityList.isEmpty()) return;
@@ -64,7 +76,9 @@ public class InfAura extends Module implements TickListener {
         Vec3d tpPos = entity.getPos();
         if (!isSuitablePos(BlockPos.ofFloored(tpPos), client) || randomizePos.getValue()) tpPos = getPosAround(entity.getPos(), entity, 3, client);
         if (tpPos == null) return;
-        PlayerUtils.packetTpToPos(tpPos, client, false, orginalPos);
+
+        client.player.setOnGround(false);
+        PlayerUtils.packetTpToPos(tpPos, client, false, orginalPos, false);
 
         Criticals criticals = (Criticals) ModuleHandler.getModuleByClass(Criticals.class);
         if (criticals != null && criticals.isEnabled() && !blockCrit.getValue()) criticals.crit(tpPos);
@@ -73,8 +87,9 @@ public class InfAura extends Module implements TickListener {
         if (fakePlayer != null) fakePlayer.despawn();
         fakePlayer = new FakePlayerEntity(tpPos.x, tpPos.y, tpPos.z);
 
-        PlayerUtils.packetTpToPos(orginalPos, client, false, tpPos);
 
+
+        PlayerUtils.packetTpToPos(orginalPos, client, false, tpPos, false);
 
 
         if (swingHand.getValue()) PacketUtil.doFakeHandSwing(Hand.MAIN_HAND);
@@ -82,30 +97,66 @@ public class InfAura extends Module implements TickListener {
     }
     public boolean isSuitablePos(BlockPos pos, MinecraftClient client) {
         ClientWorld world = client.world;
-        if (world == null) return false;
+        if (world == null || client.player == null) return false;
         BlockPos[] blocks = new BlockPos[2];
         blocks[0] = pos;
         blocks[1] = pos.add(0, -1, 0);
         for (int i = 0; i < blocks.length; i++) {
                 BlockPos p = blocks[i];
                 BlockState state = world.getBlockState(p);
-                if (!state.isAir()) return false;
+                if (!state.getCollisionShape(client.world, p).isEmpty()) return false;
+                //if (!state.isAir()) return false;
+        }
+
+        return testPos(MinecraftClient.getInstance().player.getPos(), Vec3d.of(pos), client) && testPos(Vec3d.of(pos), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
+    }
+
+    public boolean testPos(Vec3d start, Vec3d endPos, MinecraftClient client) {
+        if (client.player == null || client.player.isSpectator() || client.player.isSleeping()) return false;
+        if (client.player.isCreative()) return true;
+
+        testPlayer.setPosition(start); // Also sets bounding box
+        testPlayer.setOnGround(false);
+
+        testPlayer.move(MovementType.PLAYER, endPos.subtract(start));
+
+        double dx = endPos.getX() - testPlayer.getX();
+        double dy = endPos.getY() - testPlayer.getY();
+        if (dy > -0.5 || dy < 0.5) {
+            dy = 0.0;
+        }
+        double dz = endPos.getZ() - testPlayer.getZ();
+
+        double d7 = dx * dx + dy * dy + dz * dz;
+
+        if (d7 > 0.0625D) {
+            return false;
         }
         return true;
     }
+
     public Vec3d getPosAround(Vec3d pos, Entity entity, double maxRange, MinecraftClient client) {
-        List<BlockPos> possibleBlockPos = new ArrayList<>();
         for (BlockPos block : BlockUtils.getBlockInRange(BlockPos.ofFloored((int) pos.x, (int) pos.y, (int) pos.z), (int) maxRange)) {
             if (block.toCenterPos().add(0, 0, 0).squaredDistanceTo(entity.getPos()) >= 8.0) continue;
-            if (isSuitablePos(block, client)) possibleBlockPos.add(block);
+            if (isSuitablePos(block, client)) return block.toCenterPos().subtract(0, 1, 0);
         }
-        if (possibleBlockPos.isEmpty()) return null;
-        Random random = new Random();
-        return possibleBlockPos.get(random.nextInt(possibleBlockPos.size())).toCenterPos().subtract(0, 1, 0);
+        return null;
     }
+
     @Override
     public void onEnable() {
         EventHandler.register(TickListener.class, this);
+        this.testPlayer = new PlayerEntity(MinecraftClient.getInstance().world, new BlockPos(0, 0, 0), MinecraftClient.getInstance().player.headYaw, MinecraftClient.getInstance().getGameProfile()) {
+            @Override
+            public boolean isSpectator() {
+                return false;
+            }
+
+            @Override
+            public boolean isCreative() {
+                return false;
+            }
+        };
     }
 
     @Override

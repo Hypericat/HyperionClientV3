@@ -9,6 +9,7 @@ import me.hypericats.hyperionclientv3.modules.Friends;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.ColorHelper;
@@ -35,7 +36,7 @@ public class PlayerUtils {
             Entity e = entities.get(i);
             PlayerEntity p = null;
             if (e instanceof PlayerEntity) p = (PlayerEntity) e;
-            if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit())) || (e instanceof PlayerEntity && !targetPlayers) || (e instanceof HostileEntity && !targetHostile) || (e instanceof PassiveEntity && !targetPassive) || (checkFriends && Friends.isFriend(p))) {
+            if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit())) || (e instanceof PlayerEntity && !targetPlayers) || (e instanceof HostileEntity && !targetHostile) || (e instanceof PassiveEntity && !targetPassive) || (checkFriends && Friends.isFriend(p) || e instanceof BatEntity)) {
                 entities.remove(i);
                 i --;
             }
@@ -101,14 +102,13 @@ public class PlayerUtils {
         packetTpToPos(pos, client, updateClient, playerPos, client.player.isOnGround());
     }
     public static void packetTpToPos(Vec3d pos, MinecraftClient client, boolean updateClient, Vec3d playerPos, boolean onGround) {
-        int PacketAmount = (int) Math.ceil(pos.distanceTo(playerPos) / 9) + 1;
+        int PacketAmount = (int) Math.ceil(pos.distanceTo(playerPos) / 10) - 1;
         while (PacketAmount > 0) {
             PacketAmount --;
             PacketUtil.sendPosImmediately(client.player.getPos(), onGround);
-            if (updateClient) client.player.setPos(client.player.getX(), client.player.getY(), client.player.getZ());
         }
 
-        PacketUtil.sendPosImmediately(pos, onGround);
+        PacketUtil.sendPosImmediately(pos, false);
 
         if (updateClient)
             client.player.setPos(pos.getX(), pos.getY(), pos.getZ());
