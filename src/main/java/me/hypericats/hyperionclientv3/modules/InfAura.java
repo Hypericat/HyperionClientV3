@@ -121,7 +121,7 @@ public class InfAura extends Module implements TickListener {
     }
 
     public long hash(BlockPos a, BlockPos b) {
-        return ((long) a.hashCode()) | (((long) b.hashCode()) << 32);
+        return ((long) a.hashCode() & 0xFFFFFFFFL) | (((long) b.hashCode() & 0xFFFFFFFFL) << 32);
     }
 
     public boolean testPos(Vec3d start, Vec3d endPos, MinecraftClient client) {
