@@ -31,16 +31,30 @@ public class PlayerUtils {
         return entities;
     }
 
-    public static void parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive, boolean checkFriends, boolean checkHit) {
+    public static List<Entity> parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive, boolean checkFriends, boolean checkHit) {
+        List<Entity> valid = new ArrayList<>();
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
+            if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit()))) continue;
+
             PlayerEntity p = null;
             if (e instanceof PlayerEntity) p = (PlayerEntity) e;
-            if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit())) || (e instanceof PlayerEntity && !targetPlayers) || (e instanceof HostileEntity && !targetHostile) || (e instanceof PassiveEntity && !targetPassive) || (checkFriends && Friends.isFriend(p) || e instanceof BatEntity)) {
-                entities.remove(i);
-                i --;
+            if (targetPlayers && p != null && !(checkFriends && Friends.isFriend(p))) {
+                valid.add(e);
+                continue;
+            }
+
+            if (targetHostile && e instanceof HostileEntity) {
+                valid.add(e);
+                continue;
+            }
+
+            if (targetPassive && e instanceof PassiveEntity) {
+                valid.add(e);
+                continue;
             }
         }
+        return valid;
     }
     public static int getColorOutline(Entity ent, double range) {
         double distance = MinecraftClient.getInstance().player == null ? 0 : ent.distanceTo(MinecraftClient.getInstance().player);

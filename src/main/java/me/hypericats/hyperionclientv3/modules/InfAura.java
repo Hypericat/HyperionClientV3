@@ -32,6 +32,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -47,6 +48,8 @@ public class InfAura extends Module implements TickListener {
     private FakePlayerEntity fakePlayer;
     private BooleanOption swingHand;
 
+    private HashMap<Long, Boolean> cache;
+
     private PlayerEntity testPlayer;
 
     public InfAura() {
@@ -61,12 +64,12 @@ public class InfAura extends Module implements TickListener {
 
         //check for cooldown
         if (waitCooldown.getValue() && client.player.getAttackCooldownProgress(0) != 1.0) return;
-        if (((Flight) ModuleHandler.getModuleByClass(Flight.class)).willBypass()) return;
+        if (ModuleHandler.isModuleEnable(Flight.class) && ((Flight) ModuleHandler.getModuleByClass(Flight.class)).willBypass()) return;
 
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), this.range.getValue(), client);
         if (entityList.isEmpty()) return;
 
-        PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
+        entityList = PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
         if (entityList.isEmpty()) return;
 
         List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, null, entityTargetPriority.getValue(), PlayerUtils.getServerPosition());
@@ -74,7 +77,7 @@ public class InfAura extends Module implements TickListener {
 
         Vec3d orginalPos = PlayerUtils.getServerPosition();
         Vec3d tpPos = entity.getPos();
-        if (!isSuitablePos(BlockPos.ofFloored(tpPos), client) || randomizePos.getValue()) tpPos = getPosAround(entity.getPos(), entity, 3, client);
+        if (randomizePos.getValue() || !isSuitablePos(BlockPos.ofFloored(tpPos), client)) tpPos = getPosAround(entity.getPos(), entity, 3, client);
         if (tpPos == null) return;
 
         client.player.setOnGround(false);
@@ -98,6 +101,10 @@ public class InfAura extends Module implements TickListener {
     public boolean isSuitablePos(BlockPos pos, MinecraftClient client) {
         ClientWorld world = client.world;
         if (world == null || client.player == null) return false;
+
+        Boolean res = cache.get(hash(MinecraftClient.getInstance().player.getBlockPos(), pos));
+        if (res != null) return res;
+
         BlockPos[] blocks = new BlockPos[2];
         blocks[0] = pos;
         blocks[1] = pos.add(0, -1, 0);
@@ -108,7 +115,13 @@ public class InfAura extends Module implements TickListener {
                 //if (!state.isAir()) return false;
         }
 
-        return testPos(MinecraftClient.getInstance().player.getPos(), Vec3d.of(pos), client) && testPos(Vec3d.of(pos), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
+        boolean result = testPos(MinecraftClient.getInstance().player.getPos(), Vec3d.of(pos), client) && testPos(Vec3d.of(pos), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
+        cache.put(hash(MinecraftClient.getInstance().player.getBlockPos(), pos), result);
+        return result;
+    }
+
+    public long hash(BlockPos a, BlockPos b) {
+        return ((long) a.hashCode()) | (((long) b.hashCode()) << 32);
     }
 
     public boolean testPos(Vec3d start, Vec3d endPos, MinecraftClient client) {
@@ -145,6 +158,8 @@ public class InfAura extends Module implements TickListener {
 
     @Override
     public void onEnable() {
+        // Most of this should be called onWorldLoad not here
+        this.cache = new HashMap<>();
         EventHandler.register(TickListener.class, this);
         this.testPlayer = new PlayerEntity(MinecraftClient.getInstance().world, new BlockPos(0, 0, 0), MinecraftClient.getInstance().player.headYaw, MinecraftClient.getInstance().getGameProfile()) {
             @Override

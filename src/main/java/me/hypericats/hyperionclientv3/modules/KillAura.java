@@ -64,7 +64,7 @@ public class KillAura extends Module implements TickListener, SendPacketListener
             return;
         }
 
-        PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
+        entityList = PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
         if (entityList.isEmpty()) {
             entityInRange = false;
             lastYaw = Float.MIN_VALUE;

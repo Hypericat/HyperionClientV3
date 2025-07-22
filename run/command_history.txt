@@ -1,8 +1,3 @@
-/tp @s ~ 5000 ~
-/summon minecraft:zombie
-/tp @s Winston0
-/kill Winston0
-/gamemode creative Winstona0
 /weather clear
 /give @s minecraft:diamond_shovel
 /gamemode spectator
@@ -48,3 +43,8 @@
 /effect give @p minecraft:instant_health
 /effect give @p minecraft:saturation infinite 100 true
 /setblock ~ ~ ~ glass
+/summon minecraft:drowned
+/summon salmon
+/summon minecraft:salmon
+/summon minecraft:creeper'
+/summon minecraft:creeper
