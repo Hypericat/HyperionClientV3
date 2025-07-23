@@ -1,14 +1,3 @@
-/lobby
-/gamemode creative
-/gamemode survival
-/gamemode creative
-/gamemode survival
-/gamemode creative
-/spawnpoint
-/effect give @e[type=minecraft:creeper] minecraft:resistance infinite 100 true
-/gamemode survival
-/gamemode creative
-/gamemode survival
 /gamemode creative
 /gamemode survival
 /weather clear
@@ -48,3 +37,14 @@
 /carpet optimizedFastEntityMovement false
 /carpet optimizedFastEntityMovement true
 /lobby
+/execute at User as @e[type=cow] run summon cow
+/summon cow
+/execute at User as @e[type=cow] run summon cow
+/give @p mace
+/execute at User as @e[type=cow] run summon cow
+/execute at User as @e[type=cow] run summon cow ~ ~-1 ~
+/give @p mace
+/execute at User as @e[type=cow] run summon cow ~ ~-2 ~
+/execute at User as @e[type=cow] run summon cow ~ ~-4 ~
+/execute at User as @e[type=cow] run summon cow ~ ~-2 ~
+/give @p mace

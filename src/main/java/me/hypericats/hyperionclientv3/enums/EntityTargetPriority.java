@@ -3,6 +3,7 @@ package me.hypericats.hyperionclientv3.enums;
 public enum EntityTargetPriority {
     CLOSEST("Closest"),
     FURTHEST("Furthest"),
+    RANDOM("Random"),
     PLAYER("Player"),
     HOSTILE("Hostile"),
     PASSIVE("Passive");

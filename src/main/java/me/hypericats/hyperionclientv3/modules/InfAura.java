@@ -65,8 +65,9 @@ public class InfAura extends Module implements TickListener {
         List<Entity> entityList = PlayerUtils.getEntitiesWithinRange(PlayerUtils.getServerPosition(), this.range.getValue(), client);
         if (entityList.isEmpty()) return;
 
-        entityList = PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true);
+        entityList = PlayerUtils.parseAttackableEntities(entityList, targetPlayers.getValue(), targetHostileMobs.getValue(), targetPassiveMobs.getValue(), true, true, !waitCooldown.getValue());
         if (entityList.isEmpty()) return;
+
 
         List<Entity> toAttack = PlayerUtils.getAttackListFromEntityTargets(entityList, null, entityTargetPriority.getValue(), PlayerUtils.getServerPosition());
         Entity entity = toAttack.get(0);

@@ -8,6 +8,7 @@ import me.hypericats.hyperionclientv3.modules.Freecam;
 import me.hypericats.hyperionclientv3.modules.Friends;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -17,9 +18,7 @@ import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class PlayerUtils {
     public static List<Entity> getEntitiesWithinRange(Vec3d pos, double radius, MinecraftClient client) {
@@ -34,11 +33,14 @@ public class PlayerUtils {
         return entities;
     }
 
-    public static List<Entity> parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive, boolean checkFriends, boolean checkHit) {
+    public static List<Entity> parseAttackableEntities(List<Entity> entities, boolean targetPlayers, boolean targetHostile, boolean targetPassive, boolean checkFriends, boolean checkHit, boolean checkHurtTime) {
         List<Entity> valid = new ArrayList<>();
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
             if ((checkHit && (!e.isAttackable() || !e.isAlive() || e.isInvulnerable() || !e.canHit()))) continue;
+            if (checkHurtTime && e instanceof LivingEntity l && (l.hurtTime > 1)) {
+                continue;
+            }
 
             PlayerEntity p = null;
             if (e instanceof PlayerEntity) p = (PlayerEntity) e;
@@ -68,6 +70,8 @@ public class PlayerUtils {
     }
     public static List<Entity> getAttackListFromEntityTargets(List<Entity> entities, EntityTargetType targetType, EntityTargetPriority priority, Vec3d pos) {
         List<Entity> targets = new ArrayList<>();
+        if (entities.isEmpty()) return targets;
+
         if (targetType == EntityTargetType.MULTI) {
             targets.addAll(entities);
             return targets;
@@ -87,6 +91,10 @@ public class PlayerUtils {
             }
             case PASSIVE -> {
                 targets.add(findEntityInList(entities, PassiveEntity.class, true, pos));
+            }
+            case RANDOM -> {
+                Random random = new Random();
+                targets.add(entities.get(random.nextInt(0, entities.size() - 1)));
             }
         }
         return targets;
