@@ -8,34 +8,30 @@ import me.hypericats.hyperionclientv3.enums.EntityTargetPriority;
 import me.hypericats.hyperionclientv3.event.EventData;
 import me.hypericats.hyperionclientv3.event.EventHandler;
 import me.hypericats.hyperionclientv3.events.TickListener;
-import me.hypericats.hyperionclientv3.mixinInterface.IEntity;
 import me.hypericats.hyperionclientv3.moduleOptions.BooleanOption;
 import me.hypericats.hyperionclientv3.moduleOptions.EnumStringOption;
 import me.hypericats.hyperionclientv3.moduleOptions.NumberOption;
 import me.hypericats.hyperionclientv3.util.BlockUtils;
 import me.hypericats.hyperionclientv3.util.PacketUtil;
 import me.hypericats.hyperionclientv3.util.PlayerUtils;
+import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
-import net.minidev.json.writer.ArraysMapper;
+import net.minecraft.world.World;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 public class InfAura extends Module implements TickListener {
     private NumberOption<Double> range;
@@ -44,12 +40,11 @@ public class InfAura extends Module implements TickListener {
     private BooleanOption targetHostileMobs;
     private BooleanOption targetPassiveMobs;
     private BooleanOption waitCooldown;
+
     private BooleanOption blockCrit;
     private EnumStringOption<EntityTargetPriority> entityTargetPriority;
     private FakePlayerEntity fakePlayer;
     private BooleanOption swingHand;
-
-    private HashMap<Long, Boolean> cache;
 
     private PlayerEntity testPlayer;
 
@@ -100,9 +95,6 @@ public class InfAura extends Module implements TickListener {
         ClientWorld world = client.world;
         if (world == null || client.player == null) return false;
 
-        Boolean res = cache.get(hash(MinecraftClient.getInstance().player.getBlockPos(), pos));
-        if (res != null) return res;
-
         BlockPos[] blocks = new BlockPos[2];
         blocks[0] = pos;
         blocks[1] = pos.add(0, -1, 0);
@@ -113,16 +105,15 @@ public class InfAura extends Module implements TickListener {
                 //if (!state.isAir()) return false;
         }
 
-        boolean result = testPos(MinecraftClient.getInstance().player.getPos(), pos.toCenterPos(), client) && testPos(pos.toCenterPos(), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
-        cache.put(hash(MinecraftClient.getInstance().player.getBlockPos(), pos), result);
-        return result;
+        //Test going and coming back
+        return testPosCollision(MinecraftClient.getInstance().player.getPos(), pos.toCenterPos(), client) && testPosCollision(pos.toCenterPos(), MinecraftClient.getInstance().player.getPos(), client);
     }
 
     public long hash(BlockPos a, BlockPos b) {
         return ((long) a.hashCode() & 0xFFFFFFFFL) | (((long) b.hashCode() & 0xFFFFFFFFL) << 32);
     }
 
-    public boolean testPos(Vec3d start, Vec3d endPos, MinecraftClient client) {
+    private boolean testPosCollision(Vec3d start, Vec3d endPos, MinecraftClient client) {
         if (client.player == null || client.player.isSpectator() || client.player.isSleeping()) return false;
         if (client.player.isCreative()) return true;
 
@@ -146,6 +137,8 @@ public class InfAura extends Module implements TickListener {
         return true;
     }
 
+
+
     public Vec3d getPosAround(Vec3d pos, Entity entity, double maxRange, MinecraftClient client) {
         for (BlockPos block : BlockUtils.getBlockInRange(BlockPos.ofFloored((int) pos.x, (int) pos.y, (int) pos.z), (int) maxRange)) {
             if (block.toBottomCenterPos().add(0d, client.player.isSneaking() ? 1.4175f : 1.62f, 0d).squaredDistanceTo(entity.getBoundingBox().getCenter()) >= maxRange * maxRange) continue;
@@ -157,7 +150,6 @@ public class InfAura extends Module implements TickListener {
     @Override
     public void onEnable() {
         // Most of this should be called onWorldLoad not here
-        this.cache = new HashMap<>();
         EventHandler.register(TickListener.class, this);
         this.testPlayer = new PlayerEntity(MinecraftClient.getInstance().world, new BlockPos(0, 0, 0), MinecraftClient.getInstance().player.headYaw, MinecraftClient.getInstance().getGameProfile()) {
             @Override

@@ -1,7 +1,3 @@
-/particle minecraft:dust_pillar
-/particle dust_pillar{block_state:{Name:redstone_block}} ~ ~1 ~ .2 .2 .2 .0001 100 normal
-/dupe
-/lob
 /lobby
 /gamemode creative
 /gamemode survival
@@ -48,3 +44,7 @@
 /give @p mace
 /effect clear @p
 /effect give @p minecraft:resistance infinite 100 true
+/carpet optimizedFastEntityMovement true
+/carpet optimizedFastEntityMovement false
+/carpet optimizedFastEntityMovement true
+/lobby

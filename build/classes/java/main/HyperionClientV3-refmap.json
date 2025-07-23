@@ -63,6 +63,11 @@
       "render": "Lnet/minecraft/class_863;method_23099(Lnet/minecraft/class_4587;Lnet/minecraft/class_4604;Lnet/minecraft/class_4597$class_4598;DDD)V"
     },
     "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
+      "Lnet/minecraft/util/shape/VoxelShapes;calculateMaxOffset(Lnet/minecraft/util/math/Direction$Axis;Lnet/minecraft/util/math/Box;Ljava/lang/Iterable;D)D": "Lnet/minecraft/class_259;method_1085(Lnet/minecraft/class_2350$class_2351;Lnet/minecraft/class_238;Ljava/lang/Iterable;D)D",
+      "Lnet/minecraft/world/World;getBlockCollisions(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Box;)Ljava/lang/Iterable;": "Lnet/minecraft/class_1937;method_20812(Lnet/minecraft/class_1297;Lnet/minecraft/class_238;)Ljava/lang/Iterable;",
+      "adjustMovementForCollisions(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Lnet/minecraft/world/World;Ljava/util/List;)Lnet/minecraft/util/math/Vec3d;": "Lnet/minecraft/class_1297;method_20736(Lnet/minecraft/class_1297;Lnet/minecraft/class_243;Lnet/minecraft/class_238;Lnet/minecraft/class_1937;Ljava/util/List;)Lnet/minecraft/class_243;",
+      "adjustMovementForCollisions(Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/List;)Lnet/minecraft/util/math/Vec3d;": "Lnet/minecraft/class_1297;method_20737(Lnet/minecraft/class_243;Lnet/minecraft/class_238;Ljava/util/List;)Lnet/minecraft/class_243;",
+      "findCollisionsForMovement": "Lnet/minecraft/class_1297;method_59920(Lnet/minecraft/class_1297;Lnet/minecraft/class_1937;Ljava/util/List;Lnet/minecraft/class_238;)Ljava/util/List;",
       "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
     },
     "me/hypericats/hyperionclientv3/mixin/EntityRenderDispatcherMixin": {
@@ -206,6 +211,11 @@
         "render": "Lnet/minecraft/class_863;method_23099(Lnet/minecraft/class_4587;Lnet/minecraft/class_4604;Lnet/minecraft/class_4597$class_4598;DDD)V"
       },
       "me/hypericats/hyperionclientv3/mixin/EntityMixin": {
+        "Lnet/minecraft/util/shape/VoxelShapes;calculateMaxOffset(Lnet/minecraft/util/math/Direction$Axis;Lnet/minecraft/util/math/Box;Ljava/lang/Iterable;D)D": "Lnet/minecraft/class_259;method_1085(Lnet/minecraft/class_2350$class_2351;Lnet/minecraft/class_238;Ljava/lang/Iterable;D)D",
+        "Lnet/minecraft/world/World;getBlockCollisions(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Box;)Ljava/lang/Iterable;": "Lnet/minecraft/class_1937;method_20812(Lnet/minecraft/class_1297;Lnet/minecraft/class_238;)Ljava/lang/Iterable;",
+        "adjustMovementForCollisions(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Lnet/minecraft/world/World;Ljava/util/List;)Lnet/minecraft/util/math/Vec3d;": "Lnet/minecraft/class_1297;method_20736(Lnet/minecraft/class_1297;Lnet/minecraft/class_243;Lnet/minecraft/class_238;Lnet/minecraft/class_1937;Ljava/util/List;)Lnet/minecraft/class_243;",
+        "adjustMovementForCollisions(Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/List;)Lnet/minecraft/util/math/Vec3d;": "Lnet/minecraft/class_1297;method_20737(Lnet/minecraft/class_243;Lnet/minecraft/class_238;Ljava/util/List;)Lnet/minecraft/class_243;",
+        "findCollisionsForMovement": "Lnet/minecraft/class_1297;method_59920(Lnet/minecraft/class_1297;Lnet/minecraft/class_1937;Ljava/util/List;Lnet/minecraft/class_238;)Ljava/util/List;",
         "getBoundingBox": "Lnet/minecraft/class_1297;method_5829()Lnet/minecraft/class_238;"
       },
       "me/hypericats/hyperionclientv3/mixin/EntityRenderDispatcherMixin": {

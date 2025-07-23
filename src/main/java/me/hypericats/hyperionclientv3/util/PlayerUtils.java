@@ -12,10 +12,13 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayerUtils {
@@ -134,5 +137,78 @@ public class PlayerUtils {
         Freecam freecam = (Freecam) ModuleHandler.getModuleByClass(Freecam.class);
         if (freecam == null || freecam.isDisabled()) return MinecraftClient.getInstance().player.getPos();
         return freecam.getFakePlayerPosition();
+    }
+
+
+    // Stolen from liquid bounce
+    public static Vec3d fastAdjustMovementForCollisions(Vec3d movement, Entity player) {
+        boolean bl4;
+
+        Box box = new Box(-0.3, 0.0, -0.3, 0.3, 1.8, 0.3).offset(player.getPos());
+
+        List<VoxelShape> entityCollisionList = Collections.emptyList();
+
+        Vec3d vec3d;
+        if (movement.lengthSquared() == 0.0) {
+            vec3d = movement;
+        } else {
+            vec3d = Entity.adjustMovementForCollisions(
+                    player,
+                    movement,
+                    box,
+                    player.getWorld(),
+                    entityCollisionList
+            );
+        }
+
+        boolean bl = movement.x != vec3d.x;
+        boolean bl2 = movement.y != vec3d.y;
+        boolean bl3 = movement.z != vec3d.z;
+
+        bl4 = (bl2 && movement.y < 0.0);
+
+        if (player.getStepHeight() > 0.0f && bl4 && (bl || bl3)) {
+            Vec3d vec3d2 = Entity.adjustMovementForCollisions(
+                    player,
+                    new Vec3d(movement.x, player.getStepHeight(), movement.z),
+                    box,
+                    player.getWorld(),
+                    entityCollisionList
+            );
+
+            Vec3d vec3d3 = Entity.adjustMovementForCollisions(
+                    player,
+                    new Vec3d(0.0, (double) player.getStepHeight(), 0.0),
+                    box.stretch(movement.x, 0.0, movement.z),
+                    player.getWorld(),
+                    entityCollisionList
+            );
+
+            Vec3d asdf = Entity.adjustMovementForCollisions(
+                    player,
+                    new Vec3d(movement.x, 0.0, movement.z),
+                    box.offset(vec3d3),
+                    player.getWorld(),
+                    entityCollisionList
+            ).add(vec3d3);
+
+            if (vec3d3.y < (double) player.getStepHeight() &&
+                    asdf.horizontalLengthSquared() > vec3d2.horizontalLengthSquared()) {
+                vec3d2 = asdf;
+            }
+
+            if (vec3d2.horizontalLengthSquared() > vec3d.horizontalLengthSquared()) {
+                return vec3d2.add(
+                        Entity.adjustMovementForCollisions(
+                                player,
+                                new Vec3d(0.0, -vec3d2.y + movement.y, 0.0),
+                                box.offset(vec3d2),
+                                player.getWorld(),
+                                entityCollisionList
+                        )
+                );
+            }
+        }
+        return vec3d;
     }
 }
