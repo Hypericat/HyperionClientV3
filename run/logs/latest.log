@@ -1,5 +1,5 @@
-[18:36:45] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
-[18:36:45] [main/INFO] (FabricLoader) Loading 55 mods:
+[20:34:45] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
+[20:34:45] [main/INFO] (FabricLoader) Loading 55 mods:
 	- fabric-api 0.115.1+1.21.4
 	- fabric-api-base 0.4.54+b47eab6b04
 	- fabric-api-lookup-api-v1 1.6.86+b1caf1e904
@@ -55,39 +55,38 @@
 	- java 21
 	- minecraft 1.21.4
 	- mixinextras 0.4.1
-[18:36:45] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[18:36:45] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[18:36:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[18:36:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[18:36:46] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[18:36:47] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 427 milliseconds
-[18:36:48] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[18:36:52] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[18:36:52] [Render thread/INFO] (Minecraft) Setting user: Player235
-[18:36:52] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[18:36:53] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
-[18:36:53] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-gametest-api-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader
-[18:36:54] [Worker-Main-2/INFO] (Minecraft) Found unifont_jp_patch-16.0.01.hex, loading
-[18:36:54] [Worker-Main-9/INFO] (Minecraft) Found unifont_all_no_pua-16.0.01.hex, loading
-[18:36:54] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
-[18:36:55] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Razer BlackShark V2 X USB)
-[18:36:55] [Render thread/INFO] (Minecraft) Sound engine started
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[18:36:55] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[18:36:55] [IO-Worker-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: null
-[18:36:55] [IO-Worker-1/ERROR] (Minecraft) Couldn't connect to realms
+[20:34:45] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hypericats/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[20:34:46] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[20:34:46] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[20:34:47] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[20:34:48] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 399 milliseconds
+[20:34:48] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[20:34:52] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[20:34:52] [Render thread/INFO] (Minecraft) Setting user: Player594
+[20:34:53] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[20:34:53] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
+[20:34:54] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-gametest-api-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader
+[20:34:54] [Worker-Main-2/INFO] (Minecraft) Found unifont_all_no_pua-16.0.01.hex, loading
+[20:34:54] [Worker-Main-6/INFO] (Minecraft) Found unifont_jp_patch-16.0.01.hex, loading
+[20:34:54] [Render thread/INFO] (hyperionclientv3) Initializing HyperionClientV3
+[20:34:55] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Razer BlackShark V2 X USB)
+[20:34:55] [Render thread/INFO] (Minecraft) Sound engine started
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20:34:56] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[20:34:56] [IO-Worker-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: null
+[20:34:56] [IO-Worker-1/ERROR] (Minecraft) Couldn't connect to realms
 net.minecraft.client.realms.exception.RealmsServiceException: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: null'
 	at knot/net.minecraft.client.realms.RealmsClient.execute(RealmsClient.java:445) ~[minecraft-merged-abba00472f-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
 	at knot/net.minecraft.client.realms.RealmsClient.clientCompatible(RealmsClient.java:232) ~[minecraft-merged-abba00472f-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
@@ -96,8 +95,8 @@ net.minecraft.client.realms.exception.RealmsServiceException: Realms authenticat
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
 	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-[18:36:59] [Render thread/INFO] (Minecraft) Connecting to localhost, 25565
-[18:37:00] [Download-1/ERROR] (Minecraft) Failed to retrieve profile key pair
+[20:35:27] [Render thread/INFO] (Minecraft) Connecting to localhost, 25565
+[20:35:28] [Download-1/ERROR] (Minecraft) Failed to retrieve profile key pair
 com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
 	at knot/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103) ~[authlib-6.0.57.jar:?]
 	at knot/com.mojang.authlib.minecraft.client.MinecraftClient.post(MinecraftClient.java:64) ~[authlib-6.0.57.jar:?]
@@ -108,23 +107,36 @@ com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
 	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-[18:37:00] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:00] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:00] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:00] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:00] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
-[18:37:00] [Render thread/INFO] (Minecraft) [System] [CHAT] User joined the game
-[18:37:00] [Render thread/INFO] (Minecraft) Loaded 96 advancements
-[18:37:01] [Render thread/WARN] (Minecraft) Unable to play empty soundEvent: minecraft:entity.cod.ambient
-[18:37:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Flight§r has been §aenabled
-[18:37:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
-[18:37:07] [Render thread/INFO] (Minecraft) [System] [CHAT] Summoned new Salmon
-[18:37:07] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
-[18:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
-[18:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
-[18:37:13] [Render thread/INFO] (Minecraft) [System] [CHAT] Expected whitespace to end one argument, but found trailing data\n...ft:creeper'<--[HERE]
-[18:37:16] [Render thread/INFO] (Minecraft) [System] [CHAT] Summoned new Creeper
-[18:37:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
-[18:37:22] [Render thread/WARN] (Minecraft) Duplicate entity UUID d9339978-2cae-306d-8225-4c6cc63aea77: FakePlayerEntity['User'/188, l='ClientLevel', x=194.50, y=60.50, z=-532.50]
-[18:37:23] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
-[18:37:29] [Render thread/INFO] (Minecraft) Stopping!
+[20:35:28] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[20:35:28] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[20:35:28] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[20:35:28] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[20:35:28] [Render thread/INFO] (Minecraft) [STDOUT]: Loading Waypoints!
+[20:35:28] [Render thread/INFO] (Minecraft) [System] [CHAT] User joined the game
+[20:35:28] [Render thread/INFO] (Minecraft) Loaded 96 advancements
+[20:35:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4Flight§r has been §aenabled
+[20:35:33] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:35:33] [Render thread/WARN] (Minecraft) Duplicate entity UUID d9339978-2cae-306d-8225-4c6cc63aea77: FakePlayerEntity['User'/136, l='ClientLevel', x=-328.50, y=66.50, z=727.50]
+[20:35:38] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:35:39] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:35:39] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:35:57] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:35:59] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:00] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:12] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:12] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:17] [Render thread/INFO] (Minecraft) [System] [CHAT] Hypericats left the game
+[20:36:19] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:19] [Render thread/INFO] (Minecraft) [System] [CHAT] Hypericats joined the game
+[20:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:26] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:28] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled
+[20:36:35] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §aenabled
+[20:36:36] [Render thread/INFO] (Minecraft) [System] [CHAT] §6[Hyperion Client V3] §f§4InfAura§r has been §cdisabled

@@ -1,8 +1,3 @@
-/weather clear
-/give @s minecraft:diamond_shovel
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
 /particle minecraft:dust_pillar
 /particle dust_pillar{block_state:{Name:redstone_block}} ~ ~1 ~ .2 .2 .2 .0001 100 normal
 /dupe
@@ -48,3 +43,8 @@
 /summon minecraft:salmon
 /summon minecraft:creeper'
 /summon minecraft:creeper
+/tp @p 63.5
+/tp @p Hypericats
+/give @p mace
+/effect clear @p
+/effect give @p minecraft:resistance infinite 100 true

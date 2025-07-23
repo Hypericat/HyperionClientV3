@@ -30,6 +30,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
+import net.minidev.json.writer.ArraysMapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,8 +77,8 @@ public class InfAura extends Module implements TickListener {
         Entity entity = toAttack.get(0);
 
         Vec3d orginalPos = PlayerUtils.getServerPosition();
-        Vec3d tpPos = entity.getPos();
-        if (randomizePos.getValue() || !isSuitablePos(BlockPos.ofFloored(tpPos), client)) tpPos = getPosAround(entity.getPos(), entity, 3, client);
+        Vec3d tpPos = entity.getBlockPos().toCenterPos();
+        if (randomizePos.getValue() || !isSuitablePos(entity.getBlockPos(), client)) tpPos = getPosAround(entity.getPos(), entity, 5.5d, client);
         if (tpPos == null) return;
 
         client.player.setOnGround(false);
@@ -90,10 +91,7 @@ public class InfAura extends Module implements TickListener {
         if (fakePlayer != null) fakePlayer.despawn();
         fakePlayer = new FakePlayerEntity(tpPos.x, tpPos.y, tpPos.z);
 
-
-
         PlayerUtils.packetTpToPos(orginalPos, client, false, tpPos, false);
-
 
         if (swingHand.getValue()) PacketUtil.doFakeHandSwing(Hand.MAIN_HAND);
 
@@ -115,7 +113,7 @@ public class InfAura extends Module implements TickListener {
                 //if (!state.isAir()) return false;
         }
 
-        boolean result = testPos(MinecraftClient.getInstance().player.getPos(), Vec3d.of(pos), client) && testPos(Vec3d.of(pos), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
+        boolean result = testPos(MinecraftClient.getInstance().player.getPos(), pos.toCenterPos(), client) && testPos(pos.toCenterPos(), MinecraftClient.getInstance().player.getPos(), client); //Test going and coming back
         cache.put(hash(MinecraftClient.getInstance().player.getBlockPos(), pos), result);
         return result;
     }
@@ -150,8 +148,8 @@ public class InfAura extends Module implements TickListener {
 
     public Vec3d getPosAround(Vec3d pos, Entity entity, double maxRange, MinecraftClient client) {
         for (BlockPos block : BlockUtils.getBlockInRange(BlockPos.ofFloored((int) pos.x, (int) pos.y, (int) pos.z), (int) maxRange)) {
-            if (block.toCenterPos().add(0, 0, 0).squaredDistanceTo(entity.getPos()) >= 8.0) continue;
-            if (isSuitablePos(block, client)) return block.toCenterPos().subtract(0, 1, 0);
+            if (block.toBottomCenterPos().add(0d, client.player.isSneaking() ? 1.4175f : 1.62f, 0d).squaredDistanceTo(entity.getBoundingBox().getCenter()) >= maxRange * maxRange) continue;
+            if (isSuitablePos(block, client)) return block.toCenterPos();
         }
         return null;
     }
